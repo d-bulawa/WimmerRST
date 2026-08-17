@@ -56,20 +56,20 @@ und wurden für diesen Relaunch neu, prägnanter und ohne die alten Redundanzen
 formuliert. Bilder sind bewusst als klar erkennbare Platzhalter umgesetzt
 (`/referenzen`) und müssen vor Go-Live durch echtes Foto-/Videomaterial ersetzt werden.
 
-**Vor Veröffentlichung unbedingt ergänzen/prüfen:**
+**Vor Veröffentlichung noch offen:**
 
-- `src/pages/impressum.astro` – Handelsregisternummer, Registergericht, USt-IdNr.
-- `src/pages/datenschutz.astro` – tatsächlich eingesetzter Hosting-Anbieter,
-  Cookies/Tracking-/Analyse-Tools; juristische Prüfung des gesamten Textes
+- Impressum/Datenschutz enthalten inzwischen den vom Kunden gelieferten Originaltext
+  (Registergericht Solingen, USt-ID DE 812660097). Eine Handelsregister**nummer** (HRB)
+  wurde nicht mitgeliefert, nur das Registergericht – vor Go-Live prüfen, ob die
+  Nummer ergänzt werden muss.
+- `src/pages/datenschutz.astro` – der Originaltext nennt keinen Hosting-Anbieter und
+  keine Cookies/Tracking-Tools; falls solche eingesetzt werden (z. B. Statistik-Tools,
+  eingebettete Karte auf `/kontakt`), müssen sie hier ergänzt werden.
 - `/referenzen` – echte Projektfotos statt Platzhalter-Kacheln
 - Alle Werte in `src/data/site.ts` gegen die aktuellen Firmendaten gegenprüfen
-- Entscheidung zu `/vermietung-wohnmobil-niesmann-bischoff-flair-920`: taucht im
-  Footer der alten Startseite auf, aber nicht im vom Kunden gelieferten Page Tree –
-  wirkt wie fachfremder Alt-Content und wurde bewusst nicht übernommen
-- Fahrzeug-/HSN-Suche (Hersteller → Modell → Fahrzeug, alte Endpunkte
-  `/list_hersteller`, `/list_modelle_auswahl`, `/list_fahrzeuge_auswahl`) war eine
-  echte Funktion der alten Seite und wurde in diesem Relaunch **nicht** nachgebaut
-  (keine Fahrzeugdatenbank verfügbar) – bei Bedarf separat nachrüsten
+- Wohnmobilvermietung (Niesmann+Bischoff Flair 920) und die Fahrzeug-/HSN-Suche sind
+  laut Kunde gewollter Bestandteil der neuen Seite – Umsetzung wird in einer
+  Folge-Iteration abgestimmt (Inhalte bzw. Datenquelle stehen noch aus)
 
 ## Entwicklung
 

@@ -22,6 +22,8 @@ export const company = {
   ],
   facilitySize: '2.400 m²',
   manager: 'Dipl.-Ing. Thorsten Wimmer',
+  registerCourt: 'Solingen',
+  ustId: 'DE 812660097',
   history:
     'Wimmer Rennsporttechnik ist 1990 in den Räumlichkeiten einer Tankstelle mit Chiptuning und Motorumbauten gestartet. Heute arbeiten wir unter modernsten Bedingungen und den Vorgaben der TÜV-Zertifizierung auf 2.400 m² Hallenfläche.',
   kwPartnership:

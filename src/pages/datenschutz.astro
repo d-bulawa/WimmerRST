@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import LegalNotice from '../components/LegalNotice.astro';
 import { company } from '../data/site';
 ---
 
@@ -12,45 +11,90 @@ import { company } from '../data/site';
   <section class="container-page py-16 sm:py-20">
     <h1 class="text-4xl font-black tracking-tight">Datenschutzerklärung</h1>
 
-    <div class="mt-8 max-w-2xl">
-      <LegalNotice text="Diese Erklärung ist ein Gerüst mit Standard-Abschnitten, kein Rechtstext für die konkrete technische Umsetzung. Angaben zu Hosting-Anbieter, eingesetzten Cookies/Trackingtools und Auftragsverarbeitern fehlen bewusst und müssen vor Veröffentlichung durch die tatsächlich genutzten Dienste ersetzt und juristisch geprüft werden." />
-    </div>
-
     <div class="mt-10 max-w-2xl space-y-8 text-sm leading-relaxed text-white/70">
       <div>
-        <h2 class="text-base font-bold text-white">1. Verantwortlicher</h2>
+        <h2 class="text-base font-bold text-white">Anbieter und verantwortliche Stelle im Sinne des Datenschutzgesetzes</h2>
         <p class="mt-2">
           {company.name}<br />
           {company.address.street}, {company.address.zip} {company.address.city}<br />
-          E-Mail: {company.email} · Telefon: {company.phoneDisplay}
+          Telefon: {company.phoneDisplay} · Fax: {company.fax}<br />
+          E-Mail: {company.email}<br />
+          Geschäftsführer: {company.manager}<br />
+          Registergericht: {company.registerCourt}<br />
+          USt-ID: {company.ustId}
         </p>
       </div>
 
       <div>
-        <h2 class="text-base font-bold text-white">2. Hosting</h2>
-        <p class="mt-2 text-white/40">Name und Sitz des Hosting-Anbieters sowie Verweis auf dessen Auftragsverarbeitungsvertrag: [bitte ergänzen]</p>
-      </div>
-
-      <div>
-        <h2 class="text-base font-bold text-white">3. Kontaktaufnahme</h2>
+        <h2 class="text-base font-bold text-white">Geltungsbereich</h2>
         <p class="mt-2">
-          Wenn Sie uns per E-Mail oder Telefon kontaktieren, verarbeiten wir die dabei
-          mitgeteilten Daten (z. B. Name, Kontaktdaten, Nachricht) zur Bearbeitung Ihrer
-          Anfrage. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b bzw. f DSGVO.
+          Diese Datenschutzerklärung soll die Nutzer dieser Website gemäß DSGVO,
+          Bundesdatenschutzgesetz und Telemediengesetz über die Art, den Umfang und den Zweck
+          der Erhebung und Verwendung personenbezogener Daten durch den Websitebetreiber
+          informieren.
+        </p>
+        <p class="mt-2">
+          Der Websitebetreiber nimmt Ihren Datenschutz sehr ernst und behandelt Ihre
+          personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Vorschriften.
+        </p>
+        <p class="mt-2">
+          Bedenken Sie, dass die Datenübertragung im Internet grundsätzlich mit
+          Sicherheitslücken bedacht sein kann. Ein vollumfänglicher Schutz vor dem Zugriff
+          durch Fremde ist nicht realisierbar.
         </p>
       </div>
 
       <div>
-        <h2 class="text-base font-bold text-white">4. Cookies & Analyse-Tools</h2>
-        <p class="mt-2 text-white/40">Konkrete Cookie- und Analyse-Tools (z. B. Statistik-Dienste, Karten-Einbindung) sind hier mit Zweck, Rechtsgrundlage und Speicherdauer aufzuführen: [bitte ergänzen]</p>
+        <h2 class="text-base font-bold text-white">Rechte des Nutzers: Auskunft, Berichtigung und Löschung</h2>
+        <p class="mt-2">
+          Sie als Nutzer erhalten auf Antrag Ihrerseits kostenlose Auskunft darüber, welche
+          personenbezogenen Daten über Sie gespeichert wurden. Sofern Ihr Wunsch nicht mit
+          einer gesetzlichen Pflicht zur Aufbewahrung von Daten (z. B. Vorratsdatenspeicherung)
+          kollidiert, haben Sie ein Anrecht auf Berichtigung falscher Daten und auf die
+          Sperrung oder Löschung Ihrer personenbezogenen Daten.
+        </p>
       </div>
 
       <div>
-        <h2 class="text-base font-bold text-white">5. Ihre Rechte</h2>
+        <h2 class="text-base font-bold text-white">Datensparsamkeit</h2>
         <p class="mt-2">
-          Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der
-          Verarbeitung, Datenübertragbarkeit sowie Widerspruch gegen die Verarbeitung Ihrer
-          personenbezogenen Daten. Wenden Sie sich hierzu an die oben genannten Kontaktdaten.
+          Personenbezogene Daten speichern wir gemäß den Grundsätzen der Datenvermeidung und
+          Datensparsamkeit nur so lange, wie es erforderlich ist oder vom Gesetzgeber her
+          vorgeschrieben wird (gesetzliche Speicherfrist). Entfällt der Zweck der erhobenen
+          Informationen oder endet die Speicherfrist, sperren oder löschen wir die Daten.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-base font-bold text-white">Zugriffsdaten</h2>
+        <p class="mt-2">
+          Der Websitebetreiber bzw. Seitenprovider erhebt Daten über Zugriffe auf die Seite und
+          speichert diese als „Server-Logfiles" ab. Folgende Daten werden so protokolliert:
+        </p>
+        <ul class="mt-2 list-disc space-y-1 pl-5">
+          <li>Besuchte Website</li>
+          <li>Uhrzeit zum Zeitpunkt des Zugriffes</li>
+          <li>Menge der gesendeten Daten in Byte</li>
+          <li>Quelle/Verweis, von welchem Sie auf die Seite gelangten</li>
+          <li>Verwendeter Browser</li>
+          <li>Verwendetes Betriebssystem</li>
+          <li>Verwendete IP-Adresse</li>
+        </ul>
+        <p class="mt-2">
+          Die erhobenen Daten dienen lediglich statistischen Auswertungen und zur Verbesserung
+          der Website. Der Websitebetreiber behält sich allerdings vor, die Server-Logfiles
+          nachträglich zu überprüfen, sollten konkrete Anhaltspunkte auf eine rechtswidrige
+          Nutzung hinweisen.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-base font-bold text-white">Umgang mit Kontaktdaten</h2>
+        <p class="mt-2">
+          Nehmen Sie mit dem Websitebetreiber durch die angebotenen Kontaktmöglichkeiten
+          Verbindung auf, werden Ihre Angaben gespeichert, damit auf diese zur Bearbeitung und
+          Beantwortung Ihrer Anfrage zurückgegriffen werden kann. Ohne Ihre Einwilligung werden
+          diese Daten nicht an Dritte weitergegeben.
         </p>
       </div>
     </div>
