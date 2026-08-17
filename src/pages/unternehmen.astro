@@ -1,0 +1,61 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTA from '../components/CTA.astro';
+import { company, stats } from '../data/site';
+---
+
+<BaseLayout
+  title="Unternehmen"
+  description="Wimmer Rennsporttechnik Solingen GmbH: seit 1990 TÜV-zertifizierter Fachbetrieb für Chiptuning und Fahrzeugtechnik, auf 2.400 m² mit eigenem Prüfstand."
+  path="/unternehmen"
+>
+  <section class="border-b border-[color:var(--color-line)] bg-[color:var(--color-surface)]">
+    <div class="container-page py-16 sm:py-20">
+      <p class="eyebrow">Unternehmen</p>
+      <h1 class="mt-3 max-w-3xl text-balance text-4xl font-black tracking-tight sm:text-5xl">
+        Seit {company.founded} in Solingen zuhause
+      </h1>
+      <p class="mt-5 max-w-2xl text-lg leading-relaxed text-white/60">
+        {company.name} ist seit {company.founded} in der elektronischen (Chiptuning) und
+        mechanischen Leistungssteigerung aktiv – heute unter modernen Bedingungen und mit
+        TÜV-Zertifizierung auf {company.facilitySize} Werkstattfläche.
+      </p>
+    </div>
+  </section>
+
+  <section class="container-page py-16 sm:py-20">
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {stats.map((stat) => (
+        <div class="card">
+          <p class="text-3xl font-black tracking-tight text-[color:var(--color-accent)]">{stat.value}</p>
+          <p class="mt-2 text-sm text-white/55">{stat.label}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-16 grid gap-10 lg:grid-cols-2">
+      <div class="card">
+        <h2 class="text-xl font-bold text-white">Unser Prüfstand</h2>
+        <p class="mt-3 text-sm leading-relaxed text-white/55">
+          Mit unseren hauseigenen Hochleistungsprüfständen von Dynojet und Bosch messen wir
+          Leistung bis zu 2.000 PS. Die Prüfstände sind von führenden Fahrzeugherstellern und
+          dem TÜV zugelassen – jede Optimierung wird bei uns direkt vor Ort validiert.
+        </p>
+      </div>
+      <div class="card">
+        <h2 class="text-xl font-bold text-white">TÜV-zertifizierter Fachbetrieb</h2>
+        <p class="mt-3 text-sm leading-relaxed text-white/55">
+          Verbaute Komponenten sind in der Regel straßenzulassungsfähig und werden bei Bedarf
+          direkt an unserer angeschlossenen TÜV-Prüfstelle im Haus abgenommen.
+        </p>
+      </div>
+    </div>
+
+    <div class="mt-10 card">
+      <h2 class="text-xl font-bold text-white">Geschäftsführung</h2>
+      <p class="mt-3 text-sm leading-relaxed text-white/55">{company.manager}</p>
+    </div>
+  </section>
+
+  <CTA title="Lernen Sie uns persönlich kennen" lead="Besuchen Sie uns in Solingen – wir zeigen Ihnen gerne Werkstatt und Prüfstand." />
+</BaseLayout>

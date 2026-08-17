@@ -1,0 +1,100 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTA from '../components/CTA.astro';
+import { stats, leistungenChildren, brands, company } from '../data/site';
+
+const partnerBrands = brands.slice(0, 6);
+---
+
+<BaseLayout
+  title="Chiptuning, Auspuffanlagen & Fahrwerkstechnik"
+  description="Wimmer Rennsporttechnik Solingen: TÜV-zertifizierter Fachbetrieb für Chiptuning, Edelstahl-Auspuffanlagen und Fahrwerkstechnik – seit 1990."
+  path="/"
+>
+  <section class="relative overflow-hidden">
+    <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(255,77,46,0.18),transparent_45%),radial-gradient(circle_at_85%_0%,rgba(255,182,72,0.12),transparent_40%)]"></div>
+    <div class="container-page relative grid gap-12 py-20 sm:py-28 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+      <div>
+        <p class="eyebrow">Wimmer Rennsporttechnik · Solingen · seit {company.founded}</p>
+        <h1 class="mt-4 text-balance text-5xl font-black leading-[1.05] tracking-tight sm:text-6xl">
+          Mehr Leistung.<br />Präzise umgesetzt.
+        </h1>
+        <p class="mt-6 max-w-xl text-lg leading-relaxed text-white/60">
+          Chiptuning, handgefertigte Edelstahl-Auspuffanlagen und Fahrwerkstechnik von einem
+          TÜV-zertifizierten Fachbetrieb – auf 2.400&nbsp;m² Werkstattfläche, mit eigenem
+          Hochleistungsprüfstand.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="/leistungen" class="btn-primary">Leistungen entdecken</a>
+          <a href="/kontakt" class="btn-secondary">Termin anfragen</a>
+        </div>
+      </div>
+
+      <div class="relative aspect-[4/3] w-full overflow-hidden rounded-3xl border border-[color:var(--color-line)] bg-gradient-to-br from-[color:var(--color-surface)] to-[color:var(--color-ink)]">
+        <div class="absolute inset-0 flex flex-col justify-between p-8">
+          <div class="flex items-center justify-between text-xs uppercase tracking-[0.2em] text-white/40">
+            <span>Prüfstand</span>
+            <span>Dynojet · Bosch</span>
+          </div>
+          <div>
+            <p class="text-6xl font-black tracking-tight text-white">2.000<span class="text-2xl align-top">PS</span></p>
+            <p class="mt-1 text-sm text-white/50">maximale Messleistung, herstellerfreigegeben</p>
+          </div>
+          <div class="h-24 w-full [background-image:repeating-linear-gradient(90deg,rgba(255,77,46,0.35)_0,rgba(255,77,46,0.35)_2px,transparent_2px,transparent_10px)] opacity-70"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-y border-[color:var(--color-line)] bg-[color:var(--color-surface)]">
+    <div class="container-page grid grid-cols-2 gap-6 py-10 sm:grid-cols-4">
+      {stats.map((stat) => (
+        <div>
+          <p class="text-3xl font-black tracking-tight text-[color:var(--color-accent)] sm:text-4xl">{stat.value}</p>
+          <p class="mt-1 text-sm text-white/55">{stat.label}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="container-page py-20 sm:py-24">
+    <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+      <div>
+        <p class="eyebrow">Leistungen</p>
+        <h2 class="mt-3 text-balance text-3xl font-black tracking-tight sm:text-4xl">Alles aus einer Hand</h2>
+      </div>
+      <a href="/leistungen" class="text-sm font-semibold text-white/70 hover:text-white">Alle Leistungen ansehen →</a>
+    </div>
+
+    <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {leistungenChildren.map((item) => (
+        <a href={item.href} class="card group hover:border-[color:var(--color-accent)]">
+          <h3 class="text-lg font-bold text-white">{item.label}</h3>
+          <p class="mt-2 text-sm leading-relaxed text-white/55">{item.blurb}</p>
+          <span class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-[color:var(--color-accent)] opacity-0 transition-opacity group-hover:opacity-100">
+            Mehr erfahren →
+          </span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="border-t border-[color:var(--color-line)] bg-[color:var(--color-surface)] py-16">
+    <div class="container-page">
+      <p class="eyebrow">Marken & Partner</p>
+      <h2 class="mt-3 max-w-2xl text-balance text-3xl font-black tracking-tight sm:text-4xl">
+        Wir arbeiten mit den Marken, denen der Markt vertraut
+      </h2>
+      <div class="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
+        {partnerBrands.map((brand) => (
+          <div class="flex h-20 items-center justify-center rounded-xl border border-[color:var(--color-line)] bg-[color:var(--color-ink)] px-4 text-center text-sm font-semibold text-white/70">
+            {brand.name}
+          </div>
+        ))}
+      </div>
+      <a href="/marken" class="mt-8 inline-block text-sm font-semibold text-white/70 hover:text-white">Alle Marken & Partner →</a>
+    </div>
+  </section>
+
+  <CTA />
+</BaseLayout>

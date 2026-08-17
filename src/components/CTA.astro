@@ -1,0 +1,24 @@
+---
+import { company } from '../data/site';
+interface Props {
+  title?: string;
+  lead?: string;
+}
+const {
+  title = 'Bereit für mehr Leistung?',
+  lead = 'Sprechen Sie mit uns über Ihr Fahrzeug – unverbindlich, persönlich und fachkundig.',
+} = Astro.props;
+---
+
+<section class="border-t border-[color:var(--color-line)] bg-[color:var(--color-surface)]">
+  <div class="container-page flex flex-col items-start justify-between gap-8 py-16 sm:py-20 lg:flex-row lg:items-center">
+    <div>
+      <h2 class="text-balance text-3xl font-black tracking-tight sm:text-4xl">{title}</h2>
+      <p class="mt-3 max-w-xl text-white/60">{lead}</p>
+    </div>
+    <div class="flex flex-wrap gap-3">
+      <a href="/kontakt" class="btn-primary">Termin anfragen</a>
+      <a href={`tel:${company.phone.replace(/\s+/g, '')}`} class="btn-secondary">{company.phoneDisplay}</a>
+    </div>
+  </div>
+</section>

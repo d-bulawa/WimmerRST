@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LegalNotice from '../components/LegalNotice.astro';
+import { company } from '../data/site';
+---
+
+<BaseLayout
+  title="Datenschutz"
+  description="Datenschutzerklärung von Wimmer Rennsporttechnik Solingen GmbH."
+  path="/datenschutz"
+>
+  <section class="container-page py-16 sm:py-20">
+    <h1 class="text-4xl font-black tracking-tight">Datenschutzerklärung</h1>
+
+    <div class="mt-8 max-w-2xl">
+      <LegalNotice text="Diese Erklärung ist ein Gerüst mit Standard-Abschnitten, kein Rechtstext für die konkrete technische Umsetzung. Angaben zu Hosting-Anbieter, eingesetzten Cookies/Trackingtools und Auftragsverarbeitern fehlen bewusst und müssen vor Veröffentlichung durch die tatsächlich genutzten Dienste ersetzt und juristisch geprüft werden." />
+    </div>
+
+    <div class="mt-10 max-w-2xl space-y-8 text-sm leading-relaxed text-white/70">
+      <div>
+        <h2 class="text-base font-bold text-white">1. Verantwortlicher</h2>
+        <p class="mt-2">
+          {company.name}<br />
+          {company.address.street}, {company.address.zip} {company.address.city}<br />
+          E-Mail: {company.email} · Telefon: {company.phoneDisplay}
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-base font-bold text-white">2. Hosting</h2>
+        <p class="mt-2 text-white/40">Name und Sitz des Hosting-Anbieters sowie Verweis auf dessen Auftragsverarbeitungsvertrag: [bitte ergänzen]</p>
+      </div>
+
+      <div>
+        <h2 class="text-base font-bold text-white">3. Kontaktaufnahme</h2>
+        <p class="mt-2">
+          Wenn Sie uns per E-Mail oder Telefon kontaktieren, verarbeiten wir die dabei
+          mitgeteilten Daten (z. B. Name, Kontaktdaten, Nachricht) zur Bearbeitung Ihrer
+          Anfrage. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b bzw. f DSGVO.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-base font-bold text-white">4. Cookies & Analyse-Tools</h2>
+        <p class="mt-2 text-white/40">Konkrete Cookie- und Analyse-Tools (z. B. Statistik-Dienste, Karten-Einbindung) sind hier mit Zweck, Rechtsgrundlage und Speicherdauer aufzuführen: [bitte ergänzen]</p>
+      </div>
+
+      <div>
+        <h2 class="text-base font-bold text-white">5. Ihre Rechte</h2>
+        <p class="mt-2">
+          Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der
+          Verarbeitung, Datenübertragbarkeit sowie Widerspruch gegen die Verarbeitung Ihrer
+          personenbezogenen Daten. Wenden Sie sich hierzu an die oben genannten Kontaktdaten.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

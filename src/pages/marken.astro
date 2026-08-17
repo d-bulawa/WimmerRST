@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTA from '../components/CTA.astro';
+import { brands } from '../data/site';
+
+const categories = [...new Set(brands.map((b) => b.category))];
+---
+
+<BaseLayout
+  title="Marken & Partner"
+  description="Die Marken und Partner von Wimmer Rennsporttechnik: H&R, KW automotive, ST suspensions, Brembo, Capristo, ZF Sachs, LUK, KTM X-Bow und mehr."
+  path="/marken"
+>
+  <section class="border-b border-[color:var(--color-line)] bg-[color:var(--color-surface)]">
+    <div class="container-page py-16 sm:py-20">
+      <p class="eyebrow">Marken & Partner</p>
+      <h1 class="mt-3 max-w-3xl text-balance text-4xl font-black tracking-tight sm:text-5xl">
+        Marken, denen der Markt vertraut
+      </h1>
+      <p class="mt-5 max-w-2xl text-lg leading-relaxed text-white/60">
+        Wir kombinieren eigene Entwicklungen mit ausgewählten Partnermarken – statt Dutzender
+        einzelner Markenseiten finden Sie hier alle Partner gebündelt an einem Ort.
+      </p>
+    </div>
+  </section>
+
+  <section class="container-page py-16 sm:py-20">
+    {categories.map((category) => (
+      <div class="mb-14 last:mb-0">
+        <h2 class="text-xl font-bold text-white">{category}</h2>
+        <div class="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {brands.filter((b) => b.category === category).map((brand) => (
+            <div class="card">
+              <h3 class="text-lg font-bold text-white">{brand.name}</h3>
+              <p class="mt-2 text-sm leading-relaxed text-white/55">{brand.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    ))}
+  </section>
+
+  <CTA title="Sie suchen ein bestimmtes Markenteil?" lead="Sagen Sie uns, für welches Fahrzeug – wir prüfen die passenden Optionen." />
+</BaseLayout>

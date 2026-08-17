@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import FeatureGrid from '../../components/FeatureGrid.astro';
+import CTA from '../../components/CTA.astro';
+
+const features = [
+  { title: 'Ladeluftkühler', text: 'Für stabile Ladelufttemperaturen und gleichbleibende Leistung auch unter Volllast.' },
+  { title: 'Ansaugschläuche', text: 'Optimierter Luftstrom als Ergänzung zur Software-Optimierung.' },
+  { title: 'Überrollkäfige', text: 'Zusätzliche Sicherheit und Steifigkeit für sportlich bewegte Fahrzeuge.' },
+  { title: 'Individuelle Fußmatten', text: 'Maßgefertigt passend zu Ihrem Fahrzeug.' },
+  { title: 'Felgen & Reifen', text: 'Auswahl passender Rad-Reifen-Kombinationen für Optik und Fahrdynamik.' },
+  { title: 'Pflegeprodukte', text: 'Hochwertige Pflegemittel für Lack, Innenraum und Leder.' },
+];
+---
+
+<BaseLayout
+  title="Zubehör & Anbauteile"
+  description="Ladeluftkühler, Ansaugschläuche, Überrollkäfige, individuelle Fußmatten, Felgen und Pflegeprodukte von Wimmer Rennsporttechnik."
+  path="/leistungen/zubehoer"
+>
+  <PageHeader
+    eyebrow="Leistungen · Zubehör"
+    title="Das i-Tüpfelchen fürs Fahrzeug"
+    lead="Rund um Chiptuning, Auspuff und Fahrwerk bieten wir das passende Zubehör – von der Technik bis zur Optik."
+  />
+
+  <section class="container-page py-16 sm:py-20">
+    <FeatureGrid features={features} />
+  </section>
+
+  <CTA title="Auf der Suche nach einem bestimmten Teil?" lead="Sprechen Sie uns an – wir sagen Ihnen, was zu Ihrem Fahrzeug passt und verfügbar ist." />
+</BaseLayout>

@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { leistungenChildren } from '../data/site';
+---
+
+<BaseLayout title="Seite nicht gefunden" description="Diese Seite existiert nicht (mehr)." path="/404">
+  <section class="container-page py-24 text-center">
+    <p class="eyebrow">Fehler 404</p>
+    <h1 class="mt-3 text-4xl font-black tracking-tight sm:text-5xl">Diese Seite gibt es nicht (mehr)</h1>
+    <p class="mx-auto mt-4 max-w-lg text-white/60">
+      Möglicherweise wurde die Seite im Rahmen unseres Website-Relaunchs verschoben oder
+      zusammengelegt. Hier geht es weiter:
+    </p>
+    <div class="mt-8 flex flex-wrap justify-center gap-3">
+      <a href="/" class="btn-primary">Zur Startseite</a>
+      <a href="/leistungen" class="btn-secondary">Alle Leistungen</a>
+      <a href="/kontakt" class="btn-secondary">Kontakt</a>
+    </div>
+    <div class="mx-auto mt-14 grid max-w-2xl gap-3 text-left sm:grid-cols-2">
+      {leistungenChildren.map((item) => (
+        <a href={item.href} class="card text-sm font-semibold text-white hover:border-[color:var(--color-accent)]">{item.label}</a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

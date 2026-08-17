@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import FeatureGrid from '../../components/FeatureGrid.astro';
+import CTA from '../../components/CTA.astro';
+
+const features = [
+  {
+    title: 'Eigene Wimmer-Gewindefahrwerke',
+    text: 'In Zusammenarbeit mit H&R und KW automotive entwickelt – für Lücken, die Serienprodukte nicht abdecken.',
+  },
+  {
+    title: 'KW automotive',
+    text: 'Mehr als 4.600 Fahrwerk-Anwendungen für nahezu jedes Fahrzeug, in acht Ausbaustufen.',
+  },
+  {
+    title: 'H&R & ST suspensions',
+    text: 'Gewindefahrwerke, Federn und Dämpfer mit TÜV-Zertifizierung für Komfort bis Rennstrecke.',
+  },
+  {
+    title: 'Tieferlegungsfedern',
+    text: 'Spürbar sportlichere Optik und Fahrverhalten bei erhaltenem Federungskomfort.',
+  },
+  {
+    title: 'Spurverbreiterungen',
+    text: 'Distanzscheiben von ST für mehr Stand und ein präziseres Fahrgefühl.',
+  },
+  {
+    title: 'Beratung nach Einsatzzweck',
+    text: 'Komfortabel für den Alltag, sportlich abgestimmt oder rennstreckentauglich – wir finden die passende Lösung.',
+  },
+];
+---
+
+<BaseLayout
+  title="Fahrwerkstechnik"
+  description="Gewindefahrwerke, Tieferlegungsfedern und Spurverbreiterungen von Wimmer, H&R, KW automotive und ST suspensions – für Komfort bis Rennstrecke."
+  path="/leistungen/fahrwerkstechnik"
+>
+  <PageHeader
+    eyebrow="Leistungen · Fahrwerkstechnik"
+    title="Fahrwerkstechnik: komfortabel bis Rennstrecke"
+    lead="Vom sanft tieferlegten Alltagsfahrzeug bis zum voll einstellbaren Rennstrecken-Setup – wir beraten Sie, welches Fahrwerk zu Ihrem Einsatzzweck passt."
+  />
+
+  <section class="container-page py-16 sm:py-20">
+    <FeatureGrid features={features} />
+  </section>
+
+  <CTA title="Welches Fahrwerk passt zu Ihnen?" lead="Wir hören uns an, wofür Sie Ihr Fahrzeug nutzen, und schlagen die passende Lösung vor." />
+</BaseLayout>

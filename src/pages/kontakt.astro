@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { company } from '../data/site';
+
+const mapQuery = encodeURIComponent(`${company.address.street}, ${company.address.zip} ${company.address.city}`);
+const mapSrc = `https://www.google.com/maps?q=${mapQuery}&output=embed`;
+---
+
+<BaseLayout
+  title="Kontakt"
+  description="Kontakt, Adresse, Öffnungszeiten und Anfahrt zu Wimmer Rennsporttechnik Solingen GmbH."
+  path="/kontakt"
+>
+  <section class="border-b border-[color:var(--color-line)] bg-[color:var(--color-surface)]">
+    <div class="container-page py-16 sm:py-20">
+      <p class="eyebrow">Kontakt</p>
+      <h1 class="mt-3 max-w-3xl text-balance text-4xl font-black tracking-tight sm:text-5xl">
+        Sprechen Sie mit uns
+      </h1>
+      <p class="mt-5 max-w-2xl text-lg leading-relaxed text-white/60">
+        Rufen Sie an, schreiben Sie uns oder kommen Sie direkt in unserer Werkstatt in Solingen vorbei.
+      </p>
+    </div>
+  </section>
+
+  <section class="container-page py-16 sm:py-20">
+    <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+      <div class="space-y-6">
+        <div class="card">
+          <h2 class="eyebrow">Adresse</h2>
+          <address class="mt-3 not-italic leading-relaxed text-white/80">
+            {company.name}<br />
+            {company.address.street}<br />
+            {company.address.zip} {company.address.city}
+          </address>
+        </div>
+
+        <div class="card">
+          <h2 class="eyebrow">Erreichbarkeit</h2>
+          <dl class="mt-3 space-y-2 text-sm">
+            <div class="flex justify-between gap-4">
+              <dt class="text-white/50">Telefon</dt>
+              <dd><a href={`tel:${company.phone.replace(/\s+/g, '')}`} class="text-white hover:text-[color:var(--color-accent)]">{company.phoneDisplay}</a></dd>
+            </div>
+            <div class="flex justify-between gap-4">
+              <dt class="text-white/50">Fax</dt>
+              <dd class="text-white">{company.fax}</dd>
+            </div>
+            <div class="flex justify-between gap-4">
+              <dt class="text-white/50">E-Mail</dt>
+              <dd><a href={`mailto:${company.email}`} class="text-white hover:text-[color:var(--color-accent)]">{company.email}</a></dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="card">
+          <h2 class="eyebrow">Öffnungszeiten</h2>
+          <dl class="mt-3 space-y-2 text-sm">
+            {company.hours.map((h) => (
+              <div class="flex justify-between gap-4">
+                <dt class="text-white/50">{h.days}</dt>
+                <dd class="text-white">{h.time}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+
+        <div class="flex flex-wrap gap-3">
+          <a href={`tel:${company.phone.replace(/\s+/g, '')}`} class="btn-primary">Jetzt anrufen</a>
+          <a href={`mailto:${company.email}`} class="btn-secondary">E-Mail schreiben</a>
+        </div>
+      </div>
+
+      <div class="overflow-hidden rounded-2xl border border-[color:var(--color-line)]">
+        <iframe
+          title="Anfahrt zu Wimmer Rennsporttechnik Solingen"
+          src={mapSrc}
+          class="h-full min-h-[420px] w-full"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

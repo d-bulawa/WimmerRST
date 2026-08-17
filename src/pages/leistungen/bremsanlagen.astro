@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import FeatureGrid from '../../components/FeatureGrid.astro';
+import CTA from '../../components/CTA.astro';
+
+const features = [
+  {
+    title: 'Brembo Hochleistungsbremsen',
+    text: 'Für spürbar kürzere Bremswege und mehr Standfestigkeit bei hoher Beanspruchung.',
+  },
+  {
+    title: 'Eigene Wimmer-Bremsanlagen',
+    text: 'Auf Basis von Porsche-Bremssystemen entwickelt – abgestimmt auf mehr Leistung am Motor.',
+  },
+  {
+    title: 'Passend zur Leistungssteigerung',
+    text: 'Wer die Motorleistung erhöht, sollte auch die Bremsanlage mitdenken – wir beraten ganzheitlich.',
+  },
+];
+---
+
+<BaseLayout
+  title="Bremsanlagen"
+  description="Hochleistungsbremsanlagen von Brembo sowie eigene, auf Porsche-Technik basierende Wimmer-Bremssysteme."
+  path="/leistungen/bremsanlagen"
+>
+  <PageHeader
+    eyebrow="Leistungen · Bremsanlagen"
+    title="Bremsleistung, die zur Motorleistung passt"
+    lead="Mehr Leistung braucht mehr Sicherheit. Mit Brembo und unseren eigenen, an Porsche-Technik angelehnten Bremsanlagen sorgen wir für kurze, standfeste Bremswege."
+  />
+
+  <section class="container-page py-16 sm:py-20">
+    <FeatureGrid features={features} columns={3} />
+  </section>
+
+  <CTA title="Bremsanlage mitdenken" lead="Fragen Sie uns nach der passenden Bremslösung zu Ihrem Leistungsniveau." />
+</BaseLayout>

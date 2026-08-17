@@ -1,0 +1,10 @@
+---
+interface Props {
+  text: string;
+}
+const { text } = Astro.props;
+---
+
+<div class="rounded-xl border border-[color:var(--color-accent)]/40 bg-[color:var(--color-accent)]/10 p-4 text-sm leading-relaxed text-[color:var(--color-accent-2)]">
+  {text}
+</div>

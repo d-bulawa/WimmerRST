@@ -1,0 +1,21 @@
+---
+interface Feature {
+  title: string;
+  text: string;
+}
+interface Props {
+  features: Feature[];
+  columns?: 2 | 3;
+}
+const { features, columns = 3 } = Astro.props;
+const colClass = columns === 2 ? 'sm:grid-cols-2' : 'sm:grid-cols-2 lg:grid-cols-3';
+---
+
+<div class:list={['grid gap-5', colClass]}>
+  {features.map((f) => (
+    <div class="card">
+      <h3 class="font-bold text-white">{f.title}</h3>
+      <p class="mt-2 text-sm leading-relaxed text-white/55">{f.text}</p>
+    </div>
+  ))}
+</div>

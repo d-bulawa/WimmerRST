@@ -1,0 +1,34 @@
+# 301-Weiterleitungen von der alten auf die neue Seitenstruktur.
+# Format (Netlify-Style): /alter-pfad  /neuer-pfad  301
+# Bei anderem Hosting (Apache/Nginx) dient diese Datei als Vorlage für
+# RewriteRule- bzw. rewrite-Regeln, siehe README.md.
+
+/contact-info                                              /kontakt  301
+/wimmer-rennsporttechnik/oeffnungszeiten-anfahrt            /kontakt  301
+/wimmer-rennsporttechnik/tuev                               /unternehmen  301
+/wimmer-rennsporttechnik/pruefstand                         /unternehmen  301
+/wimmer-rennsporttechnik/*                                  /unternehmen  301
+
+/produkte                                                   /leistungen  301
+/produkte/leistungssteigerung                               /leistungen/chiptuning  301
+/produkte/leistungssteigerung/*                             /leistungen/chiptuning  301
+/produkte/auspuffanlagenbau                                 /leistungen/auspuffanlagen  301
+/produkte/auspuffanlagenbau/*                                /leistungen/auspuffanlagen  301
+/produkte/fahrwerkstechnik                                  /leistungen/fahrwerkstechnik  301
+/produkte/fahrwerkstechnik/*                                /leistungen/fahrwerkstechnik  301
+/produkte/sportkupplungen/*                                 /leistungen/sportkupplungen  301
+/produkte/bremsanlagen                                      /leistungen/bremsanlagen  301
+/produkte/motorbelueftung/*                                 /leistungen/zubehoer  301
+/produkte/*                                                 /leistungen  301
+
+/zubehoer/Felgen/*                                          /leistungen/zubehoer  301
+/zubehoer/Bilder/*                                          /referenzen  301
+/zubehoer/*                                                 /leistungen/zubehoer  301
+/galerie/*                                                  /referenzen  301
+/fahrzeug/*                                                 /referenzen  301
+
+/list_hersteller                                            /marken  301
+/ktm-x-bow                                                  /marken  301
+/bootsmotoren                                                /marken  301
+
+/mkAngebot/*                                                /kontakt  301

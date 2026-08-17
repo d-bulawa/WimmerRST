@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CTA from '../../components/CTA.astro';
+import { leistungenChildren } from '../../data/site';
+---
+
+<BaseLayout
+  title="Leistungen"
+  description="Chiptuning, Auspuffanlagenbau, Fahrwerkstechnik, Bremsanlagen, Sportkupplungen und Zubehör – alle Leistungen von Wimmer Rennsporttechnik im Überblick."
+  path="/leistungen"
+>
+  <section class="border-b border-[color:var(--color-line)] bg-[color:var(--color-surface)]">
+    <div class="container-page py-16 sm:py-20">
+      <p class="eyebrow">Leistungen</p>
+      <h1 class="mt-3 max-w-3xl text-balance text-4xl font-black tracking-tight sm:text-5xl">
+        Ein Ansprechpartner für Ihr komplettes Fahrzeug
+      </h1>
+      <p class="mt-5 max-w-2xl text-lg leading-relaxed text-white/60">
+        Von der Software bis zum Fahrwerk: Wir stimmen jede Maßnahme aufeinander ab, damit
+        Leistung, Fahrverhalten und Zuverlässigkeit zusammenpassen.
+      </p>
+    </div>
+  </section>
+
+  <section class="container-page py-16 sm:py-20">
+    <div class="grid gap-6 sm:grid-cols-2">
+      {leistungenChildren.map((item) => (
+        <a href={item.href} class="card group flex flex-col hover:border-[color:var(--color-accent)]">
+          <h2 class="text-xl font-bold text-white">{item.label}</h2>
+          <p class="mt-3 flex-1 text-sm leading-relaxed text-white/55">{item.blurb}</p>
+          <span class="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-[color:var(--color-accent)]">
+            Details ansehen →
+          </span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <CTA />
+</BaseLayout>

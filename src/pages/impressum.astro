@@ -1,0 +1,65 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LegalNotice from '../components/LegalNotice.astro';
+import { company } from '../data/site';
+---
+
+<BaseLayout
+  title="Impressum"
+  description="Impressum von Wimmer Rennsporttechnik Solingen GmbH gemäß § 5 TMG."
+  path="/impressum"
+>
+  <section class="container-page py-16 sm:py-20">
+    <h1 class="text-4xl font-black tracking-tight">Impressum</h1>
+
+    <div class="mt-8 max-w-2xl">
+      <LegalNotice text="Diese Seite konnte nicht automatisch aus der bestehenden Website übernommen werden (Netzwerkzugriff war blockiert). Die unten markierten Angaben (Handelsregister, USt-IdNr., Aufsichtsbehörde) fehlen und müssen vor Veröffentlichung ergänzt werden – ein unvollständiges Impressum ist rechtlich nicht zulässig." />
+    </div>
+
+    <div class="mt-10 max-w-2xl space-y-8 text-sm leading-relaxed text-white/70">
+      <div>
+        <h2 class="text-base font-bold text-white">Angaben gemäß § 5 TMG</h2>
+        <p class="mt-2">
+          {company.name}<br />
+          {company.address.street}<br />
+          {company.address.zip} {company.address.city}<br />
+          {company.address.country}
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-base font-bold text-white">Vertreten durch</h2>
+        <p class="mt-2">Geschäftsführer: {company.manager}</p>
+      </div>
+
+      <div>
+        <h2 class="text-base font-bold text-white">Kontakt</h2>
+        <p class="mt-2">
+          Telefon: {company.phoneDisplay}<br />
+          Telefax: {company.fax}<br />
+          E-Mail: {company.email}
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-base font-bold text-white">Registereintrag</h2>
+        <p class="mt-2 text-white/40">Eintragung im Handelsregister. Registergericht und Registernummer: [bitte ergänzen]</p>
+      </div>
+
+      <div>
+        <h2 class="text-base font-bold text-white">Umsatzsteuer-ID</h2>
+        <p class="mt-2 text-white/40">Umsatzsteuer-Identifikationsnummer gemäß § 27a UStG: [bitte ergänzen]</p>
+      </div>
+
+      <div>
+        <h2 class="text-base font-bold text-white">Streitschlichtung</h2>
+        <p class="mt-2">
+          Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:
+          <a href="https://ec.europa.eu/consumers/odr/" class="text-[color:var(--color-accent)]" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr/</a>.
+          Wir sind nicht verpflichtet und nicht bereit, an Streitbeilegungsverfahren vor einer
+          Verbraucherschlichtungsstelle teilzunehmen.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

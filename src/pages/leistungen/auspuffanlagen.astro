@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import FeatureGrid from '../../components/FeatureGrid.astro';
+import CTA from '../../components/CTA.astro';
+
+const features = [
+  {
+    title: 'Handgefertigt aus V2A-Edelstahl',
+    text: 'Über 25 Jahre Erfahrung im Bau von Edelstahl-Sportauspuffanlagen – druckoptimiert und passgenau auf Ihr Fahrzeug gefertigt.',
+  },
+  {
+    title: 'Klappensteuerung',
+    text: 'Elektronisch gesteuerte Abgasklappen für einen wählbaren Sound zwischen dezent und sportlich.',
+  },
+  {
+    title: 'Fächerkrümmer',
+    text: 'Eigene Wimmer-Fächerkrümmer für optimierten Abgasstrom und mehr Durchzug.',
+  },
+  {
+    title: 'Sportkatalysatoren & Downpipes',
+    text: 'Sportkatalysatoren und Hosenrohre/Downpipes für spürbar reduzierten Gegendruck.',
+  },
+  {
+    title: 'Capristo-Partnerschaft',
+    text: 'Zusätzlich zu eigenen Anlagen bieten wir hochwertige Sport-Auspuffanlagen von Capristo an.',
+  },
+  {
+    title: 'Mit TÜV-Abnahme',
+    text: 'Alle Anlagen sind auf Straßenzulassung ausgelegt und werden bei Bedarf direkt bei uns geprüft.',
+  },
+];
+---
+
+<BaseLayout
+  title="Auspuffanlagenbau"
+  description="Handgefertigte Edelstahl-Sportauspuffanlagen mit Klappensteuerung, Fächerkrümmer und Sportkatalysatoren – seit über 25 Jahren von Wimmer Rennsporttechnik."
+  path="/leistungen/auspuffanlagen"
+>
+  <PageHeader
+    eyebrow="Leistungen · Auspuffanlagenbau"
+    title="Edelstahl-Auspuffanlagen nach Maß"
+    lead="Seit über 25 Jahren fertigen wir Sportauspuffanlagen aus V2A-Edelstahl in unserer eigenen Werkstatt – vom Fächerkrümmer bis zur elektronischen Klappensteuerung."
+  />
+
+  <section class="container-page py-16 sm:py-20">
+    <FeatureGrid features={features} />
+  </section>
+
+  <CTA title="Ihr Wunschsound für Ihr Fahrzeug" lead="Wir beraten Sie zu Material, Klappensteuerung und Endrohrvarianten." />
+</BaseLayout>

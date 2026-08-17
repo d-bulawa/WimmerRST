@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import FeatureGrid from '../../components/FeatureGrid.astro';
+import CTA from '../../components/CTA.astro';
+
+const features = [
+  {
+    title: 'Individuelle Software-Abstimmung',
+    text: 'Wir optimieren die Serien-Kennfelder für Ihren konkreten Motor statt eine Standarddatei aufzuspielen.',
+  },
+  {
+    title: 'Bis zu 35 % mehr Leistung',
+    text: 'Je nach Motor und Hersteller: bis zu 10 % bei Benzinern, bis zu 35 % bei Diesel- und Turbomotoren.',
+  },
+  {
+    title: 'Sicherheitsfunktionen bleiben aktiv',
+    text: 'Alle Steuer- und Schutzfunktionen des Motors bleiben erhalten – ein Motorschaden durch die Optimierung ist praktisch ausgeschlossen.',
+  },
+  {
+    title: 'Turbo, Kompressor & Zylinderkopf',
+    text: 'Auch mechanische Maßnahmen wie Lader-Anpassungen, Nockenwellen und Zylinderkopfbearbeitung stimmen wir auf die Software ab.',
+  },
+  {
+    title: 'Auf dem Prüfstand abgesichert',
+    text: 'Vorher-Nachher-Messung auf unserem herstellerfreigegebenen Prüfstand mit bis zu 2.000 PS Kapazität.',
+  },
+  {
+    title: 'TÜV-konform',
+    text: 'Wo erforderlich, erfolgt die Abnahme direkt bei unserer angeschlossenen TÜV-Prüfstelle.',
+  },
+];
+---
+
+<BaseLayout
+  title="Chiptuning & Leistungssteigerung"
+  description="Individuelle Chiptuning-Lösungen von Wimmer Rennsporttechnik: bis zu 35 % mehr Leistung, geprüft auf dem hauseigenen 2.000-PS-Prüfstand."
+  path="/leistungen/chiptuning"
+>
+  <PageHeader
+    eyebrow="Leistungen · Chiptuning"
+    title="Chiptuning & Leistungssteigerung"
+    lead="Unser Kerngeschäft seit 1990: die individuelle Optimierung der Motorsteuerung für nahezu jeden Motorentyp – abgestimmt auf Ihr Fahrzeug, nicht von der Stange."
+  />
+
+  <section class="container-page py-16 sm:py-20">
+    <FeatureGrid features={features} />
+  </section>
+
+  <CTA title="Wie viel Leistung steckt in Ihrem Motor?" lead="Wir prüfen Ihr Fahrzeug und sagen Ihnen ehrlich, was realistisch möglich ist." />
+</BaseLayout>
