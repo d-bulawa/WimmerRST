@@ -7,9 +7,12 @@ const year = new Date().getFullYear();
 <footer class="border-t border-[color:var(--color-line)] bg-[color:var(--color-surface)]">
   <div class="container-page grid gap-10 py-14 lg:grid-cols-4">
     <div>
-      <a href={withBase('/')} class="flex items-center gap-3">
-        <span class="flex h-10 w-10 items-center justify-center rounded-full bg-[color:var(--color-accent)] font-black text-white">W</span>
-        <span class="text-sm font-bold tracking-wide">WIMMER RENNSPORTTECHNIK</span>
+      <a href={withBase('/')} class="flex items-center">
+        <img
+          src={withBase('/images/brand/wimmer-logo.png')}
+          alt="Wimmer Rennsporttechnik Solingen"
+          class="h-12 w-auto"
+        />
       </a>
       <p class="mt-4 max-w-xs text-sm leading-relaxed text-white/55">
         Seit {company.founded} Ihr TÜV-zertifizierter Partner für Chiptuning, Auspuffanlagenbau

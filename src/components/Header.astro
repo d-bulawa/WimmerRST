@@ -11,12 +11,12 @@ const isActive = (href: string) => {
 
 <header class="sticky top-0 z-40 border-b border-[color:var(--color-line)] bg-[color:var(--color-ink)]/95 backdrop-blur">
   <div class="container-page flex h-20 items-center justify-between gap-6">
-    <a href={withBase('/')} class="flex items-center gap-3 shrink-0">
-      <span class="flex h-10 w-10 items-center justify-center rounded-full bg-[color:var(--color-accent)] font-black text-white">W</span>
-      <span class="leading-tight">
-        <span class="block text-sm font-bold tracking-wide">WIMMER</span>
-        <span class="block text-[11px] uppercase tracking-[0.25em] text-white/50">Rennsporttechnik</span>
-      </span>
+    <a href={withBase('/')} class="flex shrink-0 items-center">
+      <img
+        src={withBase('/images/brand/wimmer-logo.png')}
+        alt="Wimmer Rennsporttechnik Solingen"
+        class="h-11 w-auto"
+      />
     </a>
 
     <nav class="hidden xl:flex xl:items-center" aria-label="Hauptnavigation">
