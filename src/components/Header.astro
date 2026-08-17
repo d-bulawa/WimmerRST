@@ -1,13 +1,17 @@
 ---
 import { nav } from '../data/site';
+import { withBase } from '../lib/url';
 
 const path = Astro.url.pathname;
-const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWith(href));
+const isActive = (href: string) => {
+  const target = withBase(href);
+  return href === '/' ? path === target : path.startsWith(target);
+};
 ---
 
 <header class="sticky top-0 z-40 border-b border-[color:var(--color-line)] bg-[color:var(--color-ink)]/95 backdrop-blur">
   <div class="container-page flex h-20 items-center justify-between gap-6">
-    <a href="/" class="flex items-center gap-3 shrink-0">
+    <a href={withBase('/')} class="flex items-center gap-3 shrink-0">
       <span class="flex h-10 w-10 items-center justify-center rounded-full bg-[color:var(--color-accent)] font-black text-white">W</span>
       <span class="leading-tight">
         <span class="block text-sm font-bold tracking-wide">WIMMER</span>
@@ -19,7 +23,7 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
       {nav.map((item) => (
         <div class="group relative">
           <a
-            href={item.href}
+            href={withBase(item.href)}
             class:list={[
               'flex items-center gap-1 whitespace-nowrap rounded-full px-2.5 py-2 text-sm font-medium transition-colors xl:px-3.5',
               isActive(item.href) ? 'text-[color:var(--color-accent)]' : 'text-white/80 hover:text-white',
@@ -36,7 +40,7 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
             <div class="invisible absolute left-1/2 top-full z-50 w-[560px] -translate-x-1/2 pt-3 opacity-0 transition-all duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
               <div class="grid grid-cols-2 gap-1 rounded-2xl border border-[color:var(--color-line)] bg-[color:var(--color-surface)] p-3 shadow-2xl shadow-black/50">
                 {item.children.map((child) => (
-                  <a href={child.href} class="rounded-xl p-3 transition-colors hover:bg-[color:var(--color-surface-2)]">
+                  <a href={withBase(child.href)} class="rounded-xl p-3 transition-colors hover:bg-[color:var(--color-surface-2)]">
                     <span class="block text-sm font-semibold text-white">{child.label}</span>
                     <span class="mt-1 block text-xs leading-snug text-white/55">{child.blurb}</span>
                   </a>
@@ -49,7 +53,7 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
     </nav>
 
     <div class="hidden shrink-0 items-center xl:flex">
-      <a href="/kontakt" class="btn-primary whitespace-nowrap">Termin anfragen</a>
+      <a href={withBase('/kontakt')} class="btn-primary whitespace-nowrap">Termin anfragen</a>
     </div>
 
     <details class="group relative xl:hidden">
@@ -63,18 +67,18 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
         <nav class="flex flex-col divide-y divide-[color:var(--color-line)]" aria-label="Mobile Navigation">
           {nav.map((item) => (
             <div class="py-3">
-              <a href={item.href} class="text-base font-semibold text-white">{item.label}</a>
+              <a href={withBase(item.href)} class="text-base font-semibold text-white">{item.label}</a>
               {item.children && (
                 <div class="mt-2 flex flex-col gap-2 pl-3">
                   {item.children.map((child) => (
-                    <a href={child.href} class="text-sm text-white/65 hover:text-white">{child.label}</a>
+                    <a href={withBase(child.href)} class="text-sm text-white/65 hover:text-white">{child.label}</a>
                   ))}
                 </div>
               )}
             </div>
           ))}
         </nav>
-        <a href="/kontakt" class="btn-primary mt-5 w-full">Termin anfragen</a>
+        <a href={withBase('/kontakt')} class="btn-primary mt-5 w-full">Termin anfragen</a>
       </div>
     </details>
   </div>

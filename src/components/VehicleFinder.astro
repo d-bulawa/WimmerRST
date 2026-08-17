@@ -1,5 +1,6 @@
 ---
 import { manufacturers } from '../data/site';
+import { withBase } from '../lib/url';
 
 interface Props {
   compact?: boolean;
@@ -19,7 +20,7 @@ const { compact = false } = Astro.props;
     <select id="vf-fahrzeug" class="rounded-lg border border-[color:var(--color-line)] bg-[color:var(--color-ink)] px-3 py-2.5 text-sm text-white/50" disabled>
       <option>Fahrzeug</option>
     </select>
-    <a id="vf-fallback" href="/kontakt" class="btn-secondary justify-center whitespace-nowrap" style="display: none;">Fahrzeug per Kontakt anfragen</a>
+    <a id="vf-fallback" href={withBase('/kontakt')} class="btn-secondary justify-center whitespace-nowrap" style="display: none;">Fahrzeug per Kontakt anfragen</a>
   </div>
   <p id="vf-status" class="mt-3 text-xs text-white/40" role="status"></p>
   {!compact && (

@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { leistungenChildren } from '../data/site';
+import { withBase } from '../lib/url';
 ---
 
 <BaseLayout title="Seite nicht gefunden" description="Diese Seite existiert nicht (mehr)." path="/404">
@@ -12,13 +13,13 @@ import { leistungenChildren } from '../data/site';
       zusammengelegt. Hier geht es weiter:
     </p>
     <div class="mt-8 flex flex-wrap justify-center gap-3">
-      <a href="/" class="btn-primary">Zur Startseite</a>
-      <a href="/leistungen" class="btn-secondary">Alle Leistungen</a>
-      <a href="/kontakt" class="btn-secondary">Kontakt</a>
+      <a href={withBase('/')} class="btn-primary">Zur Startseite</a>
+      <a href={withBase('/leistungen')} class="btn-secondary">Alle Leistungen</a>
+      <a href={withBase('/kontakt')} class="btn-secondary">Kontakt</a>
     </div>
     <div class="mx-auto mt-14 grid max-w-2xl gap-3 text-left sm:grid-cols-2">
       {leistungenChildren.map((item) => (
-        <a href={item.href} class="card text-sm font-semibold text-white hover:border-[color:var(--color-accent)]">{item.label}</a>
+        <a href={withBase(item.href)} class="card text-sm font-semibold text-white hover:border-[color:var(--color-accent)]">{item.label}</a>
       ))}
     </div>
   </section>

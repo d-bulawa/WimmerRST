@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import CTA from '../components/CTA.astro';
 import VehicleFinder from '../components/VehicleFinder.astro';
 import { stats, leistungenChildren, brands, company } from '../data/site';
+import { withBase } from '../lib/url';
 
 const partnerBrands = brands.slice(0, 6);
 ---
@@ -26,8 +27,8 @@ const partnerBrands = brands.slice(0, 6);
           Hochleistungsprüfstand.
         </p>
         <div class="mt-8 flex flex-wrap gap-3">
-          <a href="/leistungen" class="btn-primary">Leistungen entdecken</a>
-          <a href="/kontakt" class="btn-secondary">Termin anfragen</a>
+          <a href={withBase('/leistungen')} class="btn-primary">Leistungen entdecken</a>
+          <a href={withBase('/kontakt')} class="btn-secondary">Termin anfragen</a>
         </div>
       </div>
 
@@ -78,12 +79,12 @@ const partnerBrands = brands.slice(0, 6);
         <p class="eyebrow">Leistungen</p>
         <h2 class="mt-3 text-balance text-3xl font-black tracking-tight sm:text-4xl">Alles aus einer Hand</h2>
       </div>
-      <a href="/leistungen" class="text-sm font-semibold text-white/70 hover:text-white">Alle Leistungen ansehen →</a>
+      <a href={withBase('/leistungen')} class="text-sm font-semibold text-white/70 hover:text-white">Alle Leistungen ansehen →</a>
     </div>
 
     <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
       {leistungenChildren.map((item) => (
-        <a href={item.href} class="card group hover:border-[color:var(--color-accent)]">
+        <a href={withBase(item.href)} class="card group hover:border-[color:var(--color-accent)]">
           <h3 class="text-lg font-bold text-white">{item.label}</h3>
           <p class="mt-2 text-sm leading-relaxed text-white/55">{item.blurb}</p>
           <span class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-[color:var(--color-accent)] opacity-0 transition-opacity group-hover:opacity-100">
@@ -107,7 +108,7 @@ const partnerBrands = brands.slice(0, 6);
           </div>
         ))}
       </div>
-      <a href="/marken" class="mt-8 inline-block text-sm font-semibold text-white/70 hover:text-white">Alle Marken & Partner →</a>
+      <a href={withBase('/marken')} class="mt-8 inline-block text-sm font-semibold text-white/70 hover:text-white">Alle Marken & Partner →</a>
     </div>
   </section>
 
