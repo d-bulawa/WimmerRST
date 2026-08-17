@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import VehicleFinder from '../components/VehicleFinder.astro';
+import CTA from '../components/CTA.astro';
+---
+
+<BaseLayout
+  title="Fahrzeugsuche"
+  description="Finden Sie über Hersteller, Modell und Fahrzeug die passenden Chiptuning- und Tuning-Optionen bei Wimmer Rennsporttechnik."
+  path="/fahrzeugsuche"
+>
+  <section class="border-b border-[color:var(--color-line)] bg-[color:var(--color-surface)]">
+    <div class="container-page py-16 sm:py-20">
+      <p class="eyebrow">Fahrzeugsuche</p>
+      <h1 class="mt-3 max-w-3xl text-balance text-4xl font-black tracking-tight sm:text-5xl">
+        Finden Sie Ihr Fahrzeug
+      </h1>
+      <p class="mt-5 max-w-2xl text-lg leading-relaxed text-white/60">
+        Wählen Sie Hersteller, Modell und Fahrzeug aus, um direkt zu den für Ihr Fahrzeug
+        passenden Chiptuning- und Tuning-Optionen zu gelangen.
+      </p>
+    </div>
+  </section>
+
+  <section class="container-page py-16 sm:py-20">
+    <VehicleFinder />
+  </section>
+
+  <CTA title="Ihr Fahrzeug ist nicht dabei?" lead="Rufen Sie uns an oder schreiben Sie uns – wir sagen Ihnen, was für Ihr Fahrzeug möglich ist." />
+</BaseLayout>

@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CTA from '../components/CTA.astro';
+import VehicleFinder from '../components/VehicleFinder.astro';
 import { stats, leistungenChildren, brands, company } from '../data/site';
 
 const partnerBrands = brands.slice(0, 6);
@@ -44,6 +45,10 @@ const partnerBrands = brands.slice(0, 6);
         </div>
       </div>
     </div>
+  </section>
+
+  <section class="container-page -mt-8 pb-4 sm:-mt-12">
+    <VehicleFinder compact />
   </section>
 
   <section class="border-y border-[color:var(--color-line)] bg-[color:var(--color-surface)]">

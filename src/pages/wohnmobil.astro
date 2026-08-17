@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTA from '../components/CTA.astro';
+---
+
+<BaseLayout
+  title="Wohnmobilvermietung"
+  description="Vermietung eines Niesmann+Bischoff Flair 920 bei Wimmer Rennsporttechnik Solingen."
+  path="/wohnmobil"
+>
+  <section class="border-b border-[color:var(--color-line)] bg-[color:var(--color-surface)]">
+    <div class="container-page py-16 sm:py-20">
+      <p class="eyebrow">Wohnmobilvermietung</p>
+      <h1 class="mt-3 max-w-3xl text-balance text-4xl font-black tracking-tight sm:text-5xl">
+        Niesmann+Bischoff Flair 920
+      </h1>
+      <p class="mt-5 max-w-2xl text-lg leading-relaxed text-white/60">
+        Neben unserem Kerngeschäft rund ums Fahrzeugtuning vermieten wir ein Niesmann+Bischoff
+        Flair 920.
+      </p>
+    </div>
+  </section>
+
+  <section class="container-page py-16 sm:py-20">
+    <div class="rounded-xl border border-dashed border-[color:var(--color-line)] bg-[color:var(--color-surface)] p-6 text-sm leading-relaxed text-white/55">
+      Diese Seite wartet noch auf Inhalte: Beschreibung, Ausstattung, Preise/Verfügbarkeit
+      und Fotos des Fahrzeugs folgen. Bis dahin nehmen wir Anfragen gerne direkt entgegen.
+    </div>
+  </section>
+
+  <CTA title="Interesse an einer Anfrage?" lead="Fragen Sie Verfügbarkeit und Konditionen für den Flair 920 direkt bei uns an." />
+</BaseLayout>

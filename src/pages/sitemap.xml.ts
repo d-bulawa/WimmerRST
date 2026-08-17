@@ -4,9 +4,11 @@ import { leistungenChildren } from '../data/site';
 const staticPaths = [
   '/',
   '/leistungen',
+  '/fahrzeugsuche',
   '/marken',
   '/unternehmen',
   '/referenzen',
+  '/wohnmobil',
   '/kontakt',
   '/impressum',
   '/datenschutz',

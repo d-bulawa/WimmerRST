@@ -29,6 +29,8 @@ komplett neu gedacht statt nur eingedampft.
                              LUK, KTM X-Bow, Yamaha/Mercury – an einem Ort statt ~15 Einzelseiten)
 /unternehmen                Über uns, Prüfstand, TÜV-Zertifizierung (ehem. 3 Einzelseiten)
 /referenzen                 Projektgalerie (ersetzt /zubehoer/Bilder/* und /galerie/*)
+/fahrzeugsuche              Hersteller → Modell → Fahrzeug (ersetzt /list_hersteller)
+/wohnmobil                  Wohnmobilvermietung Niesmann+Bischoff Flair 920
 /kontakt                    Adresse, Telefon, Öffnungszeiten, Anfahrt (ehem. 2 Einzelseiten)
 /impressum
 /datenschutz
@@ -67,9 +69,36 @@ formuliert. Bilder sind bewusst als klar erkennbare Platzhalter umgesetzt
   eingebettete Karte auf `/kontakt`), müssen sie hier ergänzt werden.
 - `/referenzen` – echte Projektfotos statt Platzhalter-Kacheln
 - Alle Werte in `src/data/site.ts` gegen die aktuellen Firmendaten gegenprüfen
-- Wohnmobilvermietung (Niesmann+Bischoff Flair 920) und die Fahrzeug-/HSN-Suche sind
-  laut Kunde gewollter Bestandteil der neuen Seite – Umsetzung wird in einer
-  Folge-Iteration abgestimmt (Inhalte bzw. Datenquelle stehen noch aus)
+- `/wohnmobil` ist bewusst ein Platzhalter: Beschreibung, Ausstattung, Preise/
+  Verfügbarkeit und Fotos zum Niesmann+Bischoff Flair 920 liefert der Kunde nach
+
+### Fahrzeugsuche – wichtige offene Abhängigkeit
+
+`/fahrzeugsuche` (und ein kompaktes Widget auf der Startseite,
+`src/components/VehicleFinder.astro`) bilden die alte Hersteller → Modell →
+Fahrzeug-Auswahl nach: Die Hersteller-Liste ist 1:1 aus dem Kunden-Export
+übernommen (reale IDs), die beiden folgenden Auswahlfelder laden ihre Optionen
+zur Laufzeit per `fetch()` von den **alten** Endpunkten
+`/list_modelle_auswahl?hersteller=…` und `/list_fahrzeuge_auswahl?modell=…`,
+die finale Fahrzeug-Auswahl navigiert zu `/fahrzeug/<Name>/<ID>` – exakt wie im
+Original.
+
+Das funktioniert nur, wenn diese drei Endpunkte nach dem Relaunch weiterhin
+erreichbar sind (z. B. weil das bisherige Backend/System parallel weiterläuft
+oder gezielt per Reverse-Proxy durchgereicht wird). **Das konnte ich nicht
+selbst prüfen** (kein Netzwerkzugriff auf wimmer-rst.de aus dieser Umgebung).
+Bitte vor Go-Live gegenchecken:
+
+1. Im Browser auf der aktuellen Live-Seite einen Hersteller auswählen und im
+   DevTools-Netzwerk-Tab prüfen, ob `/list_modelle_auswahl?...` tatsächlich
+   Optionen zurückliefert.
+2. Klären, ob das bisherige Backend (Plone-basiert, erkennbar an
+   `data-portal-url`/`plonejsi18n` im Seitenquelltext) nach dem Umzug auf diese
+   neue Astro-Seite weiterläuft oder abgeschaltet wird.
+3. Falls abgeschaltet wird: Die Fahrzeugsuche braucht eine neue Datenquelle
+   (Fahrzeug-Datenbank/API) – die UI in `VehicleFinder.astro` ist darauf
+   vorbereitet, zeigt aber ohne funktionierende Endpunkte automatisch eine
+   Fallback-Meldung mit Link zu `/kontakt` statt stumm zu brechen.
 
 ## Entwicklung
 

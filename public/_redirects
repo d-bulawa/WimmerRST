@@ -37,11 +37,8 @@
 /zubehoer/*                                                 /leistungen/zubehoer  301
 /galerie                                                    /referenzen  301
 /galerie/*                                                  /referenzen  301
-/fahrzeug/*                                                 /referenzen  301
 
-/list_hersteller                                            /marken  301
-/list_modelle_auswahl                                       /marken  301
-/list_fahrzeuge_auswahl                                     /marken  301
+/list_hersteller                                            /fahrzeugsuche  301
 /ktm-x-bow                                                  /marken  301
 /bootsmotoren                                                /marken  301
 /bootsmotoren/*                                              /marken  301
@@ -49,9 +46,13 @@
 /garantie                                                   /unternehmen  301
 /datenschutzerklaerung                                      /datenschutz  301
 /oldtimer-youngtimer-klassiker                              /leistungen/auspuffanlagen  301
+/vermietung-wohnmobil-niesmann-bischoff-flair-920           /wohnmobil  301
 
 /mkAngebot/*                                                /kontakt  301
 
-# Nicht migriert (siehe README): /vermietung-wohnmobil-niesmann-bischoff-flair-920
-# wirkt wie fachfremder Alt-Content und braucht eine bewusste Entscheidung
-# des Kunden, bevor dafür ein Redirect-Ziel festgelegt wird.
+# WICHTIG – nicht automatisch redirecten (siehe README "Fahrzeugsuche"):
+# /list_modelle_auswahl, /list_fahrzeuge_auswahl und /fahrzeug/* werden von
+# src/components/VehicleFinder.astro per fetch()/window.location zur Laufzeit
+# im Browser angesprochen. Ob diese Endpunkte nach dem Relaunch noch vom
+# bisherigen Backend beantwortet werden (z. B. per Reverse-Proxy-Regel auf
+# das alte System), ist ungeklärt und muss vor Go-Live geprüft werden.
