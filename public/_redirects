@@ -2,11 +2,16 @@
 # Format (Netlify-Style): /alter-pfad  /neuer-pfad  301
 # Bei anderem Hosting (Apache/Nginx) dient diese Datei als Vorlage für
 # RewriteRule- bzw. rewrite-Regeln, siehe README.md.
+# Reihenfolge ist wichtig: spezifische Regeln vor allgemeinen Wildcards.
 
 /contact-info                                              /kontakt  301
 /wimmer-rennsporttechnik/oeffnungszeiten-anfahrt            /kontakt  301
+/wimmer-rennsporttechnik/galerie                            /referenzen  301
 /wimmer-rennsporttechnik/tuev                               /unternehmen  301
+/wimmer-rennsporttechnik/tuev-cert                          /unternehmen  301
 /wimmer-rennsporttechnik/pruefstand                         /unternehmen  301
+/wimmer-rennsporttechnik/faq                                /unternehmen  301
+/wimmer-rennsporttechnik/vdat                               /unternehmen  301
 /wimmer-rennsporttechnik/*                                  /unternehmen  301
 
 /produkte                                                   /leistungen  301
@@ -16,19 +21,37 @@
 /produkte/auspuffanlagenbau/*                                /leistungen/auspuffanlagen  301
 /produkte/fahrwerkstechnik                                  /leistungen/fahrwerkstechnik  301
 /produkte/fahrwerkstechnik/*                                /leistungen/fahrwerkstechnik  301
+/produkte/sportkupplungen                                   /leistungen/sportkupplungen  301
 /produkte/sportkupplungen/*                                 /leistungen/sportkupplungen  301
 /produkte/bremsanlagen                                      /leistungen/bremsanlagen  301
+/produkte/bremsanlagen/*                                    /leistungen/bremsanlagen  301
+/produkte/motorbelueftung                                   /leistungen/zubehoer  301
 /produkte/motorbelueftung/*                                 /leistungen/zubehoer  301
+/produkte/zubehoer                                          /leistungen/zubehoer  301
+/produkte/zubehoer/*                                        /leistungen/zubehoer  301
 /produkte/*                                                 /leistungen  301
 
 /zubehoer/Felgen/*                                          /leistungen/zubehoer  301
 /zubehoer/Bilder/*                                          /referenzen  301
+/zubehoer/sitemap                                           /leistungen/zubehoer  301
 /zubehoer/*                                                 /leistungen/zubehoer  301
+/galerie                                                    /referenzen  301
 /galerie/*                                                  /referenzen  301
 /fahrzeug/*                                                 /referenzen  301
 
 /list_hersteller                                            /marken  301
+/list_modelle_auswahl                                       /marken  301
+/list_fahrzeuge_auswahl                                     /marken  301
 /ktm-x-bow                                                  /marken  301
 /bootsmotoren                                                /marken  301
+/bootsmotoren/*                                              /marken  301
+
+/garantie                                                   /unternehmen  301
+/datenschutzerklaerung                                      /datenschutz  301
+/oldtimer-youngtimer-klassiker                              /leistungen/auspuffanlagen  301
 
 /mkAngebot/*                                                /kontakt  301
+
+# Nicht migriert (siehe README): /vermietung-wohnmobil-niesmann-bischoff-flair-920
+# wirkt wie fachfremder Alt-Content und braucht eine bewusste Entscheidung
+# des Kunden, bevor dafür ein Redirect-Ziel festgelegt wird.

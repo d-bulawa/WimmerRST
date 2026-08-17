@@ -22,6 +22,12 @@ export const company = {
   ],
   facilitySize: '2.400 m²',
   manager: 'Dipl.-Ing. Thorsten Wimmer',
+  history:
+    'Wimmer Rennsporttechnik ist 1990 in den Räumlichkeiten einer Tankstelle mit Chiptuning und Motorumbauten gestartet. Heute arbeiten wir unter modernsten Bedingungen und den Vorgaben der TÜV-Zertifizierung auf 2.400 m² Hallenfläche.',
+  kwPartnership:
+    'Seit über 20 Jahren sind wir KW Performance Partner Pro und geben 5 Jahre Garantie auf verbaute KW-Fahrwerke.',
+  warranty:
+    'Auf Teile, die wir anbieten oder selbst herstellen, achten wir auf beste Qualität. Verbaute Komponenten haben in der Regel Straßenzulassung und werden bei Bedarf direkt an unserer TÜV-Prüfstelle im Haus abgenommen – ausgenommen reine Rennsport-/Motorsportfahrzeuge, für die andere Regeln gelten.',
 } as const;
 
 export const stats = [
@@ -43,7 +49,7 @@ export const leistungenChildren: NavChild[] = [
   {
     label: 'Auspuffanlagenbau',
     href: '/leistungen/auspuffanlagen',
-    blurb: 'Handgefertigte Edelstahl-Sportauspuffanlagen mit TÜV-Abnahme.',
+    blurb: 'Handgefertigte Edelstahl-Sportauspuffanlagen – auch für Oldtimer & Youngtimer, mit TÜV-Abnahme.',
   },
   {
     label: 'Fahrwerkstechnik',
@@ -80,15 +86,19 @@ export type Brand = { name: string; category: string; description: string };
 
 export const brands: Brand[] = [
   { name: 'H&R', category: 'Fahrwerkstechnik', description: 'Gewindefahrwerke & Tieferlegungsfedern mit TÜV-Zertifizierung, seit den späten 1980ern.' },
-  { name: 'KW automotive', category: 'Fahrwerkstechnik', description: 'Über 4.600 Gewindefahrwerk-Anwendungen für nahezu jedes Fahrzeug, in acht Ausbaustufen.' },
+  { name: 'KW automotive', category: 'Fahrwerkstechnik', description: 'Seit über 20 Jahren Partner: Wimmer ist KW Performance Partner Pro mit 5 Jahren Garantie auf verbaute KW-Fahrwerke.' },
   { name: 'ST suspensions', category: 'Fahrwerkstechnik', description: 'Federn, Dämpfer, komplette Gewindefahrwerke sowie Stabilisatoren und Spurverbreiterungen.' },
   { name: 'Bilstein', category: 'Fahrwerkstechnik', description: 'Dämpfertechnik für komfortable bis sportliche Abstimmung.' },
   { name: 'Capristo', category: 'Auspuffanlagen', description: 'Hochwertige Sport-Auspuffanlagen, bei Wimmer erhältlich und verbaut.' },
-  { name: 'Brembo', category: 'Bremsanlagen', description: 'Hochleistungsbremsen für spürbar kürzere Bremswege.' },
+  { name: 'Brembo', category: 'Bremsanlagen', description: 'Bremsscheiben, -beläge und komplette Kits (u. a. B-M, GT, GT-R) für spürbar kürzere Bremswege.' },
+  { name: 'Movit & StopTech', category: 'Bremsanlagen', description: 'Weitere Hochleistungs-Bremsanlagen im Programm, passend zu unterschiedlichen Leistungsstufen.' },
+  { name: 'Fischer Hydraulik', category: 'Bremsanlagen', description: 'Stahlflex-Bremsschläuge für ein präzises, standfestes Bremsgefühl.' },
   { name: 'ZF Sachs Race Engineering', category: 'Sportkupplungen', description: 'Kupplungstechnik für verbesserte Kraftübertragung.' },
   { name: 'LUK', category: 'Sportkupplungen', description: 'Kupplungssysteme als Ergänzung zur Leistungssteigerung.' },
-  { name: 'KTM X-Bow', category: 'Fahrzeuge', description: 'Wimmer ist seit 2010 Händler des Leichtbau-Sportwagens KTM X-Bow.' },
-  { name: 'Yamaha & Mercury', category: 'Bootsmotoren', description: 'Leistungssteigerung und Service auch für größere Bootsmotoren.' },
+  { name: 'BMC & K&N', category: 'Zubehör', description: 'Sportluftfilter inklusive Reinigungsservice für optimierten Ansaugweg.' },
+  { name: 'KTM X-Bow', category: 'Fahrzeuge', description: 'Wimmer ist seit 2010 Händler des Leichtbau-Sportwagens KTM X-Bow – Verkauf, Wartung und Tuning.' },
+  { name: 'Yamaha & Mercury', category: 'Bootsmotoren', description: 'Seit 2016 auch Datensätze und Leistungssteigerung für größere Bootsmotoren.' },
+  { name: 'Technohull', category: 'Partner', description: 'Externer Partner für RIB-Boote, verlinkt von unserer Seite (technohull.com).' },
 ];
 
 export type FaqItem = { question: string; answer: string };

@@ -47,11 +47,13 @@ Google-Rankings beim Umzug nicht verloren gehen.
 
 Die Live-Seite `wimmer-rst.de` war aus dieser Arbeitsumgebung heraus **nicht per
 HTTP erreichbar** (Netzwerk-Policy blockiert Zugriffe auf die Domain, auch auf das
-Web-Archiv). Es konnten deshalb weder Original-Texte 1:1 noch Bilder automatisch
-übernommen werden. Stattdessen wurden die Firmenfakten (Adresse, Kontakt, Leistungen,
-Marken, Firmengeschichte, TÜV-Zertifizierung, Prüfstand-Daten) über Websuche aus
-öffentlich indexierten Auszügen der Seite verifiziert und für diesen Relaunch neu und
-prägnanter formuliert. Bilder sind bewusst als klar erkennbare Platzhalter umgesetzt
+Web-Archiv). Bilder konnten deshalb nicht automatisch übernommen werden. Für Texte
+und Struktur wurden zusätzlich zur Websuche vom Kunden bereitgestellte Exports der
+Live-Seite ausgewertet (u. a. ein vollständiger "Seite speichern unter"-Export der
+Startseite sowie der komplette alte Page Tree) – die dort enthaltenen Fakten
+(Firmenhistorie, Partnerschaften, Marken, Garantiebedingungen) sind entsprechend real
+und wurden für diesen Relaunch neu, prägnanter und ohne die alten Redundanzen
+formuliert. Bilder sind bewusst als klar erkennbare Platzhalter umgesetzt
 (`/referenzen`) und müssen vor Go-Live durch echtes Foto-/Videomaterial ersetzt werden.
 
 **Vor Veröffentlichung unbedingt ergänzen/prüfen:**
@@ -61,6 +63,13 @@ prägnanter formuliert. Bilder sind bewusst als klar erkennbare Platzhalter umge
   Cookies/Tracking-/Analyse-Tools; juristische Prüfung des gesamten Textes
 - `/referenzen` – echte Projektfotos statt Platzhalter-Kacheln
 - Alle Werte in `src/data/site.ts` gegen die aktuellen Firmendaten gegenprüfen
+- Entscheidung zu `/vermietung-wohnmobil-niesmann-bischoff-flair-920`: taucht im
+  Footer der alten Startseite auf, aber nicht im vom Kunden gelieferten Page Tree –
+  wirkt wie fachfremder Alt-Content und wurde bewusst nicht übernommen
+- Fahrzeug-/HSN-Suche (Hersteller → Modell → Fahrzeug, alte Endpunkte
+  `/list_hersteller`, `/list_modelle_auswahl`, `/list_fahrzeuge_auswahl`) war eine
+  echte Funktion der alten Seite und wurde in diesem Relaunch **nicht** nachgebaut
+  (keine Fahrzeugdatenbank verfügbar) – bei Bedarf separat nachrüsten
 
 ## Entwicklung
 
