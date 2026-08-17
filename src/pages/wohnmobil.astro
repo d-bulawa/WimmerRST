@@ -1,32 +1,115 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CTA from '../components/CTA.astro';
+
+const sections = [
+  {
+    title: 'Wohn- und Schlafkomfort',
+    lead: 'Der großzügige Wohnbereich mit bequemer Sitzgruppe lädt zum Entspannen, Spielen und Genießen ein – auch an kühleren Abenden. Hochwertige Materialien, stimmungsvolle Beleuchtung und die durchdachte Raumaufteilung sorgen dabei für ein elegantes, wohnliches Ambiente.',
+    points: [
+      'Komfortable Schlafplätze für bis zu 4 Personen',
+      'Großzügige Stehhöhe und viel Bewegungsfreiheit im gesamten Fahrzeug',
+      'Clevere Stauraumlösungen im Innenraum plus riesige Heckgarage für Campingmöbel, Fahrräder oder Gepäck',
+    ],
+  },
+  {
+    title: 'Küche und Bad',
+    lead: 'Die voll ausgestattete Küche macht Sie unterwegs komplett unabhängig und bietet alles, was Sie von einer modernen Einbauküche erwarten. So wird der Wohnmobilurlaub auch kulinarisch zum Genuss.',
+    points: [
+      'Großer Kühlschrank mit separatem Gefrierfach, Gas- und/oder Induktionskochfeld, Backofen',
+      'Hochwertige Arbeitsplatten und viel Stauraum für Geschirr (vorhanden), Vorräte und Küchenzubehör',
+      'Wellness-Bad mit separater Dusche, festem WC und großzügigem Waschtisch – wie in einem komfortablen Hotelzimmer',
+    ],
+  },
+  {
+    title: 'Technik, Sicherheit und Fahrkomfort',
+    lead: 'Basis ist ein leistungsstarker Iveco Daily mit einem kraftvollen Dieselmotor, der entspannte Langstreckenfahrten auch in den Bergen ermöglicht. Dank Automatikgetriebe, moderner Fahrassistenzsysteme und hohem Fahrkomfort fühlt sich auch ein so großes Wohnmobil überraschend leicht zu fahren an.',
+    points: [
+      'Automatikgetriebe, Tempomat, Servolenkung und moderne Fahrerassistenzsysteme',
+      'Hohe Autarkie durch große Tanks, moderne Elektrik und Solaranlage',
+      'Gute Isolation, hochwertige Echtglasfenster und Warmwasser-Fußbodenheizung für besten Komfort auch in der Übergangszeit oder im Winter',
+    ],
+  },
+];
 ---
 
 <BaseLayout
   title="Wohnmobilvermietung"
-  description="Vermietung eines Niesmann+Bischoff Flair 920 bei Wimmer Rennsporttechnik Solingen."
+  description="Vermietung eines Niesmann & Bischoff Flair 920 bei Wimmer Rennsporttechnik Solingen – Ihr 5-Sterne-Zuhause auf Rädern."
   path="/wohnmobil"
 >
   <section class="border-b border-[color:var(--color-line)] bg-[color:var(--color-surface)]">
     <div class="container-page py-16 sm:py-20">
-      <p class="eyebrow">Wohnmobilvermietung</p>
+      <p class="eyebrow">Vermietung</p>
       <h1 class="mt-3 max-w-3xl text-balance text-4xl font-black tracking-tight sm:text-5xl">
-        Niesmann+Bischoff Flair 920
+        Niesmann &amp; Bischoff Flair 920
       </h1>
+      <p class="mt-2 text-lg font-semibold text-white/80">Ihr 5-Sterne-Zuhause auf Rädern</p>
       <p class="mt-5 max-w-2xl text-lg leading-relaxed text-white/60">
-        Neben unserem Kerngeschäft rund ums Fahrzeugtuning vermieten wir ein Niesmann+Bischoff
-        Flair 920.
+        Erleben Sie Reisen auf höchstem Niveau mit unserem Niesmann &amp; Bischoff Flair 920,
+        einem integrierten Luxus-Liner, der Komfort, Design und Technik auf einzigartige Weise
+        verbindet. Ob entspannter Familienurlaub, Roadtrip durch Europa oder exklusiver Messe-
+        und Business-Einsatz: In diesem Reisemobil genießen Sie überall die Atmosphäre einer
+        hochwertigen Suite.
       </p>
     </div>
   </section>
 
-  <section class="container-page py-16 sm:py-20">
-    <div class="rounded-xl border border-dashed border-[color:var(--color-line)] bg-[color:var(--color-surface)] p-6 text-sm leading-relaxed text-white/55">
-      Diese Seite wartet noch auf Inhalte: Beschreibung, Ausstattung, Preise/Verfügbarkeit
-      und Fotos des Fahrzeugs folgen. Bis dahin nehmen wir Anfragen gerne direkt entgegen.
+  <section class="container-page py-10 sm:py-14">
+    <div class="grid gap-4 sm:grid-cols-2">
+      <img
+        src="/images/wohnmobil/flair-920-front.png"
+        alt="Niesmann & Bischoff Flair 920, Frontansicht auf einem Parkplatz"
+        class="aspect-[4/3] w-full rounded-2xl border border-[color:var(--color-line)] object-cover"
+        loading="lazy"
+      />
+      <img
+        src="/images/wohnmobil/flair-920-seite.png"
+        alt="Niesmann & Bischoff Flair 920, Seitenansicht mit ausgefahrener Markise"
+        class="aspect-[4/3] w-full rounded-2xl border border-[color:var(--color-line)] object-cover"
+        loading="lazy"
+      />
     </div>
   </section>
 
-  <CTA title="Interesse an einer Anfrage?" lead="Fragen Sie Verfügbarkeit und Konditionen für den Flair 920 direkt bei uns an." />
+  <section class="container-page space-y-14 py-6 sm:py-10">
+    {sections.map((s) => (
+      <div class="grid gap-6 border-t border-[color:var(--color-line)] pt-10 lg:grid-cols-[0.35fr_0.65fr]">
+        <h2 class="text-2xl font-black tracking-tight">{s.title}</h2>
+        <div>
+          <p class="text-white/60 leading-relaxed">{s.lead}</p>
+          <ul class="mt-5 space-y-2">
+            {s.points.map((p) => (
+              <li class="flex gap-3 text-sm text-white/70">
+                <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--color-accent)]"></span>
+                <span>{p}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    ))}
+  </section>
+
+  <section class="container-page py-10 sm:py-14">
+    <div class="grid gap-6 border-t border-[color:var(--color-line)] pt-10 lg:grid-cols-[0.35fr_0.65fr]">
+      <h2 class="text-2xl font-black tracking-tight">Mietbedingungen und Anfrage</h2>
+      <div class="text-white/60 leading-relaxed">
+        <p>
+          Gerne senden wir Ihnen ein individuelles Angebot mit den aktuellen Mietpreisen und
+          Verfügbarkeiten zu (Mindestmietdauer: 2 Wochen). Voraussetzung ist ein Führerschein
+          der Klasse C1 bzw. ein Führerschein bis mindestens 7,5&nbsp;t zulässigem
+          Gesamtgewicht.
+        </p>
+        <p class="mt-4">
+          Schreiben Sie uns einfach über das Kontaktformular oder rufen Sie an – wir beraten
+          Sie persönlich zu Reiserouten, Stellplätzen und Ausstattung. Nennen Sie uns dafür
+          bitte kurz Ihren Wunschzeitraum und die geplante Personenzahl, damit wir Ihnen ein
+          passendes Angebot erstellen können.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <CTA title="Jetzt Flair 920 anfragen" lead="Nennen Sie uns Wunschzeitraum und Personenzahl – wir melden uns mit einem passenden Angebot." />
 </BaseLayout>

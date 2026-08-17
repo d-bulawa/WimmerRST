@@ -69,8 +69,10 @@ formuliert. Bilder sind bewusst als klar erkennbare Platzhalter umgesetzt
   eingebettete Karte auf `/kontakt`), müssen sie hier ergänzt werden.
 - `/referenzen` – echte Projektfotos statt Platzhalter-Kacheln
 - Alle Werte in `src/data/site.ts` gegen die aktuellen Firmendaten gegenprüfen
-- `/wohnmobil` ist bewusst ein Platzhalter: Beschreibung, Ausstattung, Preise/
-  Verfügbarkeit und Fotos zum Niesmann+Bischoff Flair 920 liefert der Kunde nach
+- `/wohnmobil` enthält jetzt den vom Kunden gelieferten Originaltext und zwei
+  Fotos. Die Fotos (`public/images/wohnmobil/`) kamen als Chat-Upload nur in
+  Anzeigegröße (400×253 bzw. 400×300 px) an – für den Druck/große Darstellung
+  vor Go-Live durch die hochauflösenden Originaldateien ersetzen.
 
 ### Fahrzeugsuche – wichtige offene Abhängigkeit
 
