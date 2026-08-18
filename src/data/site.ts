@@ -40,7 +40,7 @@ export const stats = [
   { value: 'TÜV', label: 'zertifizierter Fachbetrieb' },
 ] as const;
 
-export type NavChild = { label: string; href: string; blurb: string };
+export type NavChild = { label: string; href: string; blurb: string; icon?: string };
 export type NavItem = { label: string; href: string; children?: NavChild[] };
 
 export const leistungenChildren: NavChild[] = [
@@ -48,31 +48,37 @@ export const leistungenChildren: NavChild[] = [
     label: 'Chiptuning & Leistungssteigerung',
     href: '/leistungen/chiptuning',
     blurb: 'Individuelle Software-Optimierung für Benziner, Diesel & Turbomotoren.',
+    icon: '/images/products/icon_prod_chip.png',
   },
   {
     label: 'Auspuffanlagenbau',
     href: '/leistungen/auspuffanlagen',
     blurb: 'Handgefertigte Edelstahl-Sportauspuffanlagen – auch für Oldtimer & Youngtimer, mit TÜV-Abnahme.',
+    icon: '/images/products/icon_prod_exhaust.png',
   },
   {
     label: 'Fahrwerkstechnik',
     href: '/leistungen/fahrwerkstechnik',
     blurb: 'Gewindefahrwerke, Tieferlegungsfedern & Spurverbreiterungen.',
+    icon: '/images/products/icon_prod_suspension.png',
   },
   {
     label: 'Bremsanlagen',
     href: '/leistungen/bremsanlagen',
     blurb: 'Hochleistungs-Bremsanlagen von Brembo und eigene Wimmer-Systeme.',
+    icon: '/images/products/icon_prod_brakes.png',
   },
   {
     label: 'Sportkupplungen',
     href: '/leistungen/sportkupplungen',
     blurb: 'Verbesserte Kraftübertragung passend zu Ihrem Leistungsniveau.',
+    icon: '/images/products/icon_prod_clutch.png',
   },
   {
     label: 'Zubehör & Anbauteile',
     href: '/leistungen/zubehoer',
     blurb: 'Ladeluftkühler, Ansaugschläuche, Überrollkäfige, Felgen & mehr.',
+    icon: '/images/products/icon_prod_misc.png',
   },
 ];
 

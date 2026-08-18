@@ -1,14 +1,20 @@
 ---
+import { withBase } from '../lib/url';
+
 interface Props {
   eyebrow: string;
   title: string;
   lead: string;
+  icon?: string;
 }
-const { eyebrow, title, lead } = Astro.props;
+const { eyebrow, title, lead, icon } = Astro.props;
 ---
 
 <section class="border-b border-[color:var(--color-line)] bg-[color:var(--color-surface)]">
   <div class="container-page py-16 sm:py-20">
+    {icon && (
+      <img src={withBase(icon)} alt="" width={56} height={56} class="mb-5 h-14 w-14 object-contain" />
+    )}
     <p class="eyebrow">{eyebrow}</p>
     <h1 class="mt-3 max-w-3xl text-balance text-4xl font-black tracking-tight sm:text-5xl">{title}</h1>
     <p class="mt-5 max-w-2xl text-lg leading-relaxed text-white/60">{lead}</p>

@@ -12,19 +12,24 @@ const companyInfo = [
   {
     title: 'Unser Prüfstand',
     text: 'Mit unseren hauseigenen Hochleistungsprüfständen von Dynojet und Bosch messen wir Leistung bis zu 2.000 PS. Die Prüfstände sind von führenden Fahrzeugherstellern und dem TÜV zugelassen – jede Optimierung wird bei uns direkt vor Ort validiert.',
+    icon: '/images/brand/icon_gauge.png',
   },
   {
     title: 'TÜV-zertifizierter Fachbetrieb',
     text: 'Verbaute Komponenten sind in der Regel straßenzulassungsfähig und werden bei Bedarf direkt an unserer angeschlossenen TÜV-Prüfstelle im Haus abgenommen.',
+    icon: '/images/brand/logo_brand_tuev.png',
   },
   {
     title: 'KW Performance Partner Pro',
     text: company.kwPartnership,
+    icon: '/images/brand/logo_brand_kw_partner.png',
+    iconWide: true,
   },
   {
     title: 'Garantie',
     text: company.warranty,
     id: 'garantie',
+    icon: '/images/brand/icon_guarantee.png',
   },
 ];
 ---
@@ -97,7 +102,14 @@ const companyInfo = [
     <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
       {companyInfo.map((info) => (
         <div class="card" id={info.id}>
-          <h3 class="text-lg font-bold text-white">{info.title}</h3>
+          <img
+            src={withBase(info.icon)}
+            alt=""
+            width={info.iconWide ? 120 : 40}
+            height={40}
+            class:list={['object-contain object-left', info.iconWide ? 'h-8 w-auto' : 'h-10 w-10']}
+          />
+          <h3 class="mt-4 text-lg font-bold text-white">{info.title}</h3>
           <p class="mt-3 text-sm leading-relaxed text-white/55">{info.text}</p>
         </div>
       ))}
@@ -120,6 +132,9 @@ const companyInfo = [
         <div class="mt-8 grid gap-5 sm:grid-cols-2">
           {leistungenChildren.map((item) => (
             <a href={withBase(item.href)} class="card group hover:border-[color:var(--color-accent)]">
+              {item.icon && (
+                <img src={withBase(item.icon)} alt="" width={40} height={40} class="mb-3 h-10 w-10 object-contain" />
+              )}
               <h3 class="text-lg font-bold text-white">{item.label}</h3>
               <p class="mt-2 text-sm leading-relaxed text-white/55">{item.blurb}</p>
               <span class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-[color:var(--color-accent)] opacity-0 transition-opacity group-hover:opacity-100">
