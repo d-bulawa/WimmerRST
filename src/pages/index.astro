@@ -79,7 +79,11 @@ const companyInfo = [
   </section>
 
   <section id="unternehmen" class="container-page py-16 sm:py-20">
-    <div class="grid gap-8 lg:grid-cols-[0.6fr_0.4fr]">
+    <div class="grid gap-8 lg:grid-cols-[0.4fr_0.6fr]">
+      <div>
+        <p class="eyebrow">Seit {company.founded}</p>
+        <h2 class="mt-3 text-balance text-2xl font-black tracking-tight sm:text-3xl">Vom Tankstellen-Umbau zur 2.400 m² Werkstatt</h2>
+      </div>
       <div>
         <p class="text-white/60 leading-relaxed">{company.history}</p>
         <img
@@ -87,10 +91,6 @@ const companyInfo = [
           alt="Historische AVIA-Tankstelle, Ursprung von Wimmer Rennsporttechnik"
           class="mt-6 aspect-[2/1] w-full rounded-2xl border border-[color:var(--color-line)] object-cover grayscale"
         />
-      </div>
-      <div>
-        <p class="eyebrow">Seit {company.founded}</p>
-        <h2 class="mt-3 text-balance text-2xl font-black tracking-tight sm:text-3xl">Vom Tankstellen-Umbau zur 2.400 m² Werkstatt</h2>
       </div>
     </div>
 
@@ -105,39 +105,36 @@ const companyInfo = [
   </section>
 
   <section class="container-page py-20 sm:py-24">
-    <div class="grid gap-8 lg:grid-cols-[0.6fr_0.4fr]">
-      <p class="text-white/60 leading-relaxed">
-        Von der Software bis zum Fahrwerk: Wir stimmen jede Maßnahme an Ihrem Fahrzeug
-        aufeinander ab, damit Leistung, Fahrverhalten und Zuverlässigkeit zusammenpassen –
-        alles aus einer Hand.
-      </p>
+    <div class="grid gap-8 lg:grid-cols-[0.4fr_0.6fr]">
       <div>
         <p class="eyebrow">Leistungen</p>
         <h2 class="mt-3 text-balance text-3xl font-black tracking-tight sm:text-4xl">Alles aus einer Hand</h2>
         <a href={withBase('/leistungen')} class="mt-4 inline-block text-sm font-semibold text-white/70 hover:text-white">Alle Leistungen ansehen →</a>
       </div>
-    </div>
-
-    <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-      {leistungenChildren.map((item) => (
-        <a href={withBase(item.href)} class="card group hover:border-[color:var(--color-accent)]">
-          <h3 class="text-lg font-bold text-white">{item.label}</h3>
-          <p class="mt-2 text-sm leading-relaxed text-white/55">{item.blurb}</p>
-          <span class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-[color:var(--color-accent)] opacity-0 transition-opacity group-hover:opacity-100">
-            Mehr erfahren →
-          </span>
-        </a>
-      ))}
+      <div>
+        <p class="text-white/60 leading-relaxed">
+          Von der Software bis zum Fahrwerk: Wir stimmen jede Maßnahme an Ihrem Fahrzeug
+          aufeinander ab, damit Leistung, Fahrverhalten und Zuverlässigkeit zusammenpassen –
+          alles aus einer Hand.
+        </p>
+        <div class="mt-8 grid gap-5 sm:grid-cols-2">
+          {leistungenChildren.map((item) => (
+            <a href={withBase(item.href)} class="card group hover:border-[color:var(--color-accent)]">
+              <h3 class="text-lg font-bold text-white">{item.label}</h3>
+              <p class="mt-2 text-sm leading-relaxed text-white/55">{item.blurb}</p>
+              <span class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-[color:var(--color-accent)] opacity-0 transition-opacity group-hover:opacity-100">
+                Mehr erfahren →
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
     </div>
   </section>
 
   <section class="border-t border-[color:var(--color-line)] bg-[color:var(--color-surface)] py-16">
     <div class="container-page">
-      <div class="grid gap-8 lg:grid-cols-[0.6fr_0.4fr]">
-        <p class="text-white/60 leading-relaxed">
-          Statt Dutzender einzelner Markenseiten finden Sie hier alle Partner gebündelt an
-          einem Ort – von Fahrwerkstechnik über Bremsanlagen bis zu Sportkupplungen.
-        </p>
+      <div class="grid gap-8 lg:grid-cols-[0.4fr_0.6fr]">
         <div>
           <p class="eyebrow">Marken & Partner</p>
           <h2 class="mt-3 text-balance text-2xl font-black tracking-tight sm:text-3xl">
@@ -145,19 +142,24 @@ const companyInfo = [
           </h2>
           <a href={withBase('/marken')} class="mt-4 inline-block text-sm font-semibold text-white/70 hover:text-white">Alle Marken & Partner →</a>
         </div>
-      </div>
-
-      <div class="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
-        {partnerBrands.map((brand) => (
-          <a
-            href={brand.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="flex h-20 items-center justify-center rounded-xl border border-[color:var(--color-line)] bg-[color:var(--color-ink)] px-4 hover:border-[color:var(--color-accent)]"
-          >
-            <BrandLogo name={brand.name} logo={brand.logo} size={48} />
-          </a>
-        ))}
+        <div>
+          <p class="text-white/60 leading-relaxed">
+            Statt Dutzender einzelner Markenseiten finden Sie hier alle Partner gebündelt an
+            einem Ort – von Fahrwerkstechnik über Bremsanlagen bis zu Sportkupplungen.
+          </p>
+          <div class="mt-8 grid grid-cols-3 gap-4">
+            {partnerBrands.map((brand) => (
+              <a
+                href={brand.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex h-20 items-center justify-center rounded-xl border border-[color:var(--color-line)] bg-[color:var(--color-ink)] px-4 hover:border-[color:var(--color-accent)]"
+              >
+                <BrandLogo name={brand.name} logo={brand.logo} size={48} />
+              </a>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   </section>
