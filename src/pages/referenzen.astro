@@ -1,7 +1,17 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CTA from '../components/CTA.astro';
+import InstagramFeed from '../components/InstagramFeed.astro';
 import { withBase } from '../lib/url';
+
+const instagramPosts = [
+  'https://www.instagram.com/wimmer_rst/p/DDIL1HQON3o/',
+  'https://www.instagram.com/wimmer_rst/p/DIK8xXcqc1m/',
+  'https://www.instagram.com/wimmer_rst/p/C6YBgWIKsOJ/',
+  'https://www.instagram.com/wimmer_rst/p/DBD3xRqOWts/',
+  'https://www.instagram.com/wimmer_rst/p/C-VDqSYKvg9/',
+  'https://www.instagram.com/wimmer_rst/p/DCeR3Qqqcxc/',
+];
 
 const gallery = [
   { src: '/images/referenzen/porsche-tunnel.jpg', alt: 'Porsche 911 Turbo mit Chamäleon-Folierung in einer Tunneldurchfahrt', caption: 'Porsche 911 Turbo · Folierung' },
@@ -44,6 +54,29 @@ const gallery = [
           </div>
         </div>
       ))}
+    </div>
+  </section>
+
+  <section class="border-t border-[color:var(--color-line)] bg-[color:var(--color-surface)] py-16 sm:py-20">
+    <div class="container-page">
+      <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <p class="eyebrow">Instagram</p>
+          <h2 class="mt-3 text-balance text-3xl font-black tracking-tight sm:text-4xl">Aktuelles von @wimmer_rst</h2>
+        </div>
+        <a
+          href="https://www.instagram.com/wimmer_rst/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-sm font-semibold text-white/70 hover:text-white"
+        >
+          Profil auf Instagram öffnen →
+        </a>
+      </div>
+
+      <div class="mt-10">
+        <InstagramFeed permalinks={instagramPosts} />
+      </div>
     </div>
   </section>
 
