@@ -1,17 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CTA from '../components/CTA.astro';
-import InstagramFeed from '../components/InstagramFeed.astro';
 import { withBase } from '../lib/url';
-
-const instagramPosts = [
-  'https://www.instagram.com/wimmer_rst/p/DDIL1HQON3o/',
-  'https://www.instagram.com/wimmer_rst/p/DIK8xXcqc1m/',
-  'https://www.instagram.com/wimmer_rst/p/C6YBgWIKsOJ/',
-  'https://www.instagram.com/wimmer_rst/p/DBD3xRqOWts/',
-  'https://www.instagram.com/wimmer_rst/p/C-VDqSYKvg9/',
-  'https://www.instagram.com/wimmer_rst/p/DCeR3Qqqcxc/',
-];
 
 const gallery = [
   { src: '/images/referenzen/porsche-tunnel.jpg', alt: 'Porsche 911 Turbo mit Chamäleon-Folierung in einer Tunneldurchfahrt', caption: 'Porsche 911 Turbo · Folierung' },
@@ -54,29 +44,20 @@ const gallery = [
           </div>
         </div>
       ))}
-    </div>
-  </section>
 
-  <section class="border-t border-[color:var(--color-line)] bg-[color:var(--color-surface)] py-16 sm:py-20">
-    <div class="container-page">
-      <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-        <div>
-          <p class="eyebrow">Instagram</p>
-          <h2 class="mt-3 text-balance text-3xl font-black tracking-tight sm:text-4xl">Aktuelles von @wimmer_rst</h2>
-        </div>
-        <a
-          href="https://www.instagram.com/wimmer_rst/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="text-sm font-semibold text-white/70 hover:text-white"
-        >
-          Profil auf Instagram öffnen →
-        </a>
-      </div>
-
-      <div class="mt-10">
-        <InstagramFeed permalinks={instagramPosts} />
-      </div>
+      <a
+        href="https://www.instagram.com/wimmer_rst/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group flex aspect-[4/3] flex-col items-center justify-center gap-3 overflow-hidden rounded-2xl border border-[color:var(--color-line)] bg-[color:var(--color-surface)] transition-colors hover:border-[color:var(--color-accent)]"
+      >
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" aria-hidden="true" class="text-white/70 transition-colors group-hover:text-[color:var(--color-accent)]">
+          <rect x="2" y="2" width="20" height="20" rx="6" stroke="currentColor" stroke-width="1.6" />
+          <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.6" />
+          <circle cx="17.4" cy="6.6" r="1.2" fill="currentColor" />
+        </svg>
+        <span class="font-semibold text-white">@wimmer_rst auf Instagram</span>
+      </a>
     </div>
   </section>
 
