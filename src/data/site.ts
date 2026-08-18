@@ -205,7 +205,7 @@ export const brands: Brand[] = [
   { name: 'ZF Sachs Race Engineering', category: 'Sportkupplungen', description: 'Kupplungstechnik für verbesserte Kraftübertragung.', url: 'https://www.sachsperformance.com', logo: '/images/brand/logo_brand_zf.png' },
   { name: 'LUK', category: 'Sportkupplungen', description: 'Kupplungssysteme als Ergänzung zur Leistungssteigerung.', url: 'https://www.schaeffler.com', logo: '/images/brand/logo_brand_luk.png' },
   { name: 'BMC', category: 'Zubehör', description: 'Sportluftfilter inklusive Reinigungsservice für optimierten Ansaugweg.', url: 'https://www.bmcairfilters.com/en', logo: '/images/brand/logo_brand_bmc.png' },
-  { name: 'K&N', category: 'Zubehör', description: 'Sportluftfilter und Ansaugsysteme für spürbar mehr Ansaugleistung.', url: 'https://www.knfilters.com' },
+  { name: 'K&N', category: 'Zubehör', description: 'Sportluftfilter und Ansaugsysteme für spürbar mehr Ansaugleistung.', url: 'https://www.knfilters.com', logo: '/images/brand/logo_brand_kn.png' },
   { name: 'KTM X-Bow', category: 'Fahrzeuge', description: 'Wimmer ist seit 2010 Händler des Leichtbau-Sportwagens KTM X-Bow – Verkauf, Wartung und Tuning.', url: 'https://ktm-xbow.com', logo: '/images/brand/logo_brand_ktm.png' },
   { name: 'Yamaha', category: 'Bootsmotoren', description: 'Seit 2016 auch Datensätze und Leistungssteigerung für größere Bootsmotoren.', url: 'https://www.yamaha-motor.eu/de/de/marine-engines/', logo: '/images/brand/logo_brand_yamaha.png' },
   { name: 'Mercury', category: 'Bootsmotoren', description: 'Leistungssteigerung und Service auch für Mercury-Bootsmotoren.', url: 'https://www.mercurymarine.com/us/en', logo: '/images/brand/logo_brand_mercury.png' },
