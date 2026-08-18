@@ -25,6 +25,11 @@ const year = new Date().getFullYear();
         class="mt-5 inline-flex items-center gap-2 text-sm text-white/55 hover:text-white"
       >
         Instagram @wimmer_rst
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <rect x="2" y="2" width="20" height="20" rx="6" stroke="currentColor" stroke-width="1.6" />
+          <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.6" />
+          <circle cx="17.4" cy="6.6" r="1.2" fill="currentColor" />
+        </svg>
       </a>
     </div>
 
@@ -43,7 +48,7 @@ const year = new Date().getFullYear();
         <li><a href={withBase('/fahrzeugsuche')} class="text-white/65 hover:text-white">Fahrzeugsuche</a></li>
         <li><a href={withBase('/marken')} class="text-white/65 hover:text-white">Marken & Partner</a></li>
         <li><a href={withBase('/referenzen')} class="text-white/65 hover:text-white">Referenzen</a></li>
-        <li><a href={withBase('/unternehmen')} class="text-white/65 hover:text-white">Über uns</a></li>
+        <li><a href={`${withBase('/')}#unternehmen`} class="text-white/65 hover:text-white">Über uns</a></li>
         <li><a href={withBase('/wohnmobil')} class="text-white/65 hover:text-white">Wohnmobilvermietung</a></li>
         <li><a href={withBase('/kontakt')} class="text-white/65 hover:text-white">Kontakt & Anfahrt</a></li>
       </ul>

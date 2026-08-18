@@ -1,14 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CTA from '../components/CTA.astro';
+import { withBase } from '../lib/url';
 
 const gallery = [
-  { brand: 'BMW', category: 'Auspuffanlage' },
-  { brand: 'Audi', category: 'Auspuffanlage' },
-  { brand: 'Mazda MX-5', category: 'Auspuffanlage' },
-  { brand: 'Ford', category: 'Umbau' },
-  { brand: 'KTM X-Bow', category: 'Fahrzeug' },
-  { brand: 'Diverse Modelle', category: 'Fahrwerkstechnik' },
+  { src: '/images/referenzen/porsche-tunnel.jpg', alt: 'Porsche 911 Turbo mit Chamäleon-Folierung in einer Tunneldurchfahrt', caption: 'Porsche 911 Turbo · Folierung' },
+  { src: '/images/referenzen/porsche-esso.jpg', alt: 'Porsche 911 Turbo mit orangener Vollfolierung an einer Tankstelle', caption: 'Porsche 911 Turbo · Vollfolierung' },
+  { src: '/images/referenzen/vw-touareg.jpg', alt: 'VW Touareg mit Wimmer-Fahrzeugbeschriftung im Wald', caption: 'VW Touareg · Fahrzeugbeschriftung' },
+  { src: '/images/referenzen/golf-drift.jpg', alt: 'Kompaktsportwagen mit Wimmer-Rennlackierung im Drift', caption: 'Rennfahrzeug · Vollfolierung' },
 ];
 ---
 
@@ -25,31 +24,23 @@ const gallery = [
       </h1>
       <p class="mt-5 max-w-2xl text-lg leading-relaxed text-white/60">
         Eine gebündelte Übersicht statt verstreuter Einzelseiten pro Marke und Modell –
-        hier sammeln wir künftig Fotos realisierter Projekte an einem zentralen Ort.
+        hier sammeln wir Fotos realisierter Projekte an einem zentralen Ort. Weitere folgen.
       </p>
     </div>
   </section>
 
   <section class="container-page py-16 sm:py-20">
-    <div class="mb-8 rounded-2xl border border-dashed border-[color:var(--color-line)] bg-[color:var(--color-surface)] p-5 text-sm text-white/55">
-      Platzhalter-Struktur: Diese Kacheln zeigen, wie echte Projektfotos später einsortiert
-      werden. Bilder aus der bisherigen Galerie konnten technisch nicht automatisch übernommen
-      werden und sollten hier final ergänzt werden.
-    </div>
-
     <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
       {gallery.map((item) => (
         <div class="overflow-hidden rounded-2xl border border-[color:var(--color-line)] bg-[color:var(--color-surface)]">
-          <div class="flex aspect-[4/3] items-center justify-center bg-[linear-gradient(135deg,var(--color-surface-2),var(--color-ink))] text-white/25">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" stroke-width="1.5" />
-              <circle cx="8" cy="10" r="2" stroke="currentColor" stroke-width="1.5" />
-              <path d="M2 17l5-5 4 4 4-3 7 6" stroke="currentColor" stroke-width="1.5" />
-            </svg>
-          </div>
+          <img
+            src={withBase(item.src)}
+            alt={item.alt}
+            class="aspect-[4/3] w-full object-cover"
+            loading="lazy"
+          />
           <div class="p-4">
-            <p class="font-semibold text-white">{item.brand}</p>
-            <p class="text-sm text-white/50">{item.category}</p>
+            <p class="font-semibold text-white">{item.caption}</p>
           </div>
         </div>
       ))}

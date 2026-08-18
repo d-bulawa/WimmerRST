@@ -7,12 +7,12 @@
 /contact-info                                              /kontakt  301
 /wimmer-rennsporttechnik/oeffnungszeiten-anfahrt            /kontakt  301
 /wimmer-rennsporttechnik/galerie                            /referenzen  301
-/wimmer-rennsporttechnik/tuev                               /unternehmen  301
-/wimmer-rennsporttechnik/tuev-cert                          /unternehmen  301
-/wimmer-rennsporttechnik/pruefstand                         /unternehmen  301
-/wimmer-rennsporttechnik/faq                                /unternehmen  301
-/wimmer-rennsporttechnik/vdat                               /unternehmen  301
-/wimmer-rennsporttechnik/*                                  /unternehmen  301
+/wimmer-rennsporttechnik/tuev                               /#unternehmen  301
+/wimmer-rennsporttechnik/tuev-cert                          /#unternehmen  301
+/wimmer-rennsporttechnik/pruefstand                         /#unternehmen  301
+/wimmer-rennsporttechnik/faq                                /#unternehmen  301
+/wimmer-rennsporttechnik/vdat                               /#unternehmen  301
+/wimmer-rennsporttechnik/*                                  /#unternehmen  301
 
 /produkte                                                   /leistungen  301
 /produkte/leistungssteigerung                               /leistungen/chiptuning  301
@@ -43,7 +43,7 @@
 /bootsmotoren                                                /marken  301
 /bootsmotoren/*                                              /marken  301
 
-/garantie                                                   /unternehmen  301
+/garantie                                                   /#garantie  301
 /datenschutzerklaerung                                      /datenschutz  301
 /oldtimer-youngtimer-klassiker                              /leistungen/auspuffanlagen  301
 /vermietung-wohnmobil-niesmann-bischoff-flair-920           /wohnmobil  301

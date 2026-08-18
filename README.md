@@ -25,10 +25,12 @@ komplett neu gedacht statt nur eingedampft.
   /leistungen/bremsanlagen
   /leistungen/sportkupplungen
   /leistungen/zubehoer
-/marken                     Marken & Partner (H&R, KW, ST, Brembo, Capristo, ZF Sachs,
-                             LUK, KTM X-Bow, Yamaha/Mercury – an einem Ort statt ~15 Einzelseiten)
-/unternehmen                Über uns, Prüfstand, TÜV-Zertifizierung (ehem. 3 Einzelseiten)
-/referenzen                 Projektgalerie (ersetzt /zubehoer/Bilder/* und /galerie/*)
+/marken                     Marken & Partner, 17 Einzelmarken mit echten offiziellen Links
+                             (H&R, KW, ST, Brembo, Capristo, ZF Sachs, LUK, KTM X-Bow, …)
+                             statt ~15 verstreuter Einzelseiten
+/#unternehmen               Über uns, Prüfstand, TÜV-Zertifizierung, Garantie – jetzt Teil
+                             der Startseite statt eigener Unterseite (Nutzerwunsch)
+/referenzen                 Projektgalerie mit echten Fotos (ersetzt /zubehoer/Bilder/* und /galerie/*)
 /fahrzeugsuche              Hersteller → Modell → Fahrzeug (ersetzt /list_hersteller)
 /wohnmobil                  Wohnmobilvermietung Niesmann+Bischoff Flair 920
 /kontakt                    Adresse, Telefon, Öffnungszeiten, Anfahrt (ehem. 2 Einzelseiten)
@@ -67,12 +69,20 @@ formuliert. Bilder sind bewusst als klar erkennbare Platzhalter umgesetzt
 - `src/pages/datenschutz.astro` – der Originaltext nennt keinen Hosting-Anbieter und
   keine Cookies/Tracking-Tools; falls solche eingesetzt werden (z. B. Statistik-Tools,
   eingebettete Karte auf `/kontakt`), müssen sie hier ergänzt werden.
-- `/referenzen` – echte Projektfotos statt Platzhalter-Kacheln
 - Alle Werte in `src/data/site.ts` gegen die aktuellen Firmendaten gegenprüfen
 - `/wohnmobil` enthält jetzt den vom Kunden gelieferten Originaltext und zwei
   Fotos. Die Fotos (`public/images/wohnmobil/`) kamen als Chat-Upload nur in
   Anzeigegröße (400×253 bzw. 400×300 px) an – für den Druck/große Darstellung
   vor Go-Live durch die hochauflösenden Originaldateien ersetzen.
+- **Marken-Logos**: `/marken` und der Marken-Teaser auf der Startseite zeigen
+  bewusst Monogramm-Platzhalter (`src/components/BrandLogo.astro`) statt
+  echter Marken-SVGs. Trademarked Logos von Drittfirmen (Brembo, KW, H&R, …)
+  können aus dieser Umgebung heraus nicht beschafft und sollten nicht aus dem
+  Gedächtnis nachgebaut werden (Risiko: ungenau/falsch). Echte SVGs liefern
+  und in `brands[].logo` in `src/data/site.ts` eintragen, dann rendert
+  `BrandLogo` automatisch das echte Logo statt des Platzhalters. Die
+  verlinkten offiziellen Websites in `brands[].url` sind bereits recherchiert
+  und echt.
 
 ### Fahrzeugsuche – wichtige offene Abhängigkeit
 

@@ -6,7 +6,6 @@ const staticPaths = [
   '/leistungen',
   '/fahrzeugsuche',
   '/marken',
-  '/unternehmen',
   '/referenzen',
   '/wohnmobil',
   '/kontakt',

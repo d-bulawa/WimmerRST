@@ -1,0 +1,32 @@
+---
+// Platzhalter für ein echtes Marken-SVG-Logo (siehe brands[].logo in
+// src/data/site.ts). Sobald echte Logo-Dateien vorliegen, hier durch ein
+// <img src={logo} /> ersetzen bzw. logo-Pfad in site.ts eintragen und
+// diese Komponente entsprechend erweitern.
+interface Props {
+  name: string;
+  logo?: string;
+  size?: number;
+}
+const { name, logo, size = 90 } = Astro.props;
+
+const initials = name
+  .split(/[\s&]+/)
+  .filter(Boolean)
+  .slice(0, 2)
+  .map((w) => w[0])
+  .join('')
+  .toUpperCase();
+---
+
+{logo ? (
+  <img src={logo} alt={`${name} Logo`} width={size} height={size} class="shrink-0 object-contain" />
+) : (
+  <div
+    class="flex shrink-0 items-center justify-center rounded-xl border border-dashed border-[color:var(--color-line)] bg-[color:var(--color-ink)] text-white/30"
+    style={`width:${size}px;height:${size}px;`}
+    title={`Platzhalter – Logo für ${name} folgt`}
+  >
+    <span class="text-lg font-black tracking-tight">{initials}</span>
+  </div>
+)}

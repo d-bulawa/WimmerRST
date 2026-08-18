@@ -6,13 +6,14 @@ interface Props {
   compact?: boolean;
 }
 const { compact = false } = Astro.props;
+const sortedManufacturers = [...manufacturers].sort((a, b) => a.name.localeCompare(b.name, 'de'));
 ---
 
 <div class="rounded-2xl border border-[color:var(--color-line)] bg-[color:var(--color-surface)] p-5 sm:p-6" data-vehicle-finder>
   <div class="grid gap-3 sm:grid-cols-[1fr_1fr_1fr_auto]">
     <select id="vf-hersteller" class="rounded-lg border border-[color:var(--color-line)] bg-[color:var(--color-ink)] px-3 py-2.5 text-sm text-white">
       <option value="">Hersteller</option>
-      {manufacturers.map((m) => <option value={m.id}>{m.name}</option>)}
+      {sortedManufacturers.map((m) => <option value={m.id}>{m.name}</option>)}
     </select>
     <select id="vf-modell" class="rounded-lg border border-[color:var(--color-line)] bg-[color:var(--color-ink)] px-3 py-2.5 text-sm text-white/50" disabled>
       <option>Modell</option>

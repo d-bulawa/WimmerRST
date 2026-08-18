@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CTA from '../components/CTA.astro';
+import BrandLogo from '../components/BrandLogo.astro';
 import { brands } from '../data/site';
 
 const categories = [...new Set(brands.map((b) => b.category))];
@@ -30,10 +31,18 @@ const categories = [...new Set(brands.map((b) => b.category))];
         <h2 class="text-xl font-bold text-white">{category}</h2>
         <div class="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {brands.filter((b) => b.category === category).map((brand) => (
-            <div class="card">
-              <h3 class="text-lg font-bold text-white">{brand.name}</h3>
-              <p class="mt-2 text-sm leading-relaxed text-white/55">{brand.description}</p>
-            </div>
+            <a
+              href={brand.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="card flex items-stretch justify-between gap-4 hover:border-[color:var(--color-accent)]"
+            >
+              <div class="flex flex-col justify-center">
+                <h3 class="text-lg font-bold text-white">{brand.name}</h3>
+                <p class="mt-2 text-sm leading-relaxed text-white/55">{brand.description}</p>
+              </div>
+              <BrandLogo name={brand.name} logo={brand.logo} size={90} />
+            </a>
           ))}
         </div>
       </div>
