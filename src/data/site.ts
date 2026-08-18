@@ -218,13 +218,23 @@ export const brands: Brand[] = [
   { name: 'Technohull', category: 'Partner', description: 'Externer Partner für RIB-Boote, verlinkt von unserer Seite.', url: 'https://technohull.com', logo: '/images/brand/logo_brand_technohull.png' },
 ];
 
-export type ReferenceImage = { src: string; alt: string; caption: string };
+// hero: true markiert Bilder, die für die zufällige Hero-Auswahl auf der
+// Startseite geeignet sind (vollständige Fahrzeugansicht statt Detailaufnahme).
+export type ReferenceImage = { src: string; alt: string; caption: string; hero?: boolean };
 
 export const referenzenGallery: ReferenceImage[] = [
-  { src: '/images/referenzen/porsche-tunnel.jpg', alt: 'Porsche 911 Turbo mit Chamäleon-Folierung in einer Tunneldurchfahrt', caption: 'Porsche 911 Turbo' },
-  { src: '/images/referenzen/porsche-esso.jpg', alt: 'Porsche 911 Turbo mit orangener Vollfolierung an einer Tankstelle', caption: 'Porsche 911 Turbo' },
-  { src: '/images/referenzen/vw-touareg.jpg', alt: 'VW Touareg mit Wimmer-Fahrzeugbeschriftung im Wald', caption: 'VW Touareg' },
-  { src: '/images/referenzen/golf-drift.jpg', alt: 'VW Polo WRC mit Wimmer-Rennlackierung im Drift', caption: 'VW Polo WRC' },
+  { src: '/images/referenzen/porsche-tunnel.jpg', alt: 'Porsche 911 Turbo mit Chamäleon-Folierung in einer Tunneldurchfahrt', caption: 'Porsche 911 Turbo', hero: true },
+  { src: '/images/referenzen/porsche-esso.jpg', alt: 'Porsche 911 Turbo mit orangener Vollfolierung an einer Tankstelle', caption: 'Porsche 911 Turbo', hero: true },
+  { src: '/images/referenzen/vw-touareg.jpg', alt: 'VW Touareg mit Wimmer-Fahrzeugbeschriftung im Wald', caption: 'VW Touareg', hero: true },
+  { src: '/images/referenzen/golf-drift.jpg', alt: 'VW Polo WRC mit Wimmer-Rennlackierung im Drift', caption: 'VW Polo WRC', hero: true },
+  { src: '/images/referenzen/ariel-atom.jpg', alt: 'Ariel Atom mit Überrollkäfig auf dem Wimmer-Prüfstand', caption: 'Ariel Atom', hero: true },
+  { src: '/images/referenzen/ktm-xbow.jpg', alt: 'Drei KTM X-Bow Varianten nebeneinander', caption: 'KTM X-Bow', hero: true },
+  { src: '/images/referenzen/ktm-xbow-gt.jpg', alt: 'KTM X-Bow GT auf einer Landstraße', caption: 'KTM X-Bow GT', hero: true },
+  { src: '/images/referenzen/ktm-xbow-gt_carbon.jpg', alt: 'KTM X-Bow GTX mit Carbon-Karosserie in voller Fahrt auf einer Waldstraße', caption: 'KTM X-Bow GTX', hero: true },
+  { src: '/images/referenzen/mercedes-c63-amg.jpg', alt: 'Mercedes C63 AMG mit grüner Vollfolierung und Wimmer-Beschriftung', caption: 'Mercedes C63 AMG', hero: true },
+  { src: '/images/referenzen/auspuff_01.jpg', alt: 'Handgefertigte Edelstahl-Sportauspuffanlage mit Doppelendrohr, Unterbodenansicht', caption: 'Sportauspuffanlage' },
+  { src: '/images/referenzen/auspuff_02.jpg', alt: 'Handgefertigte Edelstahl-Sportauspuffanlage mit vier Endrohren, Unterbodenansicht', caption: 'Sportauspuffanlage' },
+  { src: '/images/referenzen/auspuff_03.jpg', alt: 'Sportauspuffanlage mit ovalen Endrohren und Wimmer-Schild auf der Hutablage', caption: 'Sportauspuffanlage' },
 ];
 
 export type FaqItem = { question: string; answer: string };

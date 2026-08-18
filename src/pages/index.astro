@@ -7,6 +7,7 @@ import { stats, leistungenChildren, brands, company, referenzenGallery } from '.
 import { withBase } from '../lib/url';
 
 const partnerBrands = brands.slice(0, 6);
+const heroGallery = referenzenGallery.filter((img) => img.hero);
 
 const companyInfo = [
   {
@@ -61,14 +62,14 @@ const companyInfo = [
       <div class="relative aspect-[4/3] w-full overflow-hidden rounded-3xl border border-[color:var(--color-line)]">
         <img
           id="hero-photo"
-          src={withBase(referenzenGallery[0].src)}
-          alt={referenzenGallery[0].alt}
+          src={withBase(heroGallery[0].src)}
+          alt={heroGallery[0].alt}
           class="absolute inset-0 h-full w-full object-cover"
         />
       </div>
     </div>
 
-    <script define:vars={{ heroImages: referenzenGallery.map((img) => ({ src: withBase(img.src), alt: img.alt })) }}>
+    <script define:vars={{ heroImages: heroGallery.map((img) => ({ src: withBase(img.src), alt: img.alt })) }}>
       const heroPhoto = document.getElementById('hero-photo');
       if (heroPhoto && heroImages.length > 0) {
         const pick = heroImages[Math.floor(Math.random() * heroImages.length)];
