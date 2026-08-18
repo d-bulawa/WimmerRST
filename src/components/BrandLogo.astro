@@ -1,8 +1,9 @@
 ---
-// Platzhalter für ein echtes Marken-SVG-Logo (siehe brands[].logo in
-// src/data/site.ts). Sobald echte Logo-Dateien vorliegen, hier durch ein
-// <img src={logo} /> ersetzen bzw. logo-Pfad in site.ts eintragen und
-// diese Komponente entsprechend erweitern.
+// Zeigt das echte Markenlogo (Pfad aus brands[].logo in src/data/site.ts,
+// siehe /public/images/brand). Marken ohne hinterlegte Logo-Datei fallen
+// auf einen Monogramm-Platzhalter zurück.
+import { withBase } from '../lib/url';
+
 interface Props {
   name: string;
   logo?: string;
@@ -20,7 +21,7 @@ const initials = name
 ---
 
 {logo ? (
-  <img src={logo} alt={`${name} Logo`} width={size} height={size} class="shrink-0 object-contain" />
+  <img src={withBase(logo)} alt={`${name} Logo`} width={size} height={size} class="shrink-0 object-contain" />
 ) : (
   <div
     class="flex shrink-0 items-center justify-center rounded-xl border border-dashed border-[color:var(--color-line)] bg-[color:var(--color-ink)] text-white/30"
