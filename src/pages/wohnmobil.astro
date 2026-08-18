@@ -40,19 +40,26 @@ const sections = [
   path="/wohnmobil"
 >
   <section class="border-b border-[color:var(--color-line)] bg-[color:var(--color-surface)]">
-    <div class="container-page py-16 sm:py-20">
-      <p class="eyebrow">Vermietung</p>
-      <h1 class="mt-3 max-w-3xl text-balance text-4xl font-black tracking-tight sm:text-5xl">
-        Niesmann &amp; Bischoff Flair 920
-      </h1>
-      <p class="mt-2 text-lg font-semibold text-white/80">Ihr 5-Sterne-Zuhause auf Rädern</p>
-      <p class="mt-5 max-w-2xl text-lg leading-relaxed text-white/60">
-        Erleben Sie Reisen auf höchstem Niveau mit unserem Niesmann &amp; Bischoff Flair 920,
-        einem integrierten Luxus-Liner, der Komfort, Design und Technik auf einzigartige Weise
-        verbindet. Ob entspannter Familienurlaub, Roadtrip durch Europa oder exklusiver Messe-
-        und Business-Einsatz: In diesem Reisemobil genießen Sie überall die Atmosphäre einer
-        hochwertigen Suite.
-      </p>
+    <div class="container-page grid items-center gap-10 py-16 sm:py-20 lg:grid-cols-[1fr_auto]">
+      <div>
+        <p class="eyebrow">Vermietung</p>
+        <h1 class="mt-3 max-w-3xl text-balance text-4xl font-black tracking-tight sm:text-5xl">
+          Niesmann &amp; Bischoff Flair 920
+        </h1>
+        <p class="mt-2 text-lg font-semibold text-white/80">Ihr 5-Sterne-Zuhause auf Rädern</p>
+        <p class="mt-5 max-w-2xl text-lg leading-relaxed text-white/60">
+          Erleben Sie Reisen auf höchstem Niveau mit unserem Niesmann &amp; Bischoff Flair 920,
+          einem integrierten Luxus-Liner, der Komfort, Design und Technik auf einzigartige Weise
+          verbindet. Ob entspannter Familienurlaub, Roadtrip durch Europa oder exklusiver Messe-
+          und Business-Einsatz: In diesem Reisemobil genießen Sie überall die Atmosphäre einer
+          hochwertigen Suite.
+        </p>
+      </div>
+      <img
+        src={withBase('/images/brand/logo_brand_nibi.png')}
+        alt=""
+        class="h-32 w-32 object-contain opacity-90 sm:h-40 sm:w-40 lg:h-48 lg:w-48"
+      />
     </div>
   </section>
 
