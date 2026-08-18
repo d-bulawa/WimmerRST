@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import CTA from '../components/CTA.astro';
 import VehicleFinder from '../components/VehicleFinder.astro';
 import BrandLogo from '../components/BrandLogo.astro';
-import { stats, leistungenChildren, brands, company } from '../data/site';
+import { stats, leistungenChildren, brands, company, referenzenGallery } from '../data/site';
 import { withBase } from '../lib/url';
 
 const partnerBrands = brands.slice(0, 6);
@@ -60,12 +60,22 @@ const companyInfo = [
 
       <div class="relative aspect-[4/3] w-full overflow-hidden rounded-3xl border border-[color:var(--color-line)]">
         <img
-          src={withBase('/images/referenzen/vw-touareg.jpg')}
-          alt="VW Touareg mit Wimmer-Beschriftung im Wald"
+          id="hero-photo"
+          src={withBase(referenzenGallery[0].src)}
+          alt={referenzenGallery[0].alt}
           class="absolute inset-0 h-full w-full object-cover"
         />
       </div>
     </div>
+
+    <script define:vars={{ heroImages: referenzenGallery.map((img) => ({ src: withBase(img.src), alt: img.alt })) }}>
+      const heroPhoto = document.getElementById('hero-photo');
+      if (heroPhoto && heroImages.length > 0) {
+        const pick = heroImages[Math.floor(Math.random() * heroImages.length)];
+        heroPhoto.src = pick.src;
+        heroPhoto.alt = pick.alt;
+      }
+    </script>
 
     <div class="container-page relative py-8 sm:py-12">
       <VehicleFinder compact />

@@ -218,4 +218,13 @@ export const brands: Brand[] = [
   { name: 'Technohull', category: 'Partner', description: 'Externer Partner für RIB-Boote, verlinkt von unserer Seite.', url: 'https://technohull.com', logo: '/images/brand/logo_brand_technohull.png' },
 ];
 
+export type ReferenceImage = { src: string; alt: string; caption: string };
+
+export const referenzenGallery: ReferenceImage[] = [
+  { src: '/images/referenzen/porsche-tunnel.jpg', alt: 'Porsche 911 Turbo mit Chamäleon-Folierung in einer Tunneldurchfahrt', caption: 'Porsche 911 Turbo' },
+  { src: '/images/referenzen/porsche-esso.jpg', alt: 'Porsche 911 Turbo mit orangener Vollfolierung an einer Tankstelle', caption: 'Porsche 911 Turbo' },
+  { src: '/images/referenzen/vw-touareg.jpg', alt: 'VW Touareg mit Wimmer-Fahrzeugbeschriftung im Wald', caption: 'VW Touareg' },
+  { src: '/images/referenzen/golf-drift.jpg', alt: 'VW Polo WRC mit Wimmer-Rennlackierung im Drift', caption: 'VW Polo WRC' },
+];
+
 export type FaqItem = { question: string; answer: string };

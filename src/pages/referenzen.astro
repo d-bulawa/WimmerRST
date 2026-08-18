@@ -2,13 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CTA from '../components/CTA.astro';
 import { withBase } from '../lib/url';
-
-const gallery = [
-  { src: '/images/referenzen/porsche-tunnel.jpg', alt: 'Porsche 911 Turbo mit Chamäleon-Folierung in einer Tunneldurchfahrt', caption: 'Porsche 911 Turbo' },
-  { src: '/images/referenzen/porsche-esso.jpg', alt: 'Porsche 911 Turbo mit orangener Vollfolierung an einer Tankstelle', caption: 'Porsche 911 Turbo' },
-  { src: '/images/referenzen/vw-touareg.jpg', alt: 'VW Touareg mit Wimmer-Fahrzeugbeschriftung im Wald', caption: 'VW Touareg' },
-  { src: '/images/referenzen/golf-drift.jpg', alt: 'VW Polo WRC mit Wimmer-Rennlackierung im Drift', caption: 'VW Polo WRC' },
-];
+import { referenzenGallery as gallery } from '../data/site';
 ---
 
 <BaseLayout
