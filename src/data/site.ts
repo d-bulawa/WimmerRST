@@ -179,9 +179,11 @@ export const manufacturers: Manufacturer[] = [
 ];
 
 // url = jeweils die echte, recherchierte offizielle Website der Marke.
-// logo = Pfad zu einer echten SVG-Logo-Datei; so lange keine vorliegt,
-// bleibt das Feld leer und die Karte zeigt einen klar erkennbaren
-// Monogramm-Platzhalter statt eines (unsicheren) nachgebauten Logos.
+// logo = Pfad (ohne Base-URL, siehe withBase() in lib/url.ts) zu einer
+// echten Logo-Datei unter /public/images/brand; fehlt eine Logo-Datei für
+// eine Marke, bleibt das Feld leer und die Karte zeigt einen klar
+// erkennbaren Monogramm-Platzhalter statt eines (unsicheren)
+// nachgebauten Logos.
 export type Brand = {
   name: string;
   category: string;
@@ -191,23 +193,23 @@ export type Brand = {
 };
 
 export const brands: Brand[] = [
-  { name: 'H&R', category: 'Fahrwerkstechnik', description: 'Gewindefahrwerke & Tieferlegungsfedern mit TÜV-Zertifizierung, seit den späten 1980ern.', url: 'https://www.h-r.com' },
-  { name: 'KW automotive', category: 'Fahrwerkstechnik', description: 'Seit über 20 Jahren Partner: Wimmer ist KW Performance Partner Pro mit 5 Jahren Garantie auf verbaute KW-Fahrwerke.', url: 'https://www.kwsuspensions.de' },
-  { name: 'ST suspensions', category: 'Fahrwerkstechnik', description: 'Federn, Dämpfer, komplette Gewindefahrwerke sowie Stabilisatoren und Spurverbreiterungen.', url: 'https://www.stsuspensions.com' },
-  { name: 'Bilstein', category: 'Fahrwerkstechnik', description: 'Dämpfertechnik für komfortable bis sportliche Abstimmung.', url: 'https://bilstein.com/en-us/' },
-  { name: 'Capristo', category: 'Auspuffanlagen', description: 'Hochwertige Sport-Auspuffanlagen, bei Wimmer erhältlich und verbaut.', url: 'https://www.capristo.de' },
-  { name: 'Brembo', category: 'Bremsanlagen', description: 'Bremsscheiben, -beläge und komplette Kits (u. a. B-M, GT, GT-R) für spürbar kürzere Bremswege.', url: 'https://www.brembo.com/en' },
-  { name: 'Movit', category: 'Bremsanlagen', description: 'Hochleistungs-Bremsanlagen im Programm, passend zu unterschiedlichen Leistungsstufen.', url: 'https://www.movitbrakes.com/en/' },
-  { name: 'StopTech', category: 'Bremsanlagen', description: 'Bremsanlagen für sportliche und leistungsgesteigerte Fahrzeuge.', url: 'https://stoptechco.com/' },
-  { name: 'Fischer Hydraulik', category: 'Bremsanlagen', description: 'Stahlflex-Bremsschläuche für ein präzises, standfestes Bremsgefühl.', url: 'https://www.fischer-hydraulik.de' },
-  { name: 'ZF Sachs Race Engineering', category: 'Sportkupplungen', description: 'Kupplungstechnik für verbesserte Kraftübertragung.', url: 'https://www.sachsperformance.com' },
-  { name: 'LUK', category: 'Sportkupplungen', description: 'Kupplungssysteme als Ergänzung zur Leistungssteigerung.', url: 'https://www.schaeffler.com' },
-  { name: 'BMC', category: 'Zubehör', description: 'Sportluftfilter inklusive Reinigungsservice für optimierten Ansaugweg.', url: 'https://www.bmcairfilters.com/en' },
+  { name: 'H&R', category: 'Fahrwerkstechnik', description: 'Gewindefahrwerke & Tieferlegungsfedern mit TÜV-Zertifizierung, seit den späten 1980ern.', url: 'https://www.h-r.com', logo: '/images/brand/logo_brand_hr.png' },
+  { name: 'KW automotive', category: 'Fahrwerkstechnik', description: 'Seit über 20 Jahren Partner: Wimmer ist KW Performance Partner Pro mit 5 Jahren Garantie auf verbaute KW-Fahrwerke.', url: 'https://www.kwsuspensions.de', logo: '/images/brand/logo_brand_kw.png' },
+  { name: 'ST suspensions', category: 'Fahrwerkstechnik', description: 'Federn, Dämpfer, komplette Gewindefahrwerke sowie Stabilisatoren und Spurverbreiterungen.', url: 'https://www.stsuspensions.com', logo: '/images/brand/logo_brand_st.png' },
+  { name: 'Bilstein', category: 'Fahrwerkstechnik', description: 'Dämpfertechnik für komfortable bis sportliche Abstimmung.', url: 'https://bilstein.com/en-us/', logo: '/images/brand/logo_brand_bilstein.png' },
+  { name: 'Capristo', category: 'Auspuffanlagen', description: 'Hochwertige Sport-Auspuffanlagen, bei Wimmer erhältlich und verbaut.', url: 'https://www.capristo.de', logo: '/images/brand/logo_brand_capristo.png' },
+  { name: 'Brembo', category: 'Bremsanlagen', description: 'Bremsscheiben, -beläge und komplette Kits (u. a. B-M, GT, GT-R) für spürbar kürzere Bremswege.', url: 'https://www.brembo.com/en', logo: '/images/brand/logo_brand_brembo.png' },
+  { name: 'Movit', category: 'Bremsanlagen', description: 'Hochleistungs-Bremsanlagen im Programm, passend zu unterschiedlichen Leistungsstufen.', url: 'https://www.movitbrakes.com/en/', logo: '/images/brand/logo_brand_movit.png' },
+  { name: 'StopTech', category: 'Bremsanlagen', description: 'Bremsanlagen für sportliche und leistungsgesteigerte Fahrzeuge.', url: 'https://stoptechco.com/', logo: '/images/brand/logo_brand_stoptech.png' },
+  { name: 'Fischer Hydraulik', category: 'Bremsanlagen', description: 'Stahlflex-Bremsschläuche für ein präzises, standfestes Bremsgefühl.', url: 'https://www.fischer-hydraulik.de', logo: '/images/brand/logo_brand_fischer.png' },
+  { name: 'ZF Sachs Race Engineering', category: 'Sportkupplungen', description: 'Kupplungstechnik für verbesserte Kraftübertragung.', url: 'https://www.sachsperformance.com', logo: '/images/brand/logo_brand_zf.png' },
+  { name: 'LUK', category: 'Sportkupplungen', description: 'Kupplungssysteme als Ergänzung zur Leistungssteigerung.', url: 'https://www.schaeffler.com', logo: '/images/brand/logo_brand_luk.png' },
+  { name: 'BMC', category: 'Zubehör', description: 'Sportluftfilter inklusive Reinigungsservice für optimierten Ansaugweg.', url: 'https://www.bmcairfilters.com/en', logo: '/images/brand/logo_brand_bmc.png' },
   { name: 'K&N', category: 'Zubehör', description: 'Sportluftfilter und Ansaugsysteme für spürbar mehr Ansaugleistung.', url: 'https://www.knfilters.com' },
-  { name: 'KTM X-Bow', category: 'Fahrzeuge', description: 'Wimmer ist seit 2010 Händler des Leichtbau-Sportwagens KTM X-Bow – Verkauf, Wartung und Tuning.', url: 'https://ktm-xbow.com' },
-  { name: 'Yamaha', category: 'Bootsmotoren', description: 'Seit 2016 auch Datensätze und Leistungssteigerung für größere Bootsmotoren.', url: 'https://www.yamaha-motor.eu/de/de/marine-engines/' },
-  { name: 'Mercury', category: 'Bootsmotoren', description: 'Leistungssteigerung und Service auch für Mercury-Bootsmotoren.', url: 'https://www.mercurymarine.com/us/en' },
-  { name: 'Technohull', category: 'Partner', description: 'Externer Partner für RIB-Boote, verlinkt von unserer Seite.', url: 'https://technohull.com' },
+  { name: 'KTM X-Bow', category: 'Fahrzeuge', description: 'Wimmer ist seit 2010 Händler des Leichtbau-Sportwagens KTM X-Bow – Verkauf, Wartung und Tuning.', url: 'https://ktm-xbow.com', logo: '/images/brand/logo_brand_ktm.png' },
+  { name: 'Yamaha', category: 'Bootsmotoren', description: 'Seit 2016 auch Datensätze und Leistungssteigerung für größere Bootsmotoren.', url: 'https://www.yamaha-motor.eu/de/de/marine-engines/', logo: '/images/brand/logo_brand_yamaha.png' },
+  { name: 'Mercury', category: 'Bootsmotoren', description: 'Leistungssteigerung und Service auch für Mercury-Bootsmotoren.', url: 'https://www.mercurymarine.com/us/en', logo: '/images/brand/logo_brand_mercury.png' },
+  { name: 'Technohull', category: 'Partner', description: 'Externer Partner für RIB-Boote, verlinkt von unserer Seite.', url: 'https://technohull.com', logo: '/images/brand/logo_brand_technohull.png' },
 ];
 
 export type FaqItem = { question: string; answer: string };
