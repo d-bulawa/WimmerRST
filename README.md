@@ -83,6 +83,16 @@ formuliert. Bilder sind bewusst als klar erkennbare Platzhalter umgesetzt
   `BrandLogo` automatisch das echte Logo statt des Platzhalters. Die
   verlinkten offiziellen Websites in `brands[].url` sind bereits recherchiert
   und echt.
+- **Instagram-Feed** (`/referenzen`, `src/components/InstagramFeed.astro`):
+  bindet sechs echte, aktuelle Beiträge von @wimmer_rst über Instagrams
+  offizielle oEmbed-Einbettung ein (kein API-Key, kein Backend nötig, läuft
+  im Browser der Besucher:innen). Das ist **kein** automatisch
+  mitwachsender Feed – die Permalink-Liste in `referenzen.astro` muss von
+  Hand um neue Beiträge ergänzt werden. Für einen wirklich live
+  nachziehenden Feed bräuchte es entweder die Instagram Graph API (Token +
+  Backend zur regelmäßigen Token-Erneuerung) oder einen
+  Drittanbieter-Widget-Dienst (z. B. SnapWidget, LightWidget, Behold.so),
+  für den der Kunde sein Instagram-Konto selbst dort verbindet.
 
 ### Fahrzeugsuche – wichtige offene Abhängigkeit
 
