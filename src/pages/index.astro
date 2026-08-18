@@ -102,14 +102,10 @@ const companyInfo = [
     <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
       {companyInfo.map((info) => (
         <div class="card" id={info.id}>
-          <img
-            src={withBase(info.icon)}
-            alt=""
-            width={info.iconWide ? 120 : 40}
-            height={40}
-            class:list={['object-contain object-left', info.iconWide ? 'h-8 w-auto' : 'h-10 w-10']}
-          />
-          <h3 class="mt-4 text-lg font-bold text-white">{info.title}</h3>
+          <div class:list={['mx-auto mb-5 flex h-20 items-center justify-center', info.iconWide ? 'w-full max-w-[200px]' : 'w-20']}>
+            <img src={withBase(info.icon)} alt="" class="h-full w-full object-contain" />
+          </div>
+          <h3 class="text-lg font-bold text-white">{info.title}</h3>
           <p class="mt-3 text-sm leading-relaxed text-white/55">{info.text}</p>
         </div>
       ))}
@@ -133,7 +129,9 @@ const companyInfo = [
           {leistungenChildren.map((item) => (
             <a href={withBase(item.href)} class="card group hover:border-[color:var(--color-accent)]">
               {item.icon && (
-                <img src={withBase(item.icon)} alt="" width={40} height={40} class="mb-3 h-10 w-10 object-contain" />
+                <div class="mx-auto mb-4 flex h-20 w-20 items-center justify-center">
+                  <img src={withBase(item.icon)} alt="" class="h-full w-full object-contain" />
+                </div>
               )}
               <h3 class="text-lg font-bold text-white">{item.label}</h3>
               <p class="mt-2 text-sm leading-relaxed text-white/55">{item.blurb}</p>
@@ -168,9 +166,9 @@ const companyInfo = [
                 href={brand.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="flex h-20 items-center justify-center rounded-xl border border-[color:var(--color-line)] bg-[color:var(--color-ink)] px-4 hover:border-[color:var(--color-accent)]"
+                class="flex h-28 items-center justify-center rounded-xl border border-[color:var(--color-line)] bg-[color:var(--color-ink)] px-4 hover:border-[color:var(--color-accent)]"
               >
-                <BrandLogo name={brand.name} logo={brand.logo} size={48} />
+                <BrandLogo name={brand.name} logo={brand.logo} size={72} />
               </a>
             ))}
           </div>
