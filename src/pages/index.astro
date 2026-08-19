@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import CTA from '../components/CTA.astro';
 import VehicleFinder from '../components/VehicleFinder.astro';
 import BrandLogo from '../components/BrandLogo.astro';
+import Hero from '../components/Hero.astro';
 import { stats, leistungenChildren, brands, company, referenzenGallery } from '../data/site';
 import { withBase } from '../lib/url';
 
@@ -42,41 +43,19 @@ const companyInfo = [
 >
   <section class="relative overflow-hidden">
     <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(227,6,19,0.20),transparent_60%),radial-gradient(circle_at_85%_0%,rgba(255,90,104,0.12),transparent_55%)]"></div>
-    <div class="container-page relative grid gap-12 pt-20 sm:pt-28 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-      <div>
-        <p class="eyebrow">Wimmer Rennsporttechnik · Solingen · seit {company.founded}</p>
-        <h1 class="mt-4 text-balance text-5xl font-black leading-[1.05] tracking-tight sm:text-6xl">
-          Mehr Leistung.<br />Präzise umgesetzt.
-        </h1>
-        <p class="mt-6 max-w-xl text-lg leading-relaxed text-white/60">
-          Chiptuning, handgefertigte Edelstahl-Auspuffanlagen und Fahrwerkstechnik von einem
-          TÜV-zertifizierten Fachbetrieb – auf 2.400&nbsp;m² Werkstattfläche, mit eigenem
-          Hochleistungsprüfstand.
-        </p>
-        <div class="mt-8 flex flex-wrap gap-3">
-          <a href={withBase('/leistungen')} class="btn-primary">Leistungen entdecken</a>
-          <a href={withBase('/kontakt')} class="btn-secondary">Termin anfragen</a>
-        </div>
-      </div>
-
-      <div class="relative aspect-[4/3] w-full overflow-hidden rounded-3xl border border-[color:var(--color-line)]">
-        <img
-          id="hero-photo"
-          src={withBase(heroGallery[0].src)}
-          alt={heroGallery[0].alt}
-          class="absolute inset-0 h-full w-full object-cover"
-        />
-      </div>
-    </div>
-
-    <script define:vars={{ heroImages: heroGallery.map((img) => ({ src: withBase(img.src), alt: img.alt })) }}>
-      const heroPhoto = document.getElementById('hero-photo');
-      if (heroPhoto && heroImages.length > 0) {
-        const pick = heroImages[Math.floor(Math.random() * heroImages.length)];
-        heroPhoto.src = pick.src;
-        heroPhoto.alt = pick.alt;
-      }
-    </script>
+    <Hero gallery={heroGallery}>
+      <Fragment slot="eyebrow">Wimmer Rennsporttechnik · Solingen · seit {company.founded}</Fragment>
+      <Fragment slot="headline">Mehr Leistung.<br />Präzise umgesetzt.</Fragment>
+      <Fragment slot="text">
+        Chiptuning, handgefertigte Edelstahl-Auspuffanlagen und Fahrwerkstechnik von einem
+        TÜV-zertifizierten Fachbetrieb – auf 2.400&nbsp;m² Werkstattfläche, mit eigenem
+        Hochleistungsprüfstand.
+      </Fragment>
+      <Fragment slot="actions">
+        <a href={withBase('/leistungen')} class="btn-primary">Leistungen entdecken</a>
+        <a href={withBase('/kontakt')} class="btn-secondary">Termin anfragen</a>
+      </Fragment>
+    </Hero>
 
     <div class="container-page relative py-8 sm:py-12">
       <VehicleFinder compact />

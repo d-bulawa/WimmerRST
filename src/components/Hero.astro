@@ -1,0 +1,111 @@
+---
+import { withBase } from '../lib/url';
+
+interface HeroImage {
+  src: string;
+  alt: string;
+}
+
+interface Props {
+  gallery: HeroImage[];
+}
+
+const { gallery } = Astro.props;
+---
+
+<div class="relative">
+  <button
+    type="button"
+    id="hero-variant-toggle"
+    class="absolute right-4 top-4 z-20 rounded-full border border-[color:var(--color-line)] bg-[color:var(--color-surface)]/80 px-3 py-1.5 text-xs font-medium text-white/70 backdrop-blur transition hover:border-[color:var(--color-accent)] hover:text-white sm:right-6 sm:top-6"
+  >
+    Anzeige-Test
+  </button>
+
+  <div id="hero-variant-boxed" data-hero-variant="boxed">
+    <div class="container-page relative grid gap-12 pt-20 sm:pt-28 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+      <div>
+        <p class="eyebrow">
+          <slot name="eyebrow" />
+        </p>
+        <h1 class="mt-4 text-balance text-5xl font-black leading-[1.05] tracking-tight sm:text-6xl">
+          <slot name="headline" />
+        </h1>
+        <p class="mt-6 max-w-xl text-lg leading-relaxed text-white/60">
+          <slot name="text" />
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <slot name="actions" />
+        </div>
+      </div>
+
+      <div class="relative aspect-[4/3] w-full overflow-hidden rounded-3xl border border-[color:var(--color-line)]">
+        <img
+          id="hero-photo-boxed"
+          src={withBase(gallery[0].src)}
+          alt={gallery[0].alt}
+          class="absolute inset-0 h-full w-full object-cover"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div id="hero-variant-fullbleed" data-hero-variant="fullbleed" class="hidden">
+    <div class="relative min-h-[560px] sm:min-h-[640px] lg:min-h-[720px]">
+      <div class="absolute inset-0">
+        <img
+          id="hero-photo-fullbleed"
+          src={withBase(gallery[0].src)}
+          alt={gallery[0].alt}
+          class="h-full w-full object-cover object-[70%_center]"
+        />
+        <div class="absolute inset-0 bg-gradient-to-r from-[color:var(--color-ink)] from-10% via-[color:var(--color-ink)]/85 via-40% to-transparent to-75%"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-[color:var(--color-ink)] via-transparent to-transparent opacity-70"></div>
+      </div>
+
+      <div class="container-page relative flex min-h-[560px] items-center pt-20 sm:min-h-[640px] sm:pt-28 lg:min-h-[720px]">
+        <div class="max-w-xl">
+          <p class="eyebrow">
+            <slot name="eyebrow" />
+          </p>
+          <h1 class="mt-4 text-balance text-5xl font-black leading-[1.05] tracking-tight sm:text-6xl">
+            <slot name="headline" />
+          </h1>
+          <p class="mt-6 max-w-xl text-lg leading-relaxed text-white/60">
+            <slot name="text" />
+          </p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <slot name="actions" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script define:vars={{ heroImages: gallery.map((img) => ({ src: withBase(img.src), alt: img.alt })) }}>
+  const photoIds = ['hero-photo-boxed', 'hero-photo-fullbleed'];
+  if (heroImages.length > 0) {
+    const pick = heroImages[Math.floor(Math.random() * heroImages.length)];
+    for (const id of photoIds) {
+      const photo = document.getElementById(id);
+      if (photo) {
+        photo.src = pick.src;
+        photo.alt = pick.alt;
+      }
+    }
+  }
+
+  const toggle = document.getElementById('hero-variant-toggle');
+  const panels = {
+    boxed: document.getElementById('hero-variant-boxed'),
+    fullbleed: document.getElementById('hero-variant-fullbleed'),
+  };
+  let current = 'boxed';
+
+  toggle?.addEventListener('click', () => {
+    current = current === 'boxed' ? 'fullbleed' : 'boxed';
+    panels.boxed?.classList.toggle('hidden', current !== 'boxed');
+    panels.fullbleed?.classList.toggle('hidden', current !== 'fullbleed');
+  });
+</script>
