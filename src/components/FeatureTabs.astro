@@ -15,8 +15,8 @@ const { features, fallbackImage } = Astro.props;
 const firstImage = features[0].image ?? fallbackImage;
 ---
 
-<div class="feature-tabs grid items-stretch gap-4 lg:grid-cols-[minmax(0,340px)_1fr] lg:gap-6" data-feature-tabs>
-  <div class="flex flex-col gap-3" role="tablist" aria-orientation="vertical">
+<div class="feature-tabs grid gap-4 lg:grid-cols-[minmax(0,340px)_1fr] lg:gap-6" data-feature-tabs>
+  <div class="flex flex-col gap-3" role="tablist" aria-orientation="vertical" data-tablist>
     {features.map((f, i) => (
       <button
         type="button"
@@ -93,7 +93,6 @@ const firstImage = features[0].image ?? fallbackImage;
   .feature-tab-panel {
     position: relative;
     min-height: 22rem;
-    height: 100%;
     border-radius: 1rem;
     overflow: hidden;
     border: 1px solid var(--color-line);
@@ -132,10 +131,26 @@ const firstImage = features[0].image ?? fallbackImage;
 <script>
   function initFeatureTabs(root: Element) {
     const buttons = Array.from(root.querySelectorAll<HTMLButtonElement>('.feature-tab-btn'));
+    const tablist = root.querySelector<HTMLElement>('[data-tablist]');
     const panel = root.querySelector<HTMLElement>('[data-panel]');
     const panelTitle = root.querySelector<HTMLElement>('[data-panel-title]');
     const panelText = root.querySelector<HTMLElement>('[data-panel-text]');
-    if (!panel || !panelTitle || !panelText) return;
+    if (!panel || !panelTitle || !panelText || !tablist) return;
+
+    // Bindet die Panel-Höhe exakt an die Button-Liste, damit das Panel
+    // unten bündig mit dem letzten Button abschließt (CSS-Grid-Stretch
+    // allein reicht dafür je nach Schriftart-Rendering nicht zuverlässig).
+    const isDesktop = window.matchMedia('(min-width: 1024px)');
+    function syncPanelHeight() {
+      if (isDesktop.matches) {
+        panel!.style.minHeight = `${tablist!.getBoundingClientRect().height}px`;
+      } else {
+        panel!.style.minHeight = '';
+      }
+    }
+    syncPanelHeight();
+    new ResizeObserver(syncPanelHeight).observe(tablist);
+    isDesktop.addEventListener('change', syncPanelHeight);
 
     function activate(index: number, focus = false) {
       const btn = buttons[index];
