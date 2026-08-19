@@ -11,6 +11,7 @@ interface Props {
 }
 
 const { gallery } = Astro.props;
+
 ---
 
 <div class="relative">
@@ -48,22 +49,24 @@ const { gallery } = Astro.props;
         />
       </div>
     </div>
+
+    <div class="container-page relative py-8 sm:py-12">
+      <slot name="finder" />
+    </div>
   </div>
 
   <div id="hero-variant-fullbleed" data-hero-variant="fullbleed" class="hidden">
-    <div class="relative min-h-[560px] sm:min-h-[640px] lg:min-h-[720px]">
-      <div class="absolute inset-0">
+    <div class="relative overflow-hidden">
+      <div class="absolute inset-y-0 right-0 w-full sm:w-1/2">
         <img
           id="hero-photo-fullbleed"
           src={withBase(gallery[0].src)}
           alt={gallery[0].alt}
-          class="h-full w-full object-cover object-[70%_center]"
+          class="h-full w-full object-cover object-[30%_center] [mask-image:linear-gradient(to_left,black_0%,black_40%,transparent_100%)] sm:[mask-image:linear-gradient(to_left,black_0%,black_66.6%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_left,black_0%,black_40%,transparent_100%)] sm:[-webkit-mask-image:linear-gradient(to_left,black_0%,black_66.6%,transparent_100%)]"
         />
-        <div class="absolute inset-0 bg-gradient-to-r from-[color:var(--color-ink)] from-10% via-[color:var(--color-ink)]/85 via-40% to-transparent to-75%"></div>
-        <div class="absolute inset-0 bg-gradient-to-t from-[color:var(--color-ink)] via-transparent to-transparent opacity-70"></div>
       </div>
 
-      <div class="container-page relative flex min-h-[560px] items-center pt-20 sm:min-h-[640px] sm:pt-28 lg:min-h-[720px]">
+      <div class="container-page relative flex min-h-[420px] items-center pt-20 sm:min-h-[480px] sm:pt-28 lg:min-h-[540px]">
         <div class="max-w-xl">
           <p class="eyebrow">
             <slot name="eyebrow" />
@@ -78,6 +81,10 @@ const { gallery } = Astro.props;
             <slot name="actions" />
           </div>
         </div>
+      </div>
+
+      <div class="container-page relative pb-8 sm:pb-12">
+        <slot name="finder" />
       </div>
     </div>
   </div>
