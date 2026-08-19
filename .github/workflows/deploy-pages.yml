@@ -3,7 +3,7 @@ name: Deploy Vorschau auf GitHub Pages
 on:
   push:
     branches:
-      - claude/wimmer-rst-website-modernize-b7y9sl
+      - main
   workflow_dispatch:
 
 permissions:
