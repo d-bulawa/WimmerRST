@@ -20,10 +20,10 @@ const { gallery } = Astro.props;
     id="hero-variant-toggle"
     class="absolute right-4 top-4 z-20 rounded-full border border-[color:var(--color-line)] bg-[color:var(--color-surface)]/80 px-3 py-1.5 text-xs font-medium text-white/70 backdrop-blur transition hover:border-[color:var(--color-accent)] hover:text-white sm:right-6 sm:top-6"
   >
-    Anzeige-Test
+    [TEST] Anzeige wechseln
   </button>
 
-  <div id="hero-variant-boxed" data-hero-variant="boxed">
+  <div id="hero-variant-boxed" data-hero-variant="boxed" class="hidden">
     <div class="container-page relative grid gap-12 pt-20 sm:pt-28 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
       <div>
         <p class="eyebrow">
@@ -55,14 +55,14 @@ const { gallery } = Astro.props;
     </div>
   </div>
 
-  <div id="hero-variant-fullbleed" data-hero-variant="fullbleed" class="hidden">
+  <div id="hero-variant-fullbleed" data-hero-variant="fullbleed">
     <div class="relative overflow-hidden">
-      <div class="absolute inset-y-0 right-0 w-full sm:w-1/2">
+      <div class="absolute inset-y-0 right-0 w-full sm:w-2/3">
         <img
           id="hero-photo-fullbleed"
           src={withBase(gallery[0].src)}
           alt={gallery[0].alt}
-          class="h-full w-full object-cover object-[30%_center] [mask-image:linear-gradient(to_left,black_0%,black_40%,transparent_100%)] sm:[mask-image:linear-gradient(to_left,black_0%,black_66.6%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_left,black_0%,black_40%,transparent_100%)] sm:[-webkit-mask-image:linear-gradient(to_left,black_0%,black_66.6%,transparent_100%)]"
+          class="h-full w-full object-cover object-[30%_center] [mask-image:linear-gradient(to_left,black_0%,black_25%,rgba(0,0,0,0.7)_45%,rgba(0,0,0,0.4)_65%,rgba(0,0,0,0.15)_85%,transparent_100%)] sm:[mask-image:linear-gradient(to_left,black_0%,black_50%,rgba(0,0,0,0.75)_62%,rgba(0,0,0,0.45)_74%,rgba(0,0,0,0.2)_87%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_left,black_0%,black_25%,rgba(0,0,0,0.7)_45%,rgba(0,0,0,0.4)_65%,rgba(0,0,0,0.15)_85%,transparent_100%)] sm:[-webkit-mask-image:linear-gradient(to_left,black_0%,black_50%,rgba(0,0,0,0.75)_62%,rgba(0,0,0,0.45)_74%,rgba(0,0,0,0.2)_87%,transparent_100%)]"
         />
       </div>
 
@@ -108,7 +108,7 @@ const { gallery } = Astro.props;
     boxed: document.getElementById('hero-variant-boxed'),
     fullbleed: document.getElementById('hero-variant-fullbleed'),
   };
-  let current = 'boxed';
+  let current = 'fullbleed';
 
   toggle?.addEventListener('click', () => {
     current = current === 'boxed' ? 'fullbleed' : 'boxed';

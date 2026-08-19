@@ -9,16 +9,16 @@ const { compact = false } = Astro.props;
 const sortedManufacturers = [...manufacturers].sort((a, b) => a.name.localeCompare(b.name, 'de'));
 ---
 
-<div class="rounded-2xl border border-[color:var(--color-line)] bg-[color:var(--color-surface)] p-5 sm:p-6" data-vehicle-finder>
-  <div class="grid gap-3 sm:grid-cols-[1fr_1fr_1fr_auto]">
-    <select id="vf-hersteller" class="rounded-lg border border-[color:var(--color-line)] bg-[color:var(--color-ink)] px-3 py-2.5 text-sm text-white">
+<div class="rounded-2xl border border-white/10 bg-[color:var(--color-surface)]/40 p-5 backdrop-blur-lg sm:p-6" data-vehicle-finder>
+  <div class="grid gap-3 sm:grid-cols-[1fr_1fr_1fr_auto] sm:items-center">
+    <select id="vf-hersteller" class="vf-select rounded-lg border border-[color:var(--color-line)] bg-[color:var(--color-ink)]/70 px-3 py-2.5 text-sm text-white">
       <option value="">Hersteller</option>
       {sortedManufacturers.map((m) => <option value={m.id}>{m.name}</option>)}
     </select>
-    <select id="vf-modell" class="rounded-lg border border-[color:var(--color-line)] bg-[color:var(--color-ink)] px-3 py-2.5 text-sm text-white/50" disabled>
+    <select id="vf-modell" class="vf-select rounded-lg border border-[color:var(--color-line)] bg-[color:var(--color-ink)]/70 px-3 py-2.5 text-sm text-white/50" disabled>
       <option>Modell</option>
     </select>
-    <select id="vf-fahrzeug" class="rounded-lg border border-[color:var(--color-line)] bg-[color:var(--color-ink)] px-3 py-2.5 text-sm text-white/50" disabled>
+    <select id="vf-fahrzeug" class="vf-select rounded-lg border border-[color:var(--color-line)] bg-[color:var(--color-ink)]/70 px-3 py-2.5 text-sm text-white/50" disabled>
       <option>Fahrzeug</option>
     </select>
     <a id="vf-fallback" href={withBase('/kontakt')} class="btn-secondary justify-center whitespace-nowrap" style="display: none;">Fahrzeug per Kontakt anfragen</a>
@@ -30,6 +30,18 @@ const sortedManufacturers = [...manufacturers].sort((a, b) => a.name.localeCompa
     </p>
   )}
 </div>
+
+<style>
+  .vf-select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6' fill='none'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%23ffffff' stroke-opacity='0.6' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1.5rem center;
+    background-size: 10px 6px;
+    padding-right: 2.75rem;
+  }
+</style>
 
 <script>
   const herstellerEl = document.getElementById('vf-hersteller') as HTMLSelectElement | null;
