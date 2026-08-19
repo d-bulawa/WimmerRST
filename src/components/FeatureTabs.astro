@@ -15,7 +15,7 @@ const { features, fallbackImage } = Astro.props;
 const firstImage = features[0].image ?? fallbackImage;
 ---
 
-<div class="feature-tabs grid gap-4 lg:grid-cols-[minmax(0,340px)_1fr] lg:gap-6" data-feature-tabs>
+<div class="feature-tabs grid gap-4 lg:grid-cols-[minmax(0,340px)_1fr] lg:items-start lg:gap-6" data-feature-tabs>
   <div class="flex flex-col gap-3" role="tablist" aria-orientation="vertical" data-tablist>
     {features.map((f, i) => (
       <button
