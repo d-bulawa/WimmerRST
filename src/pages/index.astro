@@ -55,11 +55,10 @@ const companyInfo = [
         <a href={withBase('/leistungen')} class="btn-primary">Leistungen entdecken</a>
         <a href={withBase('/kontakt')} class="btn-secondary">Termin anfragen</a>
       </Fragment>
+      <Fragment slot="finder">
+        <VehicleFinder compact />
+      </Fragment>
     </Hero>
-
-    <div class="container-page relative py-8 sm:py-12">
-      <VehicleFinder compact />
-    </div>
   </section>
 
   <section class="border-y border-[color:var(--color-line)] bg-[color:var(--color-surface)]">
