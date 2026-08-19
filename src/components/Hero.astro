@@ -14,105 +14,45 @@ const { gallery } = Astro.props;
 
 ---
 
-<div class="relative">
-  <button
-    type="button"
-    id="hero-variant-toggle"
-    class="absolute right-4 top-4 z-20 rounded-full border border-[color:var(--color-line)] bg-[color:var(--color-surface)]/80 px-3 py-1.5 text-xs font-medium text-white/70 backdrop-blur transition hover:border-[color:var(--color-accent)] hover:text-white sm:right-6 sm:top-6"
-  >
-    [TEST] Anzeige wechseln
-  </button>
+<div class="relative overflow-hidden">
+  <div class="absolute inset-y-0 right-0 w-full sm:w-2/3">
+    <img
+      id="hero-photo-fullbleed"
+      src={withBase(gallery[0].src)}
+      alt={gallery[0].alt}
+      class="h-full w-full object-cover object-[30%_center] [mask-image:linear-gradient(to_left,black_0%,black_25%,rgba(0,0,0,0.7)_45%,rgba(0,0,0,0.4)_65%,rgba(0,0,0,0.15)_85%,transparent_100%)] sm:[mask-image:linear-gradient(to_left,black_0%,black_50%,rgba(0,0,0,0.75)_62%,rgba(0,0,0,0.45)_74%,rgba(0,0,0,0.2)_87%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_left,black_0%,black_25%,rgba(0,0,0,0.7)_45%,rgba(0,0,0,0.4)_65%,rgba(0,0,0,0.15)_85%,transparent_100%)] sm:[-webkit-mask-image:linear-gradient(to_left,black_0%,black_50%,rgba(0,0,0,0.75)_62%,rgba(0,0,0,0.45)_74%,rgba(0,0,0,0.2)_87%,transparent_100%)]"
+    />
+  </div>
 
-  <div id="hero-variant-boxed" data-hero-variant="boxed" class="hidden">
-    <div class="container-page relative grid gap-12 pt-20 sm:pt-28 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-      <div>
-        <p class="eyebrow">
-          <slot name="eyebrow" />
-        </p>
-        <h1 class="mt-4 text-balance text-5xl font-black leading-[1.05] tracking-tight sm:text-6xl">
-          <slot name="headline" />
-        </h1>
-        <p class="mt-6 max-w-xl text-lg leading-relaxed text-white/60">
-          <slot name="text" />
-        </p>
-        <div class="mt-8 flex flex-wrap gap-3">
-          <slot name="actions" />
-        </div>
+  <div class="container-page relative flex min-h-[420px] items-center pt-20 sm:min-h-[480px] sm:pt-28 lg:min-h-[540px]">
+    <div class="max-w-xl">
+      <p class="eyebrow">
+        <slot name="eyebrow" />
+      </p>
+      <h1 class="mt-4 text-balance text-5xl font-black leading-[1.05] tracking-tight sm:text-6xl">
+        <slot name="headline" />
+      </h1>
+      <p class="mt-6 max-w-xl text-lg leading-relaxed text-white/60">
+        <slot name="text" />
+      </p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <slot name="actions" />
       </div>
-
-      <div class="relative aspect-[4/3] w-full overflow-hidden rounded-3xl border border-[color:var(--color-line)]">
-        <img
-          id="hero-photo-boxed"
-          src={withBase(gallery[0].src)}
-          alt={gallery[0].alt}
-          class="absolute inset-0 h-full w-full object-cover"
-        />
-      </div>
-    </div>
-
-    <div class="container-page relative py-8 sm:py-12">
-      <slot name="finder" />
     </div>
   </div>
 
-  <div id="hero-variant-fullbleed" data-hero-variant="fullbleed">
-    <div class="relative overflow-hidden">
-      <div class="absolute inset-y-0 right-0 w-full sm:w-2/3">
-        <img
-          id="hero-photo-fullbleed"
-          src={withBase(gallery[0].src)}
-          alt={gallery[0].alt}
-          class="h-full w-full object-cover object-[30%_center] [mask-image:linear-gradient(to_left,black_0%,black_25%,rgba(0,0,0,0.7)_45%,rgba(0,0,0,0.4)_65%,rgba(0,0,0,0.15)_85%,transparent_100%)] sm:[mask-image:linear-gradient(to_left,black_0%,black_50%,rgba(0,0,0,0.75)_62%,rgba(0,0,0,0.45)_74%,rgba(0,0,0,0.2)_87%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_left,black_0%,black_25%,rgba(0,0,0,0.7)_45%,rgba(0,0,0,0.4)_65%,rgba(0,0,0,0.15)_85%,transparent_100%)] sm:[-webkit-mask-image:linear-gradient(to_left,black_0%,black_50%,rgba(0,0,0,0.75)_62%,rgba(0,0,0,0.45)_74%,rgba(0,0,0,0.2)_87%,transparent_100%)]"
-        />
-      </div>
-
-      <div class="container-page relative flex min-h-[420px] items-center pt-20 sm:min-h-[480px] sm:pt-28 lg:min-h-[540px]">
-        <div class="max-w-xl">
-          <p class="eyebrow">
-            <slot name="eyebrow" />
-          </p>
-          <h1 class="mt-4 text-balance text-5xl font-black leading-[1.05] tracking-tight sm:text-6xl">
-            <slot name="headline" />
-          </h1>
-          <p class="mt-6 max-w-xl text-lg leading-relaxed text-white/60">
-            <slot name="text" />
-          </p>
-          <div class="mt-8 flex flex-wrap gap-3">
-            <slot name="actions" />
-          </div>
-        </div>
-      </div>
-
-      <div class="container-page relative pb-8 sm:pb-12">
-        <slot name="finder" />
-      </div>
-    </div>
+  <div class="container-page relative pb-8 sm:pb-12">
+    <slot name="finder" />
   </div>
 </div>
 
 <script define:vars={{ heroImages: gallery.map((img) => ({ src: withBase(img.src), alt: img.alt })) }}>
-  const photoIds = ['hero-photo-boxed', 'hero-photo-fullbleed'];
   if (heroImages.length > 0) {
     const pick = heroImages[Math.floor(Math.random() * heroImages.length)];
-    for (const id of photoIds) {
-      const photo = document.getElementById(id);
-      if (photo) {
-        photo.src = pick.src;
-        photo.alt = pick.alt;
-      }
+    const photo = document.getElementById('hero-photo-fullbleed');
+    if (photo) {
+      photo.src = pick.src;
+      photo.alt = pick.alt;
     }
   }
-
-  const toggle = document.getElementById('hero-variant-toggle');
-  const panels = {
-    boxed: document.getElementById('hero-variant-boxed'),
-    fullbleed: document.getElementById('hero-variant-fullbleed'),
-  };
-  let current = 'fullbleed';
-
-  toggle?.addEventListener('click', () => {
-    current = current === 'boxed' ? 'fullbleed' : 'boxed';
-    panels.boxed?.classList.toggle('hidden', current !== 'boxed');
-    panels.fullbleed?.classList.toggle('hidden', current !== 'fullbleed');
-  });
 </script>
