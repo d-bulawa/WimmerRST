@@ -17,31 +17,51 @@ const firstImage = features[0].image ?? fallbackImage;
 
 <div class="feature-tabs grid gap-4 lg:grid-cols-[minmax(0,340px)_1fr] lg:items-start lg:gap-6" data-feature-tabs>
   <div class="flex flex-col gap-3" role="tablist" aria-orientation="vertical" data-tablist>
-    {features.map((f, i) => (
-      <button
-        type="button"
-        class="feature-tab-btn"
-        role="tab"
-        id={`feature-tab-${i}`}
-        aria-selected={i === 0 ? 'true' : 'false'}
-        aria-controls="feature-tab-panel"
-        tabindex={i === 0 ? '0' : '-1'}
-        data-index={i}
-        data-image={f.image ? withBase(f.image) : fallbackImage ? withBase(fallbackImage) : ''}
-        data-title={f.title}
-        data-text={f.text}
-      >
-        <span>{f.title}</span>
-        <svg class="feature-tab-btn-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-          <path d="M7.5 4.5L13 10l-5.5 5.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
-        </svg>
-      </button>
-    ))}
+    {features.map((f, i) => {
+      const image = f.image ? withBase(f.image) : fallbackImage ? withBase(fallbackImage) : '';
+      return (
+        <div class="feature-tab-item">
+          <button
+            type="button"
+            class="feature-tab-btn"
+            role="tab"
+            id={`feature-tab-${i}`}
+            aria-selected={i === 0 ? 'true' : 'false'}
+            aria-controls={`feature-tab-panel-mobile-${i}`}
+            tabindex={i === 0 ? '0' : '-1'}
+            data-index={i}
+            data-image={image}
+            data-title={f.title}
+            data-text={f.text}
+          >
+            <span>{f.title}</span>
+            <svg class="feature-tab-btn-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M7.5 4.5L13 10l-5.5 5.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+
+          <div
+            class="feature-tab-panel feature-tab-panel-mobile"
+            id={`feature-tab-panel-mobile-${i}`}
+            role="tabpanel"
+            aria-labelledby={`feature-tab-${i}`}
+            data-panel-mobile
+            hidden={i !== 0}
+            style={image ? `background-image:url(${image})` : undefined}
+          >
+            <div class="feature-tab-glass">
+              <h3 class="text-xl font-bold text-white sm:text-2xl">{f.title}</h3>
+              <p class="mt-3 text-sm leading-relaxed text-white/80 sm:text-base">{f.text}</p>
+            </div>
+          </div>
+        </div>
+      );
+    })}
   </div>
 
   <div
-    class="feature-tab-panel"
-    id="feature-tab-panel"
+    class="feature-tab-panel feature-tab-panel-desktop"
+    id="feature-tab-panel-desktop"
     role="tabpanel"
     aria-labelledby="feature-tab-0"
     data-panel
@@ -55,6 +75,12 @@ const firstImage = features[0].image ?? fallbackImage;
 </div>
 
 <style>
+  .feature-tab-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
   .feature-tab-btn {
     display: flex;
     align-items: center;
@@ -92,7 +118,6 @@ const firstImage = features[0].image ?? fallbackImage;
 
   .feature-tab-panel {
     position: relative;
-    min-height: 22rem;
     border-radius: 1rem;
     overflow: hidden;
     border: 1px solid var(--color-line);
@@ -101,6 +126,9 @@ const firstImage = features[0].image ?? fallbackImage;
     background-position: center;
     display: flex;
     align-items: flex-end;
+  }
+  .feature-tab-panel[hidden] {
+    display: none;
   }
   .feature-tab-panel::before {
     content: '';
@@ -121,8 +149,25 @@ const firstImage = features[0].image ?? fallbackImage;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
   }
 
+  /*
+    Unter 1024px reicht die Breite nicht mehr für Buttons + Panel
+    nebeneinander (siehe lg:grid-cols oben). Deshalb bekommt dort jeder
+    Button sein eigenes Panel direkt darunter (Akkordeon); das gemeinsame
+    Panel rechts ist dann ausgeblendet – und umgekehrt ab 1024px.
+  */
+  .feature-tab-panel-mobile {
+    min-height: 16rem;
+  }
+  .feature-tab-panel-desktop {
+    display: none;
+  }
+
   @media (min-width: 1024px) {
-    .feature-tab-panel {
+    .feature-tab-panel-mobile {
+      display: none;
+    }
+    .feature-tab-panel-desktop {
+      display: flex;
       min-height: 30rem;
     }
   }
@@ -135,6 +180,7 @@ const firstImage = features[0].image ?? fallbackImage;
     const panel = root.querySelector<HTMLElement>('[data-panel]');
     const panelTitle = root.querySelector<HTMLElement>('[data-panel-title]');
     const panelText = root.querySelector<HTMLElement>('[data-panel-text]');
+    const mobilePanels = Array.from(root.querySelectorAll<HTMLElement>('[data-panel-mobile]'));
     if (!panel || !panelTitle || !panelText || !tablist) return;
 
     // Bindet die Panel-Höhe exakt an die Button-Liste, damit das Panel
@@ -168,6 +214,10 @@ const firstImage = features[0].image ?? fallbackImage;
       panelTitle!.textContent = btn.dataset.title ?? '';
       panelText!.textContent = btn.dataset.text ?? '';
       panel!.setAttribute('aria-labelledby', btn.id);
+
+      mobilePanels.forEach((p, i) => {
+        p.hidden = i !== index;
+      });
     }
 
     buttons.forEach((btn, i) => {
