@@ -91,10 +91,15 @@ Pauschalvergütung in Höhe von
 
 **2.000,00 EUR (in Worten: zweitausend Euro) netto**
 
-zzgl. der jeweils gesetzlichen Umsatzsteuer, sofern der Auftragnehmer nicht
-Kleinunternehmer im Sinne des § 19 UStG ist. *(Trifft die
-Kleinunternehmerregelung zu, entfällt der Umsatzsteuerausweis; dies ist auf
-der Rechnung entsprechend zu vermerken.)*
+zzgl. der gesetzlichen Umsatzsteuer in derzeit gesetzlicher Höhe von 19 %
+(380,00 EUR), mithin
+
+**2.380,00 EUR (in Worten: zweitausendreihundertachtzig Euro) brutto**.
+
+Der Auftragnehmer ist nicht Kleinunternehmer im Sinne des § 19 UStG und weist
+die Umsatzsteuer entsprechend gesondert auf seinen Rechnungen aus. Ändert
+sich der gesetzliche Umsatzsteuersatz vor vollständiger Rechnungsstellung,
+gilt der zum jeweiligen Rechnungsdatum gültige Steuersatz.
 
 (2) Mit dieser Pauschalvergütung ist der in § 2 beschriebene Leistungsumfang
 vollständig abgegolten. Zusätzliche, über § 2 hinausgehende Leistungen
@@ -105,11 +110,11 @@ schriftlicher Vereinbarung vergütet.
 
 (1) Die Vergütung wird wie folgt fällig:
 
-  a) 50 % der Vergütung (1.000,00 EUR netto) als Anzahlung nach
-     Vertragsunterzeichnung und vor Beginn der Arbeiten;
+  a) 50 % der Vergütung (1.000,00 EUR netto, 1.190,00 EUR brutto) als
+     Anzahlung nach Vertragsunterzeichnung und vor Beginn der Arbeiten;
 
-  b) die restlichen 50 % (1.000,00 EUR netto) nach erfolgter Abnahme
-     gemäß § 7.
+  b) die restlichen 50 % (1.000,00 EUR netto, 1.190,00 EUR brutto) nach
+     erfolgter Abnahme gemäß § 7.
 
 (2) Rechnungen sind innerhalb von 14 Tagen nach Rechnungsdatum ohne Abzug
 zur Zahlung fällig.
