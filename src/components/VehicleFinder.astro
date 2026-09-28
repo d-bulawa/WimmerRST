@@ -291,15 +291,6 @@ const sortedManufacturers = [...manufacturers].sort((a, b) => a.name.localeCompa
     label: string;
   }
 
-  function parseOptionsHtml(html: string): Option[] {
-    const template = document.createElement('template');
-    template.innerHTML = html;
-    return Array.from(template.content.querySelectorAll('option')).map((o) => ({
-      value: o.value,
-      label: o.textContent?.trim() ?? '',
-    }));
-  }
-
   function closeAllPanels(except?: HTMLElement) {
     document.querySelectorAll<HTMLElement>('[data-panel]').forEach((el) => {
       if (el !== except) el.hidden = true;
@@ -471,9 +462,9 @@ const sortedManufacturers = [...manufacturers].sort((a, b) => a.name.localeCompa
 
       setStatus('Lade Modelle …');
       try {
-        const res = await fetch(`/list_modelle_auswahl?hersteller=${encodeURIComponent(herstellerId)}`);
+        const res = await fetch(`/api/modelle.json?hersteller=${encodeURIComponent(herstellerId)}`);
         if (!res.ok) throw new Error(String(res.status));
-        const items = parseOptionsHtml(await res.text());
+        const items: Option[] = await res.json();
         modellBox.setItems(items.length ? items : [{ value: '', label: 'Modell' }]);
         modellBox.enable();
         setStatus('');
@@ -491,9 +482,9 @@ const sortedManufacturers = [...manufacturers].sort((a, b) => a.name.localeCompa
 
       setStatus('Lade Fahrzeuge …');
       try {
-        const res = await fetch(`/list_fahrzeuge_auswahl?modell=${encodeURIComponent(modellId)}`);
+        const res = await fetch(`/api/fahrzeuge.json?modell=${encodeURIComponent(modellId)}`);
         if (!res.ok) throw new Error(String(res.status));
-        const items = parseOptionsHtml(await res.text());
+        const items: Option[] = await res.json();
         fahrzeugBox.setItems(items.length ? items : [{ value: '', label: 'Fahrzeug' }]);
         fahrzeugBox.enable();
         setStatus('');

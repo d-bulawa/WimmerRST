@@ -50,9 +50,12 @@
 
 /mkAngebot/*                                                /kontakt  301
 
-# WICHTIG – nicht automatisch redirecten (siehe README "Fahrzeugsuche"):
-# /list_modelle_auswahl, /list_fahrzeuge_auswahl und /fahrzeug/* werden von
-# src/components/VehicleFinder.astro per fetch()/window.location zur Laufzeit
-# im Browser angesprochen. Ob diese Endpunkte nach dem Relaunch noch vom
-# bisherigen Backend beantwortet werden (z. B. per Reverse-Proxy-Regel auf
-# das alte System), ist ungeklärt und muss vor Go-Live geprüft werden.
+# /list_modelle_auswahl und /list_fahrzeuge_auswahl gibt es nicht mehr –
+# src/components/VehicleFinder.astro spricht jetzt die eigenen Endpunkte
+# /api/modelle.json und /api/fahrzeuge.json an (siehe db/README.md und
+# DEPLOYMENT.md). Alte /fahrzeug/<Name>/<ID>-Links aus dem Plone-Backend
+# sind nicht 1:1 auf die neuen /fahrzeug/<slug>-Routen abbildbar (neues
+# Slug-Format) – kein Pauschal-Redirect möglich; einzelne bekannte
+# Backlinks bei Bedarf hier gezielt ergänzen.
+/list_modelle_auswahl                                       /fahrzeugsuche  301
+/list_fahrzeuge_auswahl                                     /fahrzeugsuche  301

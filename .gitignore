@@ -3,3 +3,8 @@ dist/
 .astro/
 .env
 .DS_Store
+
+# Generierte Import-Datei mit den vollständigen Kunden-Fahrzeugdaten –
+# wird lokal/auf dem Server aus dem Kunden-Dump erzeugt, siehe db/README.md
+db/seed.generated.sql
+db/*.dump.sql

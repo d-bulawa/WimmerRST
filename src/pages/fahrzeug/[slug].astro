@@ -1,0 +1,201 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CTA from '../../components/CTA.astro';
+import { withBase } from '../../lib/url';
+import { query } from '../../lib/db';
+
+// Fahrzeug-Detailseite: ersetzt die alten `/fahrzeug/<Name>/<ID>`-Seiten des
+// Plone-Backends. Wird pro Aufruf serverseitig gegen die MariaDB-Datenbank
+// gerendert (siehe astro.config.mjs: output "hybrid" + `prerender = false`
+// hier), da der Katalog mit >34.000 Fahrzeugen zu groß für einen
+// Komplett-Build als statische Seiten wäre und sich die Preise ändern.
+export const prerender = false;
+
+interface FahrzeugRow {
+  id: number;
+  name: string;
+  typ: string | null;
+  form: string | null;
+  treibstoff: string | null;
+  motor: string | null;
+  ps: string | null;
+  kw: string | null;
+  hubraum: string | null;
+  max_kmh: number | null;
+  leergewicht: number | null;
+  sitzanzahl: number | null;
+  tueranzahl: number | null;
+  prod_jahr_von: number | null;
+  prod_jahr_bis: number | null;
+  hsn: string | null;
+  tsn: string | null;
+  modell_name: string;
+  hersteller_id: number;
+  hersteller_name: string;
+}
+
+interface ChiptuningStufe {
+  stufe: number;
+  leistung: string | null;
+  drehmoment: string | null;
+  preis: string | null;
+  beschreibung: string | null;
+}
+
+interface TuningEintrag {
+  leistung: string | null;
+  preis: string | null;
+  beschreibung: string | null;
+}
+
+const { slug } = Astro.params;
+
+const [fahrzeug] = await query<FahrzeugRow>(
+  `SELECT f.id, f.name, f.typ, f.form, f.treibstoff, f.motor, f.ps, f.kw, f.hubraum,
+          f.max_kmh, f.leergewicht, f.sitzanzahl, f.tueranzahl,
+          f.prod_jahr_von, f.prod_jahr_bis, f.hsn, f.tsn,
+          m.name AS modell_name, h.id AS hersteller_id, h.name AS hersteller_name
+     FROM fahrzeuge f
+     JOIN modelle m ON m.id = f.modell_id
+     JOIN hersteller h ON h.id = m.hersteller_id
+    WHERE f.slug = ?
+    LIMIT 1`,
+  [slug],
+);
+
+const notFound = !fahrzeug;
+if (notFound) {
+  Astro.response.status = 404;
+}
+
+const [chiptuning, auspuff, kat] = notFound
+  ? [[], [], []]
+  : await Promise.all([
+      query<ChiptuningStufe>(
+        'SELECT stufe, leistung, drehmoment, preis, beschreibung FROM chiptuning_stufen WHERE fahrzeug_id = ? ORDER BY stufe',
+        [fahrzeug.id],
+      ),
+      query<TuningEintrag>('SELECT leistung, preis, beschreibung FROM auspuffanlagen WHERE fahrzeug_id = ?', [fahrzeug.id]),
+      query<TuningEintrag>('SELECT leistung, preis, beschreibung FROM sportkatalysatoren WHERE fahrzeug_id = ?', [fahrzeug.id]),
+    ]);
+
+const zeitraum = notFound ? '' : [fahrzeug.prod_jahr_von, fahrzeug.prod_jahr_bis].filter(Boolean).join(' – ');
+const title = notFound ? 'Fahrzeug nicht gefunden' : `${fahrzeug.hersteller_name} ${fahrzeug.modell_name} ${fahrzeug.name}`;
+
+const specs = notFound
+  ? []
+  : [
+      ['Typ', fahrzeug.typ],
+      ['Karosserie', fahrzeug.form],
+      ['Baujahr', zeitraum || null],
+      ['Kraftstoff', fahrzeug.treibstoff],
+      ['Motor', fahrzeug.motor],
+      ['Leistung', fahrzeug.ps ? `${fahrzeug.ps} PS${fahrzeug.kw ? ` / ${fahrzeug.kw} kW` : ''}` : null],
+      ['Hubraum', fahrzeug.hubraum ? `${fahrzeug.hubraum} ccm` : null],
+      ['Höchstgeschwindigkeit', fahrzeug.max_kmh ? `${fahrzeug.max_kmh} km/h` : null],
+      ['Leergewicht', fahrzeug.leergewicht ? `${fahrzeug.leergewicht} kg` : null],
+      ['Sitze / Türen', fahrzeug.sitzanzahl || fahrzeug.tueranzahl ? `${fahrzeug.sitzanzahl ?? '–'} / ${fahrzeug.tueranzahl ?? '–'}` : null],
+      ['HSN / TSN', fahrzeug.hsn || fahrzeug.tsn ? `${fahrzeug.hsn ?? '–'} / ${fahrzeug.tsn ?? '–'}` : null],
+    ].filter(([, value]) => value);
+---
+
+<BaseLayout
+  title={title}
+  description={`Chiptuning, Sportauspuff und Sportkatalysator für ${title} bei Wimmer Rennsporttechnik.`}
+  path={`/fahrzeug/${slug}`}
+>
+  <section class="border-b border-[color:var(--color-line)] bg-[color:var(--color-surface)]">
+    <div class="container-page py-16 sm:py-20">
+      <p class="eyebrow">
+        <a href={withBase('/fahrzeugsuche')} class="hover:text-[color:var(--color-accent)]">Fahrzeugsuche</a>
+        {!notFound && <>· {fahrzeug.hersteller_name} · {fahrzeug.modell_name}</>}
+      </p>
+      <h1 class="mt-3 max-w-3xl text-balance text-4xl font-black tracking-tight sm:text-5xl">{title}</h1>
+    </div>
+  </section>
+
+  {notFound && (
+    <section class="container-page py-16 text-center sm:py-20">
+      <p class="text-white/60">
+        Dieses Fahrzeug konnte nicht gefunden werden. Bitte nutzen Sie die Fahrzeugsuche erneut oder kontaktieren
+        Sie uns direkt.
+      </p>
+      <div class="mt-8 flex flex-wrap justify-center gap-3">
+        <a href={withBase('/fahrzeugsuche')} class="btn-primary">Zur Fahrzeugsuche</a>
+        <a href={withBase('/kontakt')} class="btn-secondary">Kontakt</a>
+      </div>
+    </section>
+  )}
+
+  {!notFound && (
+  <section class="container-page py-16 sm:py-20">
+    <h2 class="text-2xl font-black tracking-tight">Fahrzeugdaten</h2>
+    <dl class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {specs.map(([label, value]) => (
+        <div class="card">
+          <dt class="text-xs font-semibold uppercase tracking-wide text-white/40">{label}</dt>
+          <dd class="mt-1 text-lg font-semibold text-white">{value}</dd>
+        </div>
+      ))}
+    </dl>
+
+    {chiptuning.length > 0 && (
+      <div class="mt-16">
+        <h2 class="text-2xl font-black tracking-tight">Chiptuning</h2>
+        <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {chiptuning.map((s) => (
+            <div class="card">
+              <p class="text-xs font-semibold uppercase tracking-wide text-white/40">Stufe {s.stufe}</p>
+              <p class="mt-1 text-lg font-semibold text-white">{s.leistung}</p>
+              {s.drehmoment && <p class="text-sm text-white/60">{s.drehmoment}</p>}
+              {s.preis && <p class="mt-2 text-[color:var(--color-accent)] font-semibold">{s.preis}</p>}
+              {s.beschreibung && <p class="mt-2 text-sm text-white/50">{s.beschreibung}</p>}
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+
+    {auspuff.length > 0 && (
+      <div class="mt-16">
+        <h2 class="text-2xl font-black tracking-tight">Sportauspuffanlage</h2>
+        <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {auspuff.map((a) => (
+            <div class="card">
+              {a.leistung && <p class="text-lg font-semibold text-white">{a.leistung}</p>}
+              {a.preis && <p class="mt-2 text-[color:var(--color-accent)] font-semibold">{a.preis}</p>}
+              {a.beschreibung && <p class="mt-2 text-sm text-white/50">{a.beschreibung}</p>}
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+
+    {kat.length > 0 && (
+      <div class="mt-16">
+        <h2 class="text-2xl font-black tracking-tight">Sportkatalysator</h2>
+        <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {kat.map((k) => (
+            <div class="card">
+              {k.leistung && <p class="text-lg font-semibold text-white">{k.leistung}</p>}
+              {k.preis && <p class="mt-2 text-[color:var(--color-accent)] font-semibold">{k.preis}</p>}
+              {k.beschreibung && <p class="mt-2 text-sm text-white/50">{k.beschreibung}</p>}
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+
+    {chiptuning.length === 0 && auspuff.length === 0 && kat.length === 0 && (
+      <p class="mt-10 text-white/60">
+        Für dieses Fahrzeug sind aktuell keine Tuning-Optionen hinterlegt. Sprechen Sie uns gerne direkt an.
+      </p>
+    )}
+  </section>
+
+  <CTA
+    title="Passt zu Ihrem Fahrzeug?"
+    lead={`Wir beraten Sie gerne persönlich zu Chiptuning- und Tuning-Optionen für Ihren ${fahrzeug.hersteller_name} ${fahrzeug.modell_name}.`}
+  />
+  )}
+</BaseLayout>

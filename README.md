@@ -84,47 +84,47 @@ formuliert. Bilder sind bewusst als klar erkennbare Platzhalter umgesetzt
   verlinkten offiziellen Websites in `brands[].url` sind bereits recherchiert
   und echt.
 
-### Fahrzeugsuche – wichtige offene Abhängigkeit
+### Fahrzeugsuche – jetzt mit eigener Datenbank statt altem Plone-Backend
 
-`/fahrzeugsuche` (und ein kompaktes Widget auf der Startseite,
-`src/components/VehicleFinder.astro`) bilden die alte Hersteller → Modell →
-Fahrzeug-Auswahl nach: Die Hersteller-Liste ist 1:1 aus dem Kunden-Export
-übernommen (reale IDs), die beiden folgenden Auswahlfelder laden ihre Optionen
-zur Laufzeit per `fetch()` von den **alten** Endpunkten
-`/list_modelle_auswahl?hersteller=…` und `/list_fahrzeuge_auswahl?modell=…`,
-die finale Fahrzeug-Auswahl navigiert zu `/fahrzeug/<Name>/<ID>` – exakt wie im
-Original.
+`/fahrzeugsuche` (und das kompakte Widget auf der Startseite,
+`src/components/VehicleFinder.astro`) bildet die Hersteller → Modell →
+Fahrzeug-Auswahl weiterhin nach, holt die Daten aber nicht mehr vom alten
+Plone-Backend, sondern aus einer eigenen, normalisierten MariaDB-Datenbank
+(siehe `db/README.md`), gebaut aus dem vom Kunden gelieferten
+Komplett-Export. Die Seite läuft dafür **hybrid**: die Marketing-Seiten
+bleiben statisch, nur die Fahrzeugsuche (`src/pages/api/*.json.ts`) und die
+Fahrzeug-Detailseiten (`src/pages/fahrzeug/[slug].astro`) rendern
+serverseitig live gegen die Datenbank (Astro-Adapter `@astrojs/node`).
 
-Das funktioniert nur, wenn diese drei Endpunkte nach dem Relaunch weiterhin
-erreichbar sind (z. B. weil das bisherige Backend/System parallel weiterläuft
-oder gezielt per Reverse-Proxy durchgereicht wird). **Das konnte ich nicht
-selbst prüfen** (kein Netzwerkzugriff auf wimmer-rst.de aus dieser Umgebung).
-Bitte vor Go-Live gegenchecken:
+- **Datenbank aufsetzen/aktualisieren:** `db/README.md`
+- **Server aufsetzen (MariaDB, Node-Prozess, Nginx, TLS):** `DEPLOYMENT.md`
 
-1. Im Browser auf der aktuellen Live-Seite einen Hersteller auswählen und im
-   DevTools-Netzwerk-Tab prüfen, ob `/list_modelle_auswahl?...` tatsächlich
-   Optionen zurückliefert.
-2. Klären, ob das bisherige Backend (Plone-basiert, erkennbar an
-   `data-portal-url`/`plonejsi18n` im Seitenquelltext) nach dem Umzug auf diese
-   neue Astro-Seite weiterläuft oder abgeschaltet wird.
-3. Falls abgeschaltet wird: Die Fahrzeugsuche braucht eine neue Datenquelle
-   (Fahrzeug-Datenbank/API) – die UI in `VehicleFinder.astro` ist darauf
-   vorbereitet, zeigt aber ohne funktionierende Endpunkte automatisch eine
-   Fallback-Meldung mit Link zu `/kontakt` statt stumm zu brechen.
+Die finale Fahrzeugauswahl navigiert zu `/fahrzeug/<slug>` (neue,
+kebab-case-Route mit führender ID im Slug für Stabilität, ersetzt die alte
+Route `/fahrzeug/<Name>/<ID>`).
 
 ## Entwicklung
 
 ```bash
 npm install
 npm run dev       # lokaler Dev-Server
-npm run build     # statischer Build nach dist/
+npm run build     # Build nach dist/ (dist/client statisch, dist/server = Node-SSR-App)
 npm run preview   # Build lokal ansehen
+npm start         # Build produktiv starten (node dist/server/entry.mjs)
 ```
+
+Für die Fahrzeugsuche/-Detailseiten lokal eine MariaDB bereitstellen und
+`.env` aus `.env.example` befüllen (siehe `db/README.md` für Schema/Import).
+Ohne erreichbare Datenbank liefern `/api/modelle.json`, `/api/fahrzeuge.json`
+und `/fahrzeug/<slug>` einen Serverfehler – der Rest der Seite (alle
+statischen Marketing-Seiten) funktioniert unabhängig davon.
 
 ## Stack
 
-- **Astro** – statischer Seitenaufbau, sehr gute Ladezeiten/SEO-Basis, kein
-  Client-JS-Overhead für eine primär inhaltliche Firmenseite
+- **Astro** (`output: "hybrid"`) – Marketing-Seiten bleiben statisch (sehr
+  gute Ladezeiten/SEO-Basis), nur Fahrzeugsuche/-Detailseiten rendern
+  serverseitig (Adapter `@astrojs/node`)
 - **Tailwind CSS v4** – Utility-first Styling, Design-Tokens (Farben) zentral in
   `src/styles/global.css`
+- **MariaDB** – normalisierte Fahrzeug-/Tuning-Datenbank, siehe `db/README.md`
 - Zentrale Inhalte/Struktur in `src/data/site.ts`
