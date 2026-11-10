@@ -17,23 +17,19 @@ und
 [PLZ, Ort]
 [ggf. USt-IdNr. / Steuernummer]
 
-– nachfolgend „**Auftragnehmer**" genannt –
-
 und
 
 **Marcus Wisch**
 [Straße, Hausnummer]
 [PLZ, Ort]
 
-– nachfolgend „**Partner**" genannt –
+– Herr Bulawa und Herr Wisch erstellen die in § 2 beschriebene Werkleistung
+gemeinsam und werden nachfolgend gemeinsam „**Auftragnehmer**" genannt; sie
+haften für die Erbringung der Werkleistung und etwaige Gewährleistungs-
+und Haftungsansprüche als Gesamtschuldner. Die Vergütung der beiden
+Auftragnehmer ist gemäß § 4 unterschiedlich ausgestaltet –
 
-– Auftraggeber, Auftragnehmer und Partner gemeinsam „**Vertragsparteien**" –
-
-*Der Partner ist nicht Vertragspartner hinsichtlich der in § 1 und § 2
-beschriebenen Werkleistung, sondern ausschließlich hinsichtlich der ihm
-nach § 4 Abs. 3 und § 5 Abs. 4 zustehenden Sachleistungsvergütung für seine
-eigenen, im Zusammenhang mit diesem Projekt gesondert erbrachten
-Tätigkeiten.*
+– Auftraggeber und Auftragnehmer gemeinsam „**Vertragsparteien**" –
 
 ## § 1 Vertragsgegenstand
 
@@ -100,8 +96,11 @@ Dritter frei.
 
 ## § 4 Vergütung
 
-(1) Für die in § 2 beschriebene Leistung erhält der Auftragnehmer eine
-Pauschalvergütung in Höhe von
+(1) Für die in § 2 beschriebene, von den Auftragnehmern gemeinsam erbrachte
+Leistung erhalten die Auftragnehmer eine Vergütung, die sich wie folgt auf
+die beiden Auftragnehmer verteilt:
+
+**a) Herr Dennis Bulawa** erhält eine Geldvergütung in Höhe von
 
 **2.000,00 EUR (in Worten: zweitausend Euro) netto**
 
@@ -110,41 +109,40 @@ zzgl. der gesetzlichen Umsatzsteuer in derzeit gesetzlicher Höhe von 19 %
 
 **2.380,00 EUR (in Worten: zweitausendreihundertachtzig Euro) brutto**.
 
-Der Auftragnehmer ist nicht Kleinunternehmer im Sinne des § 19 UStG und weist
-die Umsatzsteuer entsprechend gesondert auf seinen Rechnungen aus. Ändert
-sich der gesetzliche Umsatzsteuersatz vor vollständiger Rechnungsstellung,
-gilt der zum jeweiligen Rechnungsdatum gültige Steuersatz.
+Herr Bulawa ist nicht Kleinunternehmer im Sinne des § 19 UStG und weist die
+Umsatzsteuer entsprechend gesondert auf seinen Rechnungen aus. Ändert sich
+der gesetzliche Umsatzsteuersatz vor vollständiger Rechnungsstellung, gilt
+der zum jeweiligen Rechnungsdatum gültige Steuersatz.
 
-(2) Mit dieser Pauschalvergütung ist der in § 2 beschriebene Leistungsumfang
-vollständig abgegolten. Zusätzliche, über § 2 hinausgehende Leistungen
-(„Change Requests") werden gesondert nach Aufwand oder nach vorheriger
-schriftlicher Vereinbarung vergütet.
+**b) Herr Marcus Wisch** erhält als vollständige Vergütung für seinen
+Anteil an der gemeinsam erbrachten Werkleistung vom Auftraggeber folgende
+Sachleistungen:
 
-(3) Zusätzlich zu der in Abs. 1 genannten Vergütung an den Auftragnehmer
-erhält der Partner, Herr Marcus Wisch, als vollständige Vergütung für seine
-im Zusammenhang mit diesem Projekt gesondert vereinbarten Tätigkeiten vom
-Auftraggeber folgende Sachleistungen:
-
-  a) **Felgensatz**: Hersteller/Modell m4 Motec, Typ MCR2-Ultralight,
+  i) **Felgensatz**: Hersteller/Modell m4 Motec, Typ MCR2-Ultralight,
      Größe 8,5 x 19 Zoll. Die Farbauswahl wird durch Herrn Marcus Wisch zu
      einem späteren Zeitpunkt separat mitgeteilt.
 
-  b) **Bereifung**: Hersteller/Modell Michelin Pilot Sport 4S,
+  ii) **Bereifung**: Hersteller/Modell Michelin Pilot Sport 4S,
      Dimension 235/35 ZR19.
 
-  c) **Montage & Abnahme**: Fachgerechte Montage der vorgenannten
+  iii) **Montage & Abnahme**: Fachgerechte Montage der vorgenannten
      Rad-Reifenkombination durch die Firma Wimmer sowie Durchführung und
      Kostenübernahme der technischen Begutachtung / Einzelabnahme durch
      eine amtlich anerkannte KFZ-Prüforganisation (z. B. TÜV, DEKRA, GTÜ
      oder vergleichbar).
 
-Der Anspruch des Partners nach diesem Absatz besteht unabhängig von und
-zusätzlich zu der Vergütung des Auftragnehmers nach Abs. 1 und berührt
-diese nicht.
+Die Ansprüche von Herrn Bulawa nach lit. a) und von Herrn Wisch nach lit. b)
+bestehen unabhängig voneinander; keiner der beiden Auftragnehmer kann aus
+der Vergütung des anderen eigene Ansprüche ableiten.
+
+(2) Mit den in Abs. 1 genannten Vergütungen ist der in § 2 beschriebene
+Leistungsumfang vollständig abgegolten. Zusätzliche, über § 2 hinausgehende
+Leistungen („Change Requests") werden gesondert nach Aufwand oder nach
+vorheriger schriftlicher Vereinbarung vergütet.
 
 ## § 5 Zahlungsbedingungen
 
-(1) Die Vergütung wird wie folgt fällig:
+(1) Die Geldvergütung nach § 4 Abs. 1 lit. a) wird wie folgt fällig:
 
   a) 50 % der Vergütung (1.000,00 EUR netto, 1.190,00 EUR brutto) als
      Anzahlung nach Vertragsunterzeichnung und vor Beginn der Arbeiten;
@@ -158,12 +156,12 @@ zur Zahlung fällig.
 (3) Gerät der Auftraggeber in Zahlungsverzug, gelten die gesetzlichen
 Verzugsregelungen (§§ 286 ff. BGB).
 
-(4) Die Bestellung der Felgen (in der gewählten Farbe) und Reifen gemäß
-§ 4 Abs. 3 erfolgt unverzüglich nach Mitteilung der Farbauswahl durch
-Herrn Marcus Wisch. Die Fertigstellung der Montage sowie die Übergabe der
-geprüften Rad-Reifenkombination an den Partner erfolgen nach
-ordnungsgemäßer Erbringung der in diesem Vertrag vereinbarten
-Dienstleistungen durch den Auftragnehmer und den Partner.
+(4) Die Sachleistungsvergütung nach § 4 Abs. 1 lit. b) wird wie folgt
+abgewickelt: Die Bestellung der Felgen (in der gewählten Farbe) und Reifen
+erfolgt unverzüglich nach Mitteilung der Farbauswahl durch Herrn Marcus
+Wisch. Die Fertigstellung der Montage sowie die Übergabe der geprüften
+Rad-Reifenkombination an Herrn Wisch erfolgen nach erfolgter Abnahme der
+Werkleistung gemäß § 7.
 
 ## § 6 Fertigstellungstermin
 
@@ -189,8 +187,9 @@ die Abnahme als erfolgt (§ 640 Abs. 2 BGB).
 
 ## § 8 Nutzungs- und Urheberrechte
 
-(1) Der Auftragnehmer räumt dem Auftraggeber mit vollständiger Bezahlung der
-Vergütung nach § 4 das ausschließliche, zeitlich und räumlich unbeschränkte
+(1) Die Auftragnehmer räumen dem Auftraggeber mit vollständiger Bezahlung
+bzw. Erbringung der Vergütungen nach § 4 das ausschließliche, zeitlich und
+räumlich unbeschränkte
 Nutzungsrecht an dem im Rahmen dieses Vertrags erstellten Quellcode und
 Design der Website ein, soweit diese individuell für den Auftraggeber
 geschaffen wurden.
@@ -261,7 +260,7 @@ diesem Vertrag ist, soweit gesetzlich zulässig, Solingen.
 
 <br>
 
-| Auftraggeber | Auftragnehmer | Partner |
+| Auftraggeber | Auftragnehmer | Auftragnehmer |
 |---|---|---|
 | | | |
 | _______________________________ | _______________________________ | _______________________________ |
@@ -272,10 +271,10 @@ diesem Vertrag ist, soweit gesetzlich zulässig, Solingen.
 
 *Hinweis: Dieser Vertragsentwurf dient als Vorlage und ersetzt keine
 rechtliche Beratung. Vor Unterzeichnung sollten die mit „[...]"
-gekennzeichneten Platzhalter (Anschriften von Auftragnehmer und Partner,
+gekennzeichneten Platzhalter (Anschriften der Auftragnehmer,
 Fertigstellungstermin) ausgefüllt und der Text bei Bedarf durch einen
 Rechtsanwalt/Steuerberater geprüft werden – insbesondere hinsichtlich der
-Umsatzsteuerpflicht bzw. Kleinunternehmerregelung des Auftragnehmers sowie
-der steuerlichen Behandlung der Sachleistungsvergütung des Partners
-(z. B. umsatzsteuerlicher Tausch, möglicher geldwerter Vorteil beim
-Partner).*
+Umsatzsteuerpflicht bzw. Kleinunternehmerregelung von Herrn Bulawa, der
+gesamtschuldnerischen Haftung beider Auftragnehmer sowie der steuerlichen
+Behandlung der Sachleistungsvergütung von Herrn Wisch (z. B.
+umsatzsteuerlicher Tausch, möglicher geldwerter Vorteil).*
